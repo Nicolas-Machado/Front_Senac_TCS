@@ -220,6 +220,17 @@ body {
   background-color: #ffd10a !important;
   border-color: #ffd10a !important;
 }
+
+.btn-outline-danger {
+  color: #ff9966;
+  border-color: #ff9966;
+}
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #ff9966;
+  border-color: #ff9966;
+}
+
 .btn-danger,
 .btn-danger:active {
   background-color: #ff9966 !important;
