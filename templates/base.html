@@ -10,18 +10,18 @@
     <meta property="og:image" content="">
     <meta name="twitter:title" content="HomePage Senac">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/mbr-121x63.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/mbr-121x63.png' %}" type="image/x-icon">
     <meta name="description" content="">
 
 
-    <title>HomePage Senac</title>
-    <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="assets/socicon/css/styles.css">
-    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <title>{% block title %}{% endblock%}</title>
+    <link rel="stylesheet" href="{% static 'web/assets/mobirise-icons2/mobirise2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dropdown/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'socicon/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'theme/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preload"
         href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"
@@ -30,11 +30,13 @@
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
     </noscript>
-    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
-    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+    <link rel="preload" as="style" href="{% static 'mobirise/css/mbr-additional.css' %}">
+    <link rel="stylesheet" href="{% static 'mobirise/css/mbr-additional.css' %}" type="text/css">
 
 </head>
 <body>
+    
+    {% block content %}{% endblock %}
     <section data-bs-version="5.1" class="contacts4 cid-sFGVxOqzIN" id="contacts4-f">
 
         <div class="container">
@@ -76,7 +78,7 @@
                 class="display-7 text-black">Free
                 Offline Web Page Maker</a>
         </section>
-        <script src="assets/ytplayer/index.js"></script>
+        <script src="{% static 'ytplayer/index.js' %}"></script>
 
 
         <div class="container">
@@ -89,12 +91,11 @@
             </div>
         </div>
 
-        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/smoothscroll/smooth-scroll.js"></script>
-        <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-        <script src="assets/sociallikes/social-likes.js"></script>
-        <script src="assets/theme/js/script.js"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'smoothscroll/smooth-scroll.js' %}"></script>
+        <script src="{% static 'dropdown/js/navbar-dropdown.js' %}"></script>
+        <script src="{% static 'sociallikes/social-likes.js' %}"></script>
+        <script src="{% static 'theme/js/script.js' %}"></script>
 
-        {% block content %}{% endblock %}
-</body>
+    </body>
 </html>

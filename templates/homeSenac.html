@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Home Senac{% endblock %}
 {% block content %}
-    <section data-bs-version="5.1" class="menu menu1 cid-sFGMsvHDIa" once="menu" id="menu1-1">
 
-
-        
+    {% include 'partials/_menu.html' %}
     <section data-bs-version="5.1" class="header1 cid-sFGMfPD7iT" id="header1-0">
-
-
-
         <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(255, 255, 255);">
 
             <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" width="100%">
-                <source src="assets/videos/Library.mp4" type="video/mp4">
+                <source src="{% static 'videos/Library.mp4' %}" type="video/mp4">
             </video>
 
         </div>
@@ -25,8 +21,7 @@
                     </h1>
 
                     <p class="mbr-text mbr-fonts-style text-black display-5 animate__animated animate__fadeInUp">Toda
-                        forma de aprender tem o seu valor. O
-                        Senac
+                        forma de aprender tem o seu valor. O Senac
                         valoriza todas elas<br></p>
 
                 </div>
@@ -91,7 +86,7 @@
                 </div>
                 <div class="col-12 col-lg-6 md-pb">
                     <div class="image-wrapper">
-                        <img src="assets/images/senac-sc-600x400.jpg">
+                        <img src="{% static 'images/senac-sc-600x400.jpg' %}">
                     </div>
                 </div>
             </div>
@@ -112,7 +107,7 @@
                 <div class="item features-image сol-12 col-md-6 col-lg-4">
                     <div class="item-wrapper">
                         <div class="item-img">
-                            <img src="assets/images/o-que-e-um-curso-profissionalizante-descubra-aqui-700x460.jpg"
+                            <img src="{% static 'images/o-que-e-um-curso-profissionalizante-descubra-aqui-700x460.jpg' %}"
                                 alt="" width="300px" height="300px">
                         </div>
                         <div class="item-content">
@@ -129,7 +124,7 @@
                 <div class="item features-image сol-12 col-md-6 col-lg-4">
                     <div class="item-wrapper">
                         <div class="item-img">
-                            <img src="assets/images/mbr-4.jpeg" alt="" width="300px" height="300px">
+                            <img src="{% static 'images/mbr-4.jpeg' %}" alt="" width="300px" height="300px">
                         </div>
                         <div class="item-content">
                             <h5 class="item-title mbr-fonts-style display-5">
@@ -148,7 +143,7 @@
                 <div class="item features-image сol-12 col-md-6 col-lg-4">
                     <div class="item-wrapper">
                         <div class="item-img">
-                            <img src="assets/images/pessoa-mexendo-no-computador-fonte-sindcont-816x459.jpg" alt=""
+                            <img src="{% static 'images/pessoa-mexendo-no-computador-fonte-sindcont-816x459.jpg' %}" alt=""
                                 width="300px" height="300px">
                         </div>
                         <div class="item-content">
@@ -184,7 +179,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-6.jpeg" alt="" data-slide-to="0" data-bs-slide-to="0"
+                        <img class="w-100" src="{% static 'images/mbr-6.jpeg' %}" alt="" data-slide-to="0" data-bs-slide-to="0"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -195,7 +190,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-5.jpg" alt="" data-slide-to="1" data-bs-slide-to="1"
+                        <img class="w-100" src="{% static 'images/mbr-5.jpg' %}" alt="" data-slide-to="1" data-bs-slide-to="1"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -206,7 +201,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-7.jpg" alt="" data-slide-to="2" data-bs-slide-to="2"
+                        <img class="w-100" src="{% static 'images/mbr-7.jpg' %}" alt="" data-slide-to="2" data-bs-slide-to="2"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -217,7 +212,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-8.jpg" alt="" data-slide-to="3" data-bs-slide-to="3"
+                        <img class="w-100" src="{% static 'images/mbr-8.jpg' %}" alt="" data-slide-to="3" data-bs-slide-to="3"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -228,7 +223,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-4.jpg" alt="" data-slide-to="4" data-bs-slide-to="4"
+                        <img class="w-100" src="{% static 'images/mbr-4.jpg' %}" alt="" data-slide-to="4" data-bs-slide-to="4"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -239,7 +234,7 @@
                 <div class="col-12 col-md-6 col-lg-4 item gallery-image">
                     <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
                         data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="assets/images/mbr-11.jpeg" alt="" data-slide-to="5" data-bs-slide-to="5"
+                        <img class="w-100" src="{% static 'images/mbr-11.jpeg' %}" alt="" data-slide-to="5" data-bs-slide-to="5"
                             data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
                         <div class="icon-wrapper">
                             <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
@@ -265,7 +260,7 @@
                 <div class="col-12 col-lg-12">
                     <div class="box">
                         <div class="mbr-media show-modal align-center" data-modal=".modalWindow">
-                            <img src="assets/images/lucas-colombo-faculdade-senac-cricima-16-2576x1717.jpg" alt="">
+                            <img src="{% static 'images/lucas-colombo-faculdade-senac-cricima-16-2576x1717.jpg' %}" alt="">
                             <div class="icon-wrap">
                                 <a class="text-primary" href="#"><span class="mbr-iconfont socicon-youtube socicon"
                                         style="color: rgb(228, 63, 63); fill: rgb(228, 63, 63);"></span></a>
@@ -294,64 +289,3 @@
     </section>
 
     {% endblock %}
-
-    <!-- <section data-bs-version="5.1" class="contacts4 cid-sFGVxOqzIN" id="contacts4-f">
-
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="text-content col-12 col-md-6">
-                    <h2 class="mbr-section-title mbr-fonts-style display-2"><strong>Siga o senac nas redes
-                            sociais</strong></h2>
-                    <p class="mbr-text mbr-fonts-style display-7">Para acompanhar mais conteúdos e noticias sobre nossos
-                        trabalhos dentro da unidade Senac, siga nossas páginas nas redes sociais</p>
-                </div>
-                <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
-                    <a href="https://twitter.com/senacsc" target="_blank">
-                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                    </a>
-                    <a href="https://pt-br.facebook.com/SenacSC/" target="_blank">
-                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                    </a>
-                    <a href="https://www.youtube.com/user/SenacSC/featured" target="_blank">
-                        <span class="mbr-iconfont mbr-iconfont-social socicon-youtube socicon"></span>
-                    </a>
-                    <a href="https://instagram.com/senacsantacatarina" target="_blank">
-                        <span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section data-bs-version="5.1" class="footer7 cid-sFGSOnwtIp" once="footers" id="footer7-8">
-
-        <section data-bs-version="5.1" class="footer7 cid-sFGSOnwtIp" once="footers" id="footer7-8"
-            style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap; align-content: center;display: flex;position: relative;height: 4rem;">
-            <a href="https://mobiri.se/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img
-                    alt="" style="height: 4rem;"
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
-            <p style="margin: 0;text-align: center;" class="display-7 text-white">Built with Mobirise &#8204;</p><a
-                style="z-index:1" href="https://mobirise.com/offline-website-builder.html"
-                class="display-7 text-black">Free
-                Offline Web Page Maker</a>
-        </section>
-        <script src="assets/ytplayer/index.js"></script>
-
-
-        <div class="container">
-            <div class="media-container-row align-center mbr-white">
-                <div class="col-12">
-                    <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                        © Copyright 2022 Mobirise - All Rights Reserved
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/smoothscroll/smooth-scroll.js"></script>
-        <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-        <script src="assets/sociallikes/social-likes.js"></script>
-        <script src="assets/theme/js/script.js"></script>
-    </section> -->
