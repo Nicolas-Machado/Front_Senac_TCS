@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Senac{% endblock %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+
+<section data-bs-version="5.1" class="features11 cid-sFGOTvnvck" id="features12-6">
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg">
+                <div class="card-wrapper">
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style text-black mb-4 display-2">
+                            <strong>Senac Palhoça</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style text-black mb-4 display-7"><strong>Endereço:</strong> R. João
+                            Pereira dos Santos, 303 - Pte. do Imaruim, Palhoça - SC, 88130-475,
+                            Brasil<br><strong>Fone</strong>: (48) 3341-9100<br><strong>Horário de
+                                Atendimento</strong>: Segunda a sexta-feira, das 8h às 20h</p>
+
+                        <div class="mbr-section-btn mb-4">
+                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true">
+                            </div>
+                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true">
+                            </div><a class="btn btn-outline-primary display-4" href="">Exibir no Maps<br></a>
+                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 md-pb">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/senacsc-594x540.png' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="team1 cid-sFGSUpvomC" id="team1-a">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Cursos
+                        Disponíveis</strong></h3>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <div class="card-wrap">
+                    <div class="image-wrap">
+                        <img src="assets/images/mbr-15.jpeg" alt="">
+                    </div>
+                    <div class="content-wrap">
+                        <h5 class="mbr-section-title card-title mbr-fonts-style align-center m-0 display-5">
+                            <strong>Teste 1</strong>
+                        </h5>
+
+                        <div class="mbr-section-btn card-btn align-center">
+                            <a class="btn btn-primary display-4" href="https://mobiri.se">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <div class="card-wrap">
+                    <div class="image-wrap">
+                        <img src="assets/images/mbr-16.jpeg" alt="">
+                    </div>
+
+                    <div class="content-wrap">
+                        <h5 class="mbr-section-title card-title mbr-fonts-style align-center m-0 display-5">
+                            <strong>Teste 2</strong>
+                        </h5>
+
+                        <div class="mbr-section-btn card-btn align-center">
+                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true">
+                            </div><a class="btn btn-primary display-4" href="https://mobiri.se">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <div class="card-wrap">
+                    <div class="image-wrap">
+                        <img src="assets/images/mbr-20.jpeg" alt="">
+                    </div>
+                    <div class="content-wrap">
+                        <h5 class="mbr-section-title card-title mbr-fonts-style align-center m-0 display-5">
+                            <strong>Teste 3</strong>
+                        </h5>
+
+                        <div class="mbr-section-btn card-btn align-center">
+                            <a class="btn btn-primary display-4" href="https://mobiri.se">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="form5 cid-sFGTcFRqw0" id="form5-d">
+
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>Write Us a Message</strong>
+            </h3>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 mx-auto mbr-form">
+                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input
+                        type="hidden" name="email" value="">
+
+                    <div class="row">
+                        <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
+                            out the form!</div>
+                        <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
+                            problem!</div>
+                    </div>
+
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            <input type="text" name="name" placeholder="Name" class="form-control" value=""
+                                id="name-form5-d">
+                        </div>
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="url">
+                            <input type="tel" name="telefone" placeholder="Telefone" class="form-control" value=""
+                                id="telefone">
+                        </div>
+
+                        <div class="col-md form-group mb-3" data-for="email">
+                            <input type="email" name="email" placeholder="E-mail" data-form-field="email"
+                                class="form-control" value="" id="email-form5-d">
+                        </div>
+
+                        <div class="col-12 form-group mb-3" data-for="textarea">
+                            <textarea name="textarea" placeholder="Message" data-form-field="textarea"
+                                class="form-control" id="textarea-form5-d"></textarea>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true">
+                            </div><button type="submit" class="btn btn-primary display-4">Send message</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

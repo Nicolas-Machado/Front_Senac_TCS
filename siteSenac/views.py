@@ -8,6 +8,8 @@ def index(request):
 def universities(request):
     return render(request, 'locations.html')
 
+def university(request):
+    return render(request, 'university.html')
 
 def login(request):
     return render(request, 'login.html')
