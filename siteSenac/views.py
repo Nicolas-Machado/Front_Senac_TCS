@@ -6,7 +6,7 @@ def index(request):
     return render(request, 'homeSenac.html')
 
 def universities(request):
-    return render(request, 'locations.html')
+    return render(request, 'universities.html')
 
 def university(request):
     return render(request, 'university.html')
