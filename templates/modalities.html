@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Modalidades{% endblock %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<section data-bs-version="5.1" class="header1 cid-headerHome" id="header1-0">
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(255, 255, 255);">
+
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" width="100%">
+            <source src="{% static 'videos/Library.mp4' %}" type="video/mp4">
+        </video>
+
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-7">
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1 animate__animated animate__fadeIn ">
+                    <strong>Senac Santa Catarina</strong>
+                </h1>
+
+                <p class="mbr-text mbr-fonts-style text-black display-6 animate__animated animate__fadeInUp">Toda
+                    forma de aprender tem o seu valor. O Senac
+                    valoriza todas elas<br></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="features3-4">
+
+
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-5 display-2"><strong>Modalidades
+                    Disponíveis</strong></h4>
+
+        </div>
+        <div class="row mt-4">
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/o-que-e-um-curso-profissionalizante-descubra-aqui-700x460.jpg' %}"
+                            alt="" width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5"><strong>Graduação</strong></h5>
+
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Aprenda uma profissão com cursos que
+                            preparam você para os desafios do mercado.</p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="/graduationCourses"
+                            class="btn item-btn btn-outline-primary display-7" target="_blank">Leia
+                            Mais</a></div>
+                </div>
+            </div>
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/mbr-4.jpg' %}" alt="" width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <div><strong>Pós-Graduação</strong></div>
+                        </h5>
+
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Por aqui, você tem espaço para
+                            experimentar os inúmeros caminhos profissionais que um mesmo curso pode oferecer,
+                            conhecendo na prática as atividades que mais combinam com você.</p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href=""
+                            class="btn item-btn btn-outline-primary display-7" target="_blank">Leia Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/pessoa-mexendo-no-computador-fonte-sindcont-816x459.jpg' %}" alt=""
+                            width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <strong>Educação a Distância</strong>
+                        </h5>
+
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Com uso de recursos tecnológicos,
+                            interface moderna e conteúdo constantemente atualizado, o Senac oferece um variado
+                            portfólio de cursos a distância para quem não tem disponibilidade de frequentar aulas
+                            presenciais. As opções variam de cursos de qualificação até pós-graduação<br></p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="https://www.ead.senac.br/"
+                            class="btn item-btn btn-outline-primary display-7" target="_blank">Leia Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'partials/_footer.html' %}
+{% endblock %}

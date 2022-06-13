@@ -11,6 +11,12 @@ def universities(request):
 def university(request):
     return render(request, 'university.html')
 
+def modalities(request):
+    return render(request, 'modalities.html')
+
+def graduationCourses(request):
+    return render(request, 'graduationCourses.html')
+
 def login(request):
     return render(request, 'login.html')
 
