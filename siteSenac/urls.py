@@ -1,13 +1,15 @@
-from . import views
+from .views import *
 from django.urls import path
 
 urlpatterns = [
-    path('', views.index),
-    path('universities/', views.universities),
-    path('university/', views.university),
-    path('modalities/', views.modalities),
-    path('graduationCourses/', views.graduationCourses),
-    path('login/', views.login),
+    path('', index, name = 'index'),
+    path('universities/', universities, name = 'universities'),
+    path('university/', university, name= 'university'),
+    path('modalities/', modalities, name = 'modalities'),
+    path('graduationCourses/', graduationCourses, name = 'graduationCourses'),
+    path('postGraduateCourses/', postGraduateCourses, name = 'postGraduateCourses'),
+    path('login/', login, name = 'login'),
+    path('administration/', administration, name = 'administration'),
 
 ]
 

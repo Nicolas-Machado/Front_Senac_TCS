@@ -17,9 +17,11 @@ def modalities(request):
 def graduationCourses(request):
     return render(request, 'graduationCourses.html')
 
+def postGraduateCourses(request):
+    return render(request, 'postGraduateCourses.html')
+
 def login(request):
     return render(request, 'login.html')
-
 
 def administration(request):
     return render(request, 'administration.html')

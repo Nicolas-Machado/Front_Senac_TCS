@@ -1,53 +1,51 @@
 {% load static %}
-<section data-bs-version="5.1" class="menu menu1 cid-sFGMsvHDIa" once="menu" id="menu1-1">
-<nav class="navbar navbar-dropdown navbar-expand-sm">
-    <div class="container">
-        <div class="navbar-brand" style="gap: 20px;">
-            <a href="/">
-                <img src="{% static 'images/logo_senac_default.png' %}" style="height: 50px; width: 80px;">
-            </a>
-            <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7"
-                    href="/">Santa
-                    Catarina<br></a></span>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
-            data-target="#nav-target" data-bs-target="#nav-target" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+<section data-bs-version="5.1" class="menu menu1 cid-menuSenac" once="menu" id="menu1-1">
+    <nav class="navbar navbar-dropdown navbar-expand-sm">
+        <div class="container">
+            <div class="navbar-brand" style="gap: 20px;">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'images/logo_senac_default.png' %}" style="height: 50px; width: 80px;">
+                </a>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7" href="{% url 'index' %}">Santa
+                        Catarina<br></a></span>
             </div>
-        </button>
-        <div class="navbar-collapse collapse" id="nav-target">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                data-target="#nav-target" data-bs-target="#nav-target" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="navbar-collapse collapse" id="nav-target">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
 
-                <li class="nav-item">
-                    <a class="nav-link link text-white text-primary display-7"
-                        href="/modalities">Modalidades<br></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-white text-primary display-7"
+                            href="{% url 'modalities' %}">Modalidades<br></a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link link text-white text-primary display-7"
-                        href="/universities">Unidades</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-white text-primary display-7" href="{% url 'universities' %}">Unidades</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link link text-white text-primary display-7"
-                        href="index.html#features3-4">Serviços</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-white text-primary display-7" href="{% url 'administration' %}"
+                            target="_blank">Serviços</a>
+                    </li>
 
-                <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
-                        href="index.html#form5-d">Contato</a>
-                </li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+                            href="index.html#form5-d">Contato</a>
+                    </li>
 
-            </ul>
+                </ul>
 
-            <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-outline-danger display-4" href="/login">Login/Área Exclusiva</a>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-outline-danger display-4" href="{% url 'login' %}">Login/Área Exclusiva</a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </section>
