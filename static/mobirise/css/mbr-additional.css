@@ -693,24 +693,6 @@ body {
 a {
   transition: color 0.6s;
 }
-.cid-s48MCQYojq {
-  background-image: url("../../../assets/images/background7.jpg");
-}
-.cid-s48MCQYojq .mbr-section-title {
-  text-align: center;
-}
-.cid-s48MCQYojq .mbr-text,
-.cid-s48MCQYojq .mbr-section-btn {
-  color: #232323;
-  text-align: center;
-}
-@media (max-width: 991px) {
-  .cid-s48MCQYojq .mbr-section-title,
-  .cid-s48MCQYojq .mbr-section-btn,
-  .cid-s48MCQYojq .mbr-text {
-    text-align: center;
-  }
-}
 .cid-s48udlf8KU {
   padding-top: 5rem;
   padding-bottom: 2rem;
@@ -1529,7 +1511,7 @@ a {
 }
 .cid-headerHome .mbr-section-title {
   text-align: center;
-  color: #6592e6;
+  color: #ff9966;
 }
 .cid-headerHome .mbr-text,
 .cid-headerHome .mbr-section-btn {
@@ -2015,36 +1997,6 @@ a {
   background-color: #6592e6;
   overflow: hidden;
 }
-
-.cid-headerUniversities {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  background-image: url("../../../static/images/mbr-1-1920x1440.jpg");
-}
-.cid-headerUniversities .mbr-fallback-image.disabled {
-  display: none;
-}
-.cid-headerUniversities .mbr-fallback-image {
-  display: block;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
-.cid-headerUniversities .mbr-text,
-.cid-headerUniversities .mbr-section-btn {
-  color: #232323;
-}
-.cid-headerUniversities .card-title,
-.cid-headerUniversities .card-box {
-  color: #ffffff;
-}
-.cid-headerUniversities .mbr-text,
-.cid-headerUniversities .link-wrap {
-  color: #ffffff;
-}
 .cid-searchLists {
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -2216,19 +2168,6 @@ a {
 .cid-emailField textarea {
   min-height: 10rem;
 }
-.cid-headerGrad{
-  padding-top: 17rem;
-  padding-bottom: 9rem;
-}
-.cid-headerGrad .mbr-section-title {
-  text-align: center;
-  color: #6592e6;
-}
-.cid-headerGrad .mbr-text,
-.cid-headerGrad .mbr-section-btn {
-  text-align: center;
-  color: #5f6366;
-}
 .cid-EADField {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -2267,15 +2206,14 @@ a {
   width: 100%;
   object-fit: cover;
 }
-.cid-headerAdministration {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  background-image: url("../../../static/images/administrationTemp2.jpg");
+.cid-headerPages {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 }
-.cid-headerAdministration .mbr-fallback-image.disabled {
+.cid-headerPages .mbr-fallback-image.disabled {
   display: none;
 }
-.cid-headerAdministration .mbr-fallback-image {
+.cid-headerPages .mbr-fallback-image {
   display: block;
   background-size: cover;
   background-position: center center;
@@ -2284,15 +2222,15 @@ a {
   position: absolute;
   top: 0;
 }
-.cid-headerAdministration .mbr-text,
-.cid-headerAdministration .mbr-section-btn {
-  color: #232323;
-}
-.cid-headerAdministration .card-title,
-.cid-headerAdministration .card-box {
+.cid-headerPages .mbr-text,
+.cid-headerPages .mbr-section-btn {
   color: #ffffff;
 }
-.cid-headerAdministration .mbr-text,
-.cid-headerAdministration .link-wrap {
+.cid-headerPages .card-title,
+.cid-headerPages .card-box {
+  color: #ffffff;
+}
+.cid-headerPages .mbr-text,
+.cid-headerPages .link-wrap {
   color: #ffffff;
 }
