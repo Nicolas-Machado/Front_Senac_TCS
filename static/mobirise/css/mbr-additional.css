@@ -132,6 +132,7 @@ body {
   background-color: #2260d2 !important;
   border-color: #2260d2 !important;
 }
+
 .btn-secondary,
 .btn-secondary:active {
   background-color: #ff6666 !important;
@@ -220,17 +221,6 @@ body {
   background-color: #ffd10a !important;
   border-color: #ffd10a !important;
 }
-
-.btn-outline-danger {
-  color: #ff9966;
-  border-color: #ff9966;
-}
-.btn-outline-danger:hover {
-  color: #fff;
-  background-color: #ff9966;
-  border-color: #ff9966;
-}
-
 .btn-danger,
 .btn-danger:active {
   background-color: #ff9966 !important;
@@ -320,17 +310,16 @@ body {
 }
 .btn-secondary-outline,
 .btn-secondary-outline:active {
-  background-color: transparent !important;
-  border-color: transparent;
+  border-color: #ff6666;
   color: #ff6666;
 }
 .btn-secondary-outline:hover,
 .btn-secondary-outline:focus,
 .btn-secondary-outline.focus,
 .btn-secondary-outline.active {
-  color: #ff0f0f !important;
-  background-color: transparent!important;
-  border-color: transparent!important;
+  color: #ffffff !important;
+  background-color: #ff0f0f!important;
+  border-color: #ff0f0f!important;
   box-shadow: none!important;
 }
 .btn-secondary-outline.disabled,
@@ -383,17 +372,16 @@ body {
 }
 .btn-warning-outline,
 .btn-warning-outline:active {
-  background-color: transparent !important;
-  border-color: transparent;
+  border-color: #ffe161;
   color: #ffe161;
 }
 .btn-warning-outline:hover,
 .btn-warning-outline:focus,
 .btn-warning-outline.focus,
 .btn-warning-outline.active {
-  color: #ffd10a !important;
-  background-color: transparent!important;
-  border-color: transparent!important;
+  color: #ffffff !important;
+  background-color: #ffd10a!important;
+  border-color: #ffd10a!important;
   box-shadow: none!important;
 }
 .btn-warning-outline.disabled,
@@ -405,16 +393,16 @@ body {
 .btn-danger-outline,
 .btn-danger-outline:active {
   background-color: transparent !important;
-  border-color: transparent;
+  border-color: #ff9966;
   color: #ff9966;
 }
 .btn-danger-outline:hover,
 .btn-danger-outline:focus,
 .btn-danger-outline.focus,
 .btn-danger-outline.active {
-  color: #ff5f0f !important;
-  background-color: transparent!important;
-  border-color: transparent!important;
+  color: #ffffff !important;
+  background-color: #ff5f0f!important;
+  border-color: #ff5f0f!important;
   box-shadow: none!important;
 }
 .btn-danger-outline.disabled,

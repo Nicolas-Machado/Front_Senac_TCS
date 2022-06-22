@@ -4,11 +4,11 @@
     <nav class="navbar navbar-dropdown navbar-expand-sm">
         <div class="container">
             <div class="navbar-brand" style="gap: 20px;">
-                <a href="/administration">
+                <a href="{% url 'administration' %}">
                     <img src="{% static '/images/logo_senac_default.png' %}" style="height: 50px; width: 80px;">
                 </a>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7"
-                        href="/administration">Administração<br></a></span>
+                        href="{% url 'administration' %}">Administração<br></a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
                 data-target="#nav-target" data-bs-target="#nav-target" aria-controls="navbarNavAltMarkup"
@@ -37,7 +37,6 @@
                         <a class="nav-link link text-white text-primary display-7"
                             href="index.html#features3-4">Unidades</a>
                     </li>
-
                 </ul>
             </div>
     </nav>
