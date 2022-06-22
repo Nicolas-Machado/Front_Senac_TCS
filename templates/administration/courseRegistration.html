@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cadastro de Curso{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url('../../../static/images/administrationTemp2.jpg')" id="courseRegistrationHeader">
+
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(68, 121, 217);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Cadastro de Curso</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Use esta página para cadastrar uma nova modalidade de curso (Graduação/Pós-Graduação)</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseRegisterField">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <form method="POST" action="">
+
+                    <div class="row ">
+                        <div class="col-md-4 mb-2 mt-2">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" value="Teste" name="name" class="form-control" id="name">
+                        </div>
+                        
+                    <div class="row">
+                        <div class="col-4 mb-2 mt-2">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" value="Teste" name="email" class="form-control" id="email"
+                                placeholder="Exemplo@email.com">
+                        </div>
+
+                        <div class="col-md-4 mb-2 mt-2">
+                        <label for="surname" class="form-label">Sobrenome</label>
+                        <input type="text" value="Teste" name="surname" class="form-control" id="surname">
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-2 mt-2">
+                        <label for="modality" class="form-label">Modalidade</label>
+                        <select id="modality" class="form-select" name="modality">
+                            <option selected disabled>Escolha uma opção</option>
+                            {% comment %} {% for c in categorias%}
+                            {%if contato.categoria.id == c.id%}
+                            <option selected value="{{c.id}}">{{c.nome}}</option>
+                            {%else%}
+                            <option value="{{c.id}}">{{c.nome}}</option>
+                            {%endif%}
+                            {% endfor %} {% endcomment %}
+                        </select>
+                    </div>
+                </div>
+
+                    <div class="row">
+                    <div class="col-md-4 mb-2 mt-2">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" value="Teste" name="telefone" class="form-control" id="telefone">
+                    </div>
+
+                    <div class="col-md-2 mb-2 mt-2">
+                        <label for="mecScore" class="form-label">Nota do MEC</label>
+                        <select id="mecScore" class="form-select" name="mecScore">
+                            <option selected disabled>Escolha uma opção</option>
+                        </select>
+                    </div>
+                </div>
+
+                    <div class="col-12 mb-2 mt-2">
+                        <form method="POST" action="Teste">
+                            <button type="submit" class="btn btn-success-outline">Cadastrar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

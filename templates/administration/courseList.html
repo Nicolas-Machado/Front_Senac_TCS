@@ -4,7 +4,6 @@
 {% block content %}
 {% include 'partials/_administrationMenu.html' %}
 
-
 <section data-bs-version="5.1" class="info3 cid-headerPages"
     style="background-image: url('../../../static/images/administrationTemp2.jpg')" id="info3-m">
 
@@ -30,8 +29,8 @@
 
 </section>
 
-<section data-bs-version="5.1" class="features3 cid-modalities" id="features3-4">
-    <div class="container">
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseListField">
+    <div class="container mbr-fonts-style display-7">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 table-responsive">
                 <table class="table align-middle" >
@@ -47,19 +46,20 @@
                         <tr>
                             <td scope="row">
                                 <a href="" style="color: blue; text-decoration:underline;">
-                                    teste Link
+                                    Teste Link
                                 </a>
                             </td>
                             <td scope="row">teste</td>
                             <td scope="row">teste2</td>
-                            <td scope="row"><a href="" type="button" class="btn btn-warning-outline">Editar</a>
-                                <a href="" type="button" class="btn btn-secondary-outline">Deletar</a>
+                            <td scope="row">
+                                <a href="" type="button" class="btn btn-danger-outline">Editar</a>
                             </td>
+                            <td scope="row">
                         </tr>
                     </tbody>
                 </table>
                 <div class="mbr-section-btn">
-                    <a class="btn btn-danger-outline display-3" href="{% url 'login' %}">Cadastrar novo Curso</a>
+                    <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar novo Curso</a>
                 </div>
             </div>
         </div>
