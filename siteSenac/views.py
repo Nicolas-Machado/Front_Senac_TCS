@@ -34,3 +34,6 @@ def courseList(request):
 
 def courseRegistration(request):
     return render(request, 'administration/courseRegistration.html')
+
+def courseMaintenance(request):
+    return render(request, 'administration/courseMaintenance.html')
