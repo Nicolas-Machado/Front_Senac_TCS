@@ -5,7 +5,7 @@
 
 {% include 'partials/_menu.html' %}
 <section data-bs-version="5.0" class="info3 cid-headerPages"
-    style="background-image: url('../../../static/images/graduacaoTemp5.jpg')" id="info3-m">
+    style="background-image: url('../../../static/images/graduacaoTemp5.jpg')" id="headerPage">
 
     <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(68, 121, 217);">
     </div>
@@ -15,11 +15,9 @@
             <div class="col-12 col-lg-10">
                 <div class="card-wrapper">
                     <div class="card-box align-center">
-                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Nome Faculdade</strong><strong><br></strong>
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-1">
+                            <strong><br></strong><br><strong>Graduação</strong><strong><br></strong>
                         </h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">Descrição Faculdade</p>
-
                     </div>
                 </div>
             </div>
@@ -28,54 +26,129 @@
 
 </section>
 
-<section class="features3 cid-searchLists" id="features3-1f">
+<section class="features3 cid-searchLists" id="topBody">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg">
+                    <div class="text-wrapper">
+                        <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
+                            <strong>Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</strong>
+                        </h4>
+
+                        <hr class="mb-5">
+                        </hr>
+
+                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">Objetivo do Curso</h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">O Curso Superior de Tecnologia em Análise e
+                            Desenvolvimento de Sistemas tem como objetivo formar profissionais com visão sistêmica e
+                            raciocínio
+                            lógico, capazes de analisar, especificar, desenvolver e implantar sistemas de informação,
+                            pautados em
+                            segurança, qualidade, ética e ergonomia de software. </p>
+
+                        <div class="row">
 
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-        aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
 
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">{% lorem 1 b random %}</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body small">
-            ...
+                            <div class="col-12 col-sm-1">
+                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+
+
+
+                            <div class="col-12 col-md-3">
+                                <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">Matriz
+                                    Curricular</h4>
+                            </div>
+
+
+                        </div>
+
+                        <img class="mb-4" src="{% static '/images/matriz_ADS.jpg' %}">
+
+                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">Perfil de Conclusão</h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">O Tecnólogo em Análise e Desenvolvimento de
+                            Sistemas, ao final do curso, apresenta as seguintes competências:
+                            Analisa e especifica requisitos e modelos de dados de softwares, com visão crítica,
+                            sistêmica e inovadora, considerando cenários, para viabilizar projetos.
+                            Projeta a estrutura de dados, detalhes técnicos e procedimentos para o desenvolvimento de
+                            sistemas e definição de interfaces, visando o comportamento planejado do software.
+                            Constrói e mantém softwares, com raciocínio lógico e visão sistêmica, utilizando padrões de
+                            projetos, métodos e ferramentas de modelagem e codificação, atendendo as especificações de
+                            requisitos.
+                            Implanta sistemas, com visão crítica, utilizando padrões de qualidade de testes e de
+                            segurança, atendendo as necessidades do projeto.
+                            Atua de forma ética, autônoma e pró ativa, com responsabilidade socioambiental, respeitando
+                            a diversidade sociocultural.
+                            Trabalha em equipe, interagindo em situações diversas, para atingir os objetivos
+                            organizacionais. </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>
+<section class="features3 cid-searchLists" id="bodyContent2">
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {% lorem 1 b random %}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Matriz (Download)</h5>
+            <a class="btn btn-danger" href="{% static '/images/matriz_ADS.jpg' %}" download="teste_arquivo"><i
+                class="fa fa-download"></i></a>
+
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <div>
+                Especificações das Matérias
+                <hr>
+            </div>
+
+            
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Fase 1
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% lorem 1 b random %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Button trigger modal -->
+
+
 
     <div class="container">
         <div class="mbr-section-head">
-            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Unidades 
-                Disponíveis</strong></h4>
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Unidades
+                    Disponíveis</strong></h4>
         </div>
 
         <div class="row mt-4">
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
+            <div class="item features-image сol-12 col-md-6 mt-3 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
                         <img src="{% static '/images/locationTemp.jpg' %}" height="300px" alt="">
@@ -85,12 +158,15 @@
 
 
                     </div>
-                    <div class="mbr-section-btn item-footer mt-2"><a href=""
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'university' %}"
                             class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
 </section>
 
 {% include 'partials/_social.html' %}

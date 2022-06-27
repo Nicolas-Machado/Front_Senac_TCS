@@ -2,15 +2,52 @@
 
 <div class="container">
     <div class="row mt-4">
-        <form class="form-inline" action="">
+        <form class="form-inline" action="{% url 'graduationCourses' %}">
             <input class="form-control col-12 col-lg-3" id="searchCourse" type="search" name="buscar"
                 placeholder="Pesquisar Curso" aria-label="Search">
             <button class="btn btn-outline-primary my-2 my-sm-0" id="searchCourseBtn"
                 type="submit"><span class="iconify" data-icon="ic:outline-search" style="color: primary" data-width="30" data-height="30"></span></button>
+            </div>
         </form>
-    </div>
-    <div class="form-check form-switch mt-2">
-        <input class="form-check-input" type="checkbox" id="switchInscricao">
-        <label class="form-check-label" for="switchInscricao">Inscrições Abertas</label>
-    </div>
+            <div class="form-check form-switch mt-2">
+                <input class="form-check-input" type="checkbox" id="switchSubscription" name="switchSubscription" value={% if CHECKED == true %} "True" {% else %} "False" {% endif%}> <!--onchange="javascript:filtra(this.id)">-->
+                <label class="form-check-label" for="switchSubscription">Inscrições Abertas</label>
+            </div>
+
+
+         
+<script language="JavaScript">
+
+    const chk1 = document.getElementById('switchSubscription');
+
+    chk1.addEventListener('change',(event) => {
+        //let resposta = await fetch('/graduationCourses/?' +  event.currentTarget.checked);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", '/graduationCourses/', false);
+        xmlHttp.send(event.currentTarget.checked);
+        console.log(xmlHttp.responseText);
+        
+        console.log('ok');
+    }
+    
+    )
+
+/*
+
+    function filtra (var item)
+    {
+
+            let resposta = await fetch('/graduationCourses/?' +  item.checked);
+            console.log(resposta);
+    }
+
+*/
+
+
+
+</script>   
+
+
+
+
 </div>
