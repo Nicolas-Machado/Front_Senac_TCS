@@ -1493,6 +1493,14 @@ a {
     left: -1rem;
   }
 }
+.mbr-overlay {
+  opacity: 0.4; 
+  background-color: rgb(68, 121, 217);
+}
+.cid-headerHome .mbr-overlay {
+  background-color: #ffffff;
+  opacity: 0.6;
+}
 .cid-headerHome {
   padding-top: 17rem;
   padding-bottom: 10rem;
@@ -1504,7 +1512,7 @@ a {
 .cid-headerHome .mbr-text,
 .cid-headerHome .mbr-section-btn {
   text-align: center;
-  color: #5f6366;
+  color: #ffffff;
 }
 .cid-homeInfo {
   padding-top: 8rem;

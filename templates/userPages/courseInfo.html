@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Nome Curso{% endblock %}
+{% block title %}{{courses.name}}{% endblock %}
 {% block content %}
 
 {% include 'partials/_menu.html' %}
 <section data-bs-version="5.0" class="info3 cid-headerPages"
     style="background-image: url('../../../static/images/graduacaoTemp5.jpg')" id="headerPage">
 
-    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(68, 121, 217);">
+    <div class="mbr-overlay">
     </div>
 
     <div class="container">
@@ -16,7 +16,7 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-1">
-                            <strong><br></strong><br><strong>Graduação</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>{{courses.course_type}}</strong><strong><br></strong>
                         </h4>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="col-12 col-lg">
                     <div class="text-wrapper">
                         <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-                            <strong>Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</strong>
+                            <strong>{{courses.name}}</strong>
                         </h4>
 
                         <hr class="mb-5">
@@ -122,7 +122,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Matérias</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -148,20 +148,26 @@
         </div>
 
         <div class="row mt-4">
-            <div class="item features-image сol-12 col-md-6 mt-3 col-lg-4">
+            {% if universities %}
+                {% for universities in universities %}
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
-                        <img src="{% static '/images/locationTemp.jpg' %}" height="300px" alt="">
+                        {% if universities.university_image_local == null %}
+                            <img src="{% static 'images/senacsc-594x540.png' %}" height="300px">
+                        {% else %}
+                            <img src="{{ universities.university_image_local }}" width="300px" height="300px">
+                        {% endif %}
                     </div>
                     <div class="item-content">
-                        <h5 class="item-title mbr-fonts-style display-7"><strong>Unidade 1</strong></h5>
-
-
+                        <h5 class="item-title mbr-fonts-style display-7"><strong>{{ universities.name }}</strong></h5>
                     </div>
-                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'university' %}"
-                            class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'university' universities.id %}"
+                            class="btn btn-primary item-btn display-7">Leia Mais</a></div>
                 </div>
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 
