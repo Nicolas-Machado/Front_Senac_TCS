@@ -5,7 +5,7 @@
 
 {% include 'partials/_menu.html' %}
 <section data-bs-version="5.0" class="info3 cid-headerPages"
-    style="background-image: url('../../../static/images/graduacaoTemp5.jpg')" id="headerPage">
+    style="background-image: url('{{courses.course_image}}')" id="headerPage">
 
     <div class="mbr-overlay">
     </div>
@@ -15,9 +15,17 @@
             <div class="col-12 col-lg-10">
                 <div class="card-wrapper">
                     <div class="card-box align-center">
+
+                        {% if courses.course_type == 'GRADUACAO' %}
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-1">
-                            <strong><br></strong><br><strong>{{courses.course_type}}</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Graduação</strong><strong><br></strong>
                         </h4>
+                        {% else %}
+                            <h4 class="card-title mbr-fonts-style align-center mb-4 display-1">
+                                <strong><br></strong><br><strong>Pós-Graduação</strong><strong><br></strong>
+                            </h4>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -41,12 +49,7 @@
                         </hr>
 
                         <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">Objetivo do Curso</h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">O Curso Superior de Tecnologia em Análise e
-                            Desenvolvimento de Sistemas tem como objetivo formar profissionais com visão sistêmica e
-                            raciocínio
-                            lógico, capazes de analisar, especificar, desenvolver e implantar sistemas de informação,
-                            pautados em
-                            segurança, qualidade, ética e ergonomia de software. </p>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.course_objective}}</p>
 
                         <div class="row">
 
@@ -69,24 +72,10 @@
 
                         </div>
 
-                        <img class="mb-4" src="{% static '/images/matriz_ADS.jpg' %}">
+                        <img class="mb-4" src="{{courses.curriculum}}">
 
                         <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">Perfil de Conclusão</h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">O Tecnólogo em Análise e Desenvolvimento de
-                            Sistemas, ao final do curso, apresenta as seguintes competências:
-                            Analisa e especifica requisitos e modelos de dados de softwares, com visão crítica,
-                            sistêmica e inovadora, considerando cenários, para viabilizar projetos.
-                            Projeta a estrutura de dados, detalhes técnicos e procedimentos para o desenvolvimento de
-                            sistemas e definição de interfaces, visando o comportamento planejado do software.
-                            Constrói e mantém softwares, com raciocínio lógico e visão sistêmica, utilizando padrões de
-                            projetos, métodos e ferramentas de modelagem e codificação, atendendo as especificações de
-                            requisitos.
-                            Implanta sistemas, com visão crítica, utilizando padrões de qualidade de testes e de
-                            segurança, atendendo as necessidades do projeto.
-                            Atua de forma ética, autônoma e pró ativa, com responsabilidade socioambiental, respeitando
-                            a diversidade sociocultural.
-                            Trabalha em equipe, interagindo em situações diversas, para atingir os objetivos
-                            organizacionais. </p>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.completion_profile}}</p>
                     </div>
                 </div>
             </div>
@@ -99,7 +88,7 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Matriz (Download)</h5>
-            <a class="btn btn-danger" href="{% static '/images/matriz_ADS.jpg' %}" download="teste_arquivo"><i
+            <a class="btn btn-danger" href="{{courses.curriculum}}" download="Matriz_{{courses.name}}" target="_blank"><i
                 class="fa fa-download"></i></a>
 
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -111,10 +100,13 @@
                 <hr>
             </div>
 
+            <!-- Button trigger modal -->
             
+            {% for courses in courses %}
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Fase 1
+                Fase {{courses.phase}}
             </button>
+            {% endfor %}
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -125,6 +117,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Matérias</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
                         <div class="modal-body">
                             {% lorem 1 b random %}
                         </div>
@@ -136,10 +129,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Button trigger modal -->
-
-
 
     <div class="container">
         <div class="mbr-section-head">

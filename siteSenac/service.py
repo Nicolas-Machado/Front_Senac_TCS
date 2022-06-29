@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from typing import Dict
 from urllib import request
 import requests
@@ -71,6 +72,13 @@ class CourseService():
             return None
         return response.json()
 
+    def get_phases_in_courses(course_id) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/{course_id}/school_programs", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
+
 class EnrollmentService():
 
     def get_enrollments() -> Dict:
@@ -86,6 +94,7 @@ class EnrollmentService():
         if not response.ok:
             return None
         return response.json()
+
     
 
 
