@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Serviços{% endblock %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<section data-bs-version="5.0" class="info3 cid-headerPages"
+    style="background-image: url('../../../static/images/servicesTemp.jpg')" id="headerPage">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-1">
+                            <br><strong>Serviços</strong>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="features3 cid-searchLists" id="topBody">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg">
+                    <div class="text-wrapper">
+                        <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
+                            <strong>Serviços Disponibilizados Pelo Senac</strong>
+                        </h4>
+
+                        <hr class="mb-5">
+                        </hr>
+
+                        <img class="mb-4" src="{% static 'images/carreta-senac.png' %}">
+                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">
+                            <strong>Carreta-Escola</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">Não importam os limites e a distância, o
+                            Senac faz questão de estar presente em todo o Estado. Uma parte dessa atuação se deve ao
+                            trabalho das unidades móveis de ensino, desenvolvido pelo Senac há décadas.
+
+                            As carretas-escola são equipadas com a infraestrutura necessária para a realização dos
+                            cursos de educação profissional, seguindo o mesmo padrão de qualidade das unidades fixas.
+                            Essa proposta de escola sobre rodas reproduz internamente os ambientes pedagógicos de
+                            gastronomia, informática e saúde.
+
+                            Os locais onde as aulas serão realizadas são definidos a partir da parceria entre o Senac e
+                            instituições, como prefeituras, sindicatos, empresas privadas, entre outras, para atender os
+                            diferentes públicos. Assim quem mora longe das grandes cidades também pode ter acesso à
+                            profissionalização com a qualidade Senac.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features11 cid-universitiesField" id="features12-6">
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg">
+                <div class="card-wrapper">
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style mb-4 display-2">
+                            <strong>Senac Blumengarten</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            O Restaurante-Escola do Senac em Blumenau/SC nasceu em 2005 com o objetivo de fortalecer o
+                            segmento gastronômico da região do Vale Europeu.
+                            <br>
+                        </p>
+
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-danger display-4"
+                                href="https://restaurante.sc.senac.br/" target="_blank">Leia Mais</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 md-pb">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/fachada-senac-blumengarten.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features3 cid-universitiesField" style="background-color: white;" id="topBody">
+
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-12 col-lg-6 md-pb">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/makeupTemp.jpg' %}">
+                </div>
+            </div>
+
+            <div class="col-12 col-lg">
+                <div class="card-wrapper">
+                    <div class="card-box">
+
+                        <h4 class="card-title mbr-fonts-style text-black mt-4 display-2"><strong>Saúde e Beleza</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style text-black mt-4 display-7">Além de
+                            curso livre, técnico, graduação e
+                            pós-graduação, o Senac também oferece serviços para o público na área de saúde e beleza.
+                            Para exercitar o aprendizado e se aproximar do mercado de trabalho, os alunos têm a
+                            oportunidade de realizar esses serviços com a supervisão de professores durante as aulas
+                            práticas.
+
+                            Se você tem interesse nos procedimentos de saúde e beleza, confira as Unidades do Senac que
+                            oferecem esses serviços e marque seu horário pela agenda de serviços online.</p>
+
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-outline-primary display-4"
+                                href="https://agendasaudeebeleza.sc.senac.br/" target="_blank">Saiba Mais</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+{% include 'partials/_social.html' %}
+{% include 'partials/_footer.html' %}
+{% endblock content %}

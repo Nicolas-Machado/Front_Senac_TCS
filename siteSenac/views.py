@@ -32,9 +32,6 @@ def university(request, university_id):
     }
     return render(request, 'userPages/university.html', data)
 
-def modalities(request):
-    return render(request, 'userPages/modalities.html')
-
 def graduationCourses(request):
     #arrumar urgente#
     print(request.GET)
@@ -75,6 +72,12 @@ def courseInfo(request, course_id):
     }
 
     return render(request, 'userPages/courseInfo.html', data)
+
+def modalities(request):
+    return render(request, 'userPages/modalities.html')
+
+def services(request):
+    return render(request, 'userPages/services.html')
 
 def login(request):
     return render(request, 'userPages/login.html')

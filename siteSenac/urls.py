@@ -6,6 +6,7 @@ urlpatterns = [
     path('universities/', universities, name = 'universities'),
     path('university/<uuid:university_id>/', university, name= 'university'),
     path('modalities/', modalities, name = 'modalities'),
+    path('services/', services, name = 'services'),
     path('graduationCourses/', graduationCourses, name = 'graduationCourses'),
     path('postGraduateCourses/', postGraduateCourses, name = 'postGraduateCourses'),
     path('courseInfo/<uuid:course_id>/', courseInfo, name = 'courseInfo'),
