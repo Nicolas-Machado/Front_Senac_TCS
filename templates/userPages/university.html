@@ -76,6 +76,8 @@
                 unidade</h5>
         </div>
 
+        {% include 'partials/_searchCourse.html' %}
+
         <div class="row mt-4">
             {% if courses %}
             {% for courses in courses %}
@@ -93,7 +95,7 @@
 
 
                     </div>
-                    <div class="mbr-section-btn item-footer mt-2"><a href="" class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'courseInfo' courses.id %}" class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
                 </div>
             </div>
             {% endfor %}
@@ -114,9 +116,8 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler"
-                    data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true"
-                        value="zjUfgMApYEtN9r/x0+5lRykQQblbzJ5J9Z+6icCdW+SWVL0JoFVXEZeEyIbhlr930tkCFOQhO8LGv/lGw7XIlTHKPYp+2F+n0u/TU7GIFaGtwFeQczaQmDCtuCqeCX0H">
+                <form action="{% url 'university' universities.id %}" method="POST" class="mbr-form form-with-styler">{% csrf_token %}
+                        
                     <div class="row">
                         <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
                             out
@@ -126,24 +127,28 @@
                     </div>
                     <div class="dragArea row">
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Name" data-form-field="name"
-                                class="form-control" value="" id="name-form5-d">
+                            <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
+                                class="form-control" value="" id="name">
                         </div>
                         <div class="col-md col-sm-12 form-group mb-3" data-for="email">
                             <input type="email" name="email" placeholder="E-mail" data-form-field="email"
-                                class="form-control" value="" id="email-form5-d">
+                                class="form-control" value="" id="email">
                         </div>
                         <div class="col-12 form-group mb-3" data-for="url">
-                            <input type="url" name="url" placeholder="Telefone" data-form-field="url"
-                                class="form-control" value="" id="url-form5-d">
+                            <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
+                                class="form-control" value="" id="phone_number">
                         </div>
                         <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="textarea" placeholder="Mensagem" data-form-field="textarea"
-                                class="form-control" id="textarea-form5-d"></textarea>
+                            <textarea name="message" placeholder="Mensagem" data-form-field="message"
+                                class="form-control" id="message"></textarea>
+                        </div>
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            <input type="hidden" name="universities" placeholder="" data-form-field="universities"
+                                class="form-control" value="{{ universities.id }}" id="universities">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
                             <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
-                            <button type="submit" class="btn btn-danger display-4">Enviar Mensagem</button>
+                            <button type="submit" class="btn btn-danger display-4">Enviar E-mail</button>
                         </div>
                     </div>
                 </form>

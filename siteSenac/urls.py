@@ -14,6 +14,8 @@ urlpatterns = [
     path('administration/', administration, name = 'administration'),
     path('courseList/', courseList, name = 'courseList'),
     path('courseRegistration/', courseRegistration, name = 'courseRegistration'),
+    path('courseSave/', courseSave, name = 'courseSave'),
+    path('universityRegistration/', universityRegistration, name = 'universityRegistration'),
     path('courseMaintenance/', courseMaintenance, name = 'courseMaintenance'),
 
 ]

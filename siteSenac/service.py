@@ -51,6 +51,25 @@ class CourseService():
             return None
         return response.json()
 
+    def post_courses(request, files):
+        token = authenticate()
+
+        print(files['curriculum'])
+
+        data = {
+                "name" : request['name'],
+                "course_type" : request['courseType'],
+                "course_objective": request['courseObjective'],
+                "curriculum" : files['curriculum'],
+                "completion_profile": request['completionProfile'],
+                "duration_time": request['durationTime'],
+                "occupation_area" : request['occupationArea'],
+                "modality" : request['modalities'],
+                "course_image" : files['courseImage'],
+                "mec_score" : request['mecScore'],
+        }
+        return requests.post(f"{URL_SITE}/course/", data=data, headers={'Authorization': 'Token ' + token})
+
     def get_courses_by_name(name) -> Dict:
         token = authenticate()
         response = requests.get(f"{URL_SITE}/course/?search={name}&is_activate=true", headers={'Authorization': 'Token ' + token})
@@ -95,6 +114,31 @@ class EnrollmentService():
             return None
         return response.json()
 
+class Send_EmailService():
+
+    def post_send_email(request):
+        token = authenticate()
+        university = UniversityService.get_universities_by_id(request['universities'])
+        if "course" in request:
+            data = {
+                "name" : request['name'],
+                "email" : request['email'],
+                "email_university": university['email'],
+                "phone_number" : request['phone_number'],
+                "message": request['message'],
+                "courses": request['courses'],
+                "universities" : request['universities']
+            }
+        else:
+            data = {
+                "name" : request['name'],
+                "email" : request['email'],
+                "email_university": university['email'],
+                "phone_number" : request['phone_number'],
+                "message": request['message'],
+                "universities" : request['universities']
+            }
+        return requests.post(f"{URL_SITE}/send_email/", data=data, headers={'Authorization': 'Token ' + token})
     
 
 

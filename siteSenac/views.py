@@ -19,10 +19,10 @@ def universities(request):
     }
     return render(request, 'userPages/universities.html', data)
 
-
 def university(request, university_id):
-    
-    print(request.GET)
+
+    if request.method == 'POST':
+        Send_EmailService.post_send_email(request.POST)
 
     university = UniversityService.get_universities_by_id(university_id)
     course = UniversityService.get_courses_in_university(university_id)
@@ -90,6 +90,23 @@ def courseList(request):
 
 def courseRegistration(request):
     return render(request, 'administration/courseRegistration.html')
+
+def courseSave(request):
+
+    print(request.FILES)
+
+    if request.method == 'POST':
+        CourseService.post_courses(request.POST, request.FILES)
+        course = CourseService.get_courses()
+
+    data = {
+        'courses': course
+    }
+    
+    return render(request, 'administration/courseList.html', data)
+
+def universityRegistration(request):
+    return render(request, 'administration/universityRegistration.html')
 
 def courseMaintenance(request):
     return render(request, 'administration/courseMaintenance.html')
