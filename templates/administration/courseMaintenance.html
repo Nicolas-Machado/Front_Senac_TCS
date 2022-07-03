@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Cadastro de Curso{% endblock title %}
+{% block title %}Edição de Curso{% endblock title %}
 {% block content %}
 {% include 'partials/_administrationMenu.html' %}
 
@@ -16,10 +16,10 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Manutenção de Curso</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Edição de Faculdade</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Página dedicada a edição de um curso/faculdade já existente no banco de dados</p>
+                            Use esta página para editar um curso/faculdade diponível no site (Graduação/Pós-Graduação)</p>
 
                     </div>
                 </div>
@@ -33,21 +33,22 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form method="POST" action="">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-                    <h1>Edição de Curso/Faculdade</h1>
+                    <h1>Editar Curso/Faculdade</h1>
                     <hr></hr>
 
                     <div class="row">
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="name" class="form-label">Nome</label>
-                            <input type="text" name="name" value="Teste" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name" value="{{courses.name}}" required>
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="durationTime" class="form-label">Tempo de Duração (total horas)</label>
-                            <input type="number" name="durationTime" value="123" class="form-control" id="durationTime">
+                            <label for="durationTime" class="form-label">Tempo de Duração (Total Horas)</label>
+                            <input type="number" name="durationTime" class="form-control" id="durationTime" value="{{courses.duration_time}}" required>
                         </div>
 
                     </div>
@@ -56,29 +57,21 @@
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="courseType" class="form-label">Tipo de Curso</label>
-                            <select id="courseType" class="form-select" name="courseType">
+                            <select id="courseType" class="form-select" name="courseType" required>
                                 <option selected disabled>Escolha uma opção</option>
-                                {% comment %} {% for c in categorias%}
-                                {%if contato.categoria.id == c.id%}
-                                <option selected value="{{c.id}}">{{c.nome}}</option>
-                                {%else%}
-                                <option value="{{c.id}}">{{c.nome}}</option>
-                                {%endif%}
-                                {% endfor %} {% endcomment %}
+                                <option value="GRADUACAO">Graduação</option>
+                                <option value="POS_GRADUACAO">Pós-Graduação</option>
                             </select>
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="modalities" class="form-label">Modalidade</label>
-                            <select id="modalities" class="form-select" name="modalities">
-                                <option selected disabled>Selecione</option>
-                                {% comment %} {% for c in categorias%}
-                                {%if contato.categoria.id == c.id%}
-                                <option selected value="{{c.id}}">{{c.nome}}</option>
-                                {%else%}
-                                <option value="{{c.id}}">{{c.nome}}</option>
-                                {%endif%}
-                                {% endfor %} {% endcomment %}
+                            <select id="modalities" class="form-select" name="modalities" required>
+                                <option selected disabled>Escolha uma opção</option>
+                                <option value="PRESENCIAL">Educação Presencial</option>
+                                <option value="HIBRIDO">Educação Híbrida</option>
+                                <option value="EAD">Educação a Distância</option>
+                                
                             </select>
                         </div>
 
@@ -88,14 +81,19 @@
 
                         <div class="col-md-2 mb-3 mt-3">
                             <label for="mecScore" class="form-label">Nota do MEC</label>
-                            <select id="mecScore" class="form-select" name="mecScore">
+                            <select id="mecScore" class="form-select" name="mecScore" required>
                                 <option selected disabled>Selecione</option>
+                                <option value="MEC1">NOTA 1 DO MEC</option>
+                                <option value="MEC2">NOTA 2 DO MEC</option>
+                                <option value="MEC3">NOTA 3 DO MEC</option>
+                                <option value="MEC4">NOTA 4 DO MEC</option>
+                                <option value="MEC5">NOTA 5 DO MEC</option>
                             </select>
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="occupationArea" class="form-label">Area de atuação</label>
-                            <select id="occupationArea" name="occupationArea" class="form-select">
+                            <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
                                 <option>Tecnologia</option>
                                 <option>Saúde</option>
@@ -108,28 +106,28 @@
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="curriculum" class="form-label">Grade Curricular</label>
-                            <input type="file" name="curriculum" id="curriculum">
+                            <input type="file" name="curriculum" id="curriculum" value="{{courses.curriculum}}">
                         </div>
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="courseImage" class="form-label">Imagem Card do Curso</label>
-                            <input type="file" name="courseImage" id="courseImage">
+                            <input type="file" name="courseImage" id="courseImage" value="{{courses.course_image}}">
                         </div>
 
                     </div>
 
                     <div class="row">
 
-                        <div class="col-md-4 mb-3 mt-3">
+                        <div class="col-md-6 mb-3 mt-3">
                             <label for="courseObjective" class="form-label">Objetivo do Curso</label>
-                            <textarea type="text" rows="4" columns="50" name="courseObjective" class="form-control"
-                                id="courseObjective">Teste</textarea>
+                            <textarea type="text" rows="4" name="courseObjective" class="form-control"
+                                id="courseObjective" required>{{courses.course_objective}}</textarea>
                         </div>
 
-                        <div class="col-md-4 mb-3 mt-3">
+                        <div class="col-md-6 mb-3 mt-3">
                             <label for="completionProfile" class="form-label">Perfil de Conclusão</label>
-                            <textarea type="text" rows="4" columns="50" name="completionProfile" class="form-control"
-                                id="completionProfile">Teste</textarea>
+                            <textarea type="text" rows="4" name="completionProfile" class="form-control"
+                                id="completionProfile" required>{{courses.completion_profile}}</textarea>
                         </div>
 
                     </div>

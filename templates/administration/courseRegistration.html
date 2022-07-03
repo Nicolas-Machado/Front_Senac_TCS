@@ -16,7 +16,7 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Cadastro de Curso</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Cadastro de Faculdade</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
                             Use esta página para cadastrar uma nova opção de curso/faculdade diponível no site (Graduação/Pós-Graduação)</p>
@@ -43,12 +43,12 @@
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="name" class="form-label">Nome</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name" required>
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="durationTime" class="form-label">Tempo de Duração (Total Horas)</label>
-                            <input type="number" name="durationTime" class="form-control" id="durationTime">
+                            <input type="number" name="durationTime" class="form-control" id="durationTime" required>
                         </div>
 
                     </div>
@@ -57,7 +57,7 @@
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="courseType" class="form-label">Tipo de Curso</label>
-                            <select id="courseType" class="form-select" name="courseType">
+                            <select id="courseType" class="form-select" name="courseType" required>
                                 <option selected disabled>Escolha uma opção</option>
                                 <option value="GRADUACAO">Graduação</option>
                                 <option value="POS_GRADUACAO">Pós-Graduação</option>
@@ -66,7 +66,7 @@
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="modalities" class="form-label">Modalidade</label>
-                            <select id="modalities" class="form-select" name="modalities">
+                            <select id="modalities" class="form-select" name="modalities" required>
                                 <option selected disabled>Escolha uma opção</option>
                                 <option value="PRESENCIAL">Educação Presencial</option>
                                 <option value="HIBRIDO">Educação Híbrida</option>
@@ -81,7 +81,7 @@
 
                         <div class="col-md-2 mb-3 mt-3">
                             <label for="mecScore" class="form-label">Nota do MEC</label>
-                            <select id="mecScore" class="form-select" name="mecScore">
+                            <select id="mecScore" class="form-select" name="mecScore" required>
                                 <option selected disabled>Selecione</option>
                                 <option value="MEC1">NOTA 1 DO MEC</option>
                                 <option value="MEC2">NOTA 2 DO MEC</option>
@@ -93,7 +93,7 @@
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="occupationArea" class="form-label">Area de atuação</label>
-                            <select id="occupationArea" name="occupationArea" class="form-select">
+                            <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
                                 <option>Tecnologia</option>
                                 <option>Saúde</option>
@@ -118,16 +118,16 @@
 
                     <div class="row">
 
-                        <div class="col-md-4 mb-3 mt-3">
+                        <div class="col-md-6 mb-3 mt-3">
                             <label for="courseObjective" class="form-label">Objetivo do Curso</label>
-                            <textarea type="text" name="courseObjective" class="form-control"
-                                id="courseObjective"></textarea>
+                            <textarea type="text" rows="4" name="courseObjective" class="form-control"
+                                id="courseObjective" required></textarea>
                         </div>
 
-                        <div class="col-md-4 mb-3 mt-3">
+                        <div class="col-md-6 mb-3 mt-3">
                             <label for="completionProfile" class="form-label">Perfil de Conclusão</label>
-                            <textarea type="text" name="completionProfile" class="form-control"
-                                id="completionProfile"></textarea>
+                            <textarea type="text" rows="4" name="completionProfile" class="form-control"
+                                id="completionProfile" required></textarea>
                         </div>
 
                     </div>

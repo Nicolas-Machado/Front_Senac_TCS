@@ -84,7 +84,30 @@ def administration(request):
     return render(request, 'administration/homeAdministration.html')
 
 def courseList(request):
-    return render(request, 'administration/courseList.html')
+
+    if 'buscar' in request.GET:
+        name = request.GET['buscar']
+        response = CourseService.get_courses_by_name(name)
+    else:
+        response = CourseService.get_courses()
+    data = {
+        'courses': response
+    }
+
+    return render(request, 'administration/courseList.html', data)
+
+def universityList(request):
+
+    if 'buscar' in request.GET:
+        name = request.GET['buscar']
+        response = UniversityService.get_universities_by_name(name)
+    else:
+        response = UniversityService.get_universities()
+    data = {
+        'universities': response
+    }
+    
+    return render(request, 'administration/universityList.html', data)
 
 def courseRegistration(request):
     return render(request, 'administration/courseRegistration.html')
@@ -116,5 +139,21 @@ def universityRegistration(request):
 
     return render(request, 'administration/universityRegistration.html', data)
 
-def courseMaintenance(request):
-    return render(request, 'administration/courseMaintenance.html')
+def courseMaintenance(request, course_id):
+
+    course = CourseService.get_courses_by_id(course_id)
+    data = {
+        'courses': course,
+    }
+
+    return render(request, 'administration/courseMaintenance.html', data)
+
+def universityMaintenance(request, university_id):
+
+    university = UniversityService.get_universities_by_id(university_id)
+    course = CourseService.get_courses()
+    data = {
+        'universities': university,
+        'courses': course
+    }
+    return render(request, 'administration/universityMaintenance.html', data)

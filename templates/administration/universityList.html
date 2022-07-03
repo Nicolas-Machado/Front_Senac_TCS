@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Lista de Cursos{% endblock title %}
+{% block title %}Lista de Universidades{% endblock title %}
 {% block content %}
 {% include 'partials/_administrationMenu.html' %}
 
@@ -16,7 +16,7 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Lista de Faculdades</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Lista de Universidades</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
                             Aqui está a lista de cursos disponíveis no nosso banco de dados</p>
@@ -37,27 +37,27 @@
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Nome</th>
-                            <th scope="col">Tipo de Curso</th>
-                            <th scope="col">Modalidade</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Cidade</th>
                             <th scope="col">Gerenciamento</th>
                         </tr>
                     </thead>
                     <tbody style="text-align: center;">
 
-                        {% for courses in courses %}
+                        {% for universities in universities %}
                         <tr>
 
                             <td scope="row">
                                 <a href="" style="color: blue; text-decoration:underline;">
-                                    {{courses.name}}
+                                    {{universities.name}}
                                 </a>
                             </td>
                             <td scope="row">
-                                {{courses.course_type}}
+                                {{universities.email}}
                             </td>
-                            <td scope="row">{{courses.modality}}</td>
+                            <td scope="row">{{universities.city}}</td>
                             <td scope="row">
-                                <a href="{% url 'courseMaintenance' courses.id %}" type="button" class="btn btn-danger-outline">Editar</a>
+                                <a href="{% url 'universityMaintenance' universities.id %}" type="button" class="btn btn-danger-outline">Editar</a>
                             </td>
                                 
                         </tr>
@@ -66,7 +66,7 @@
                     </tbody>
                 </table>
                 <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar Faculdade</a>
+                    <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
                 </div>
             </div>
         </div>

@@ -13,10 +13,11 @@ urlpatterns = [
     path('login/', login, name = 'login'),
     path('administration/', administration, name = 'administration'),
     path('courseList/', courseList, name = 'courseList'),
+    path('universityList/', universityList, name = 'universityList'),
     path('courseRegistration/', courseRegistration, name = 'courseRegistration'),
     path('courseSave/', courseSave, name = 'courseSave'),
     path('universityRegistration/', universityRegistration, name = 'universityRegistration'),
-    path('courseMaintenance/', courseMaintenance, name = 'courseMaintenance'),
-
+    path('courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),
+    path('universityMaintenance/<uuid:university_id>/', universityMaintenance, name = 'universityMaintenance'),
 ]
 
