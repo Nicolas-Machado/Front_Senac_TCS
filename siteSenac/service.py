@@ -97,6 +97,13 @@ class CourseService():
         if not response.ok:
             return None
         return response.json()
+    
+    def get_subjects_in_phases(school_program_id) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}school_program/{school_program_id}/subjects/", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
 
 class EnrollmentService():
 

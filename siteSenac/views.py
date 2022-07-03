@@ -33,8 +33,6 @@ def university(request, university_id):
     return render(request, 'userPages/university.html', data)
 
 def graduationCourses(request):
-    #arrumar urgente#
-    print(request.GET)
 
     if 'buscar' in request.GET:
         name = request.GET['buscar']
@@ -48,8 +46,6 @@ def graduationCourses(request):
 
 def postGraduateCourses(request):
 
-    print(request.GET)
-
     if 'buscar' in request.GET:
         name = request.GET['buscar']
         response = CourseService.get_courses_by_name(name)
@@ -60,15 +56,17 @@ def postGraduateCourses(request):
     }
     return render(request, 'userPages/postGraduateCourses.html', data)
 
-def courseInfo(request, course_id):
+def courseInfo(request, course_id,):
 
     course = CourseService.get_courses_by_id(course_id)
     university = CourseService.get_universities_in_course(course_id)
     phases = CourseService.get_phases_in_courses(course_id)
+    # subjects = CourseService.get_subjects_in_phases()
     data = {
         'universities': university,
         'courses': course,
-        'phases': phases
+        'phases': phases,
+        # 'subjects': subjects
     }
 
     return render(request, 'userPages/courseInfo.html', data)
@@ -106,7 +104,17 @@ def courseSave(request):
     return render(request, 'administration/courseList.html', data)
 
 def universityRegistration(request):
-    return render(request, 'administration/universityRegistration.html')
+
+    if 'buscar' in request.GET:
+        name = request.GET['buscar']
+        response = CourseService.get_courses_by_name(name)
+    else:
+        response = CourseService.get_courses()
+    data = {
+        'courses': response
+    }
+
+    return render(request, 'administration/universityRegistration.html', data)
 
 def courseMaintenance(request):
     return render(request, 'administration/courseMaintenance.html')
