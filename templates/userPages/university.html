@@ -16,9 +16,9 @@
             <div class="col-12 col-lg-6 md-pb">
                 <div class="image-wrapper">
                     {% if universities.university_image_local == null %}
-                        <img src="{% static '/images/locationTemp.jpg' %}">
+                    <img src="{% static '/images/locationTemp.jpg' %}">
                     {% else %}
-                        <img src="{{ universities.university_image_local }}" alt="Imagem da Faculdade">
+                    <img src="{{ universities.university_image_local }}" alt="Imagem da Faculdade">
                     {% endif %}
 
                 </div>
@@ -26,50 +26,51 @@
 
             <div class="card-wrapper">
                 <div class="card-box">
-                    
+
                     <h4 class="card-title mbr-fonts-style mb-4 display-2">
                         <strong>{{ universities.name }}</strong>
                     </h4>
 
                     <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                        
-                        <strong>Endereço:</strong> 
+
+                        <strong>Endereço:</strong>
                         {{ universities.street}},
                         {{ universities.house_number}} - {{ universities.neighborhood }},
                         {{ universities.city }} - {{ universities.state }}
-                        
+
                         <br><strong>CEP:</strong>
                         {{ universities.zip_code}}
 
-                        <br><strong>Fone:</strong> 
-                        {{ universities.phone_number}} 
-                        {% if universities.telephone %} - 
-                            {{universities.telephone}} 
-                        {% endif %} 
+                        <br><strong>Fone:</strong>
+                        {{ universities.phone_number}}
+                        {% if universities.telephone %} -
+                        {{universities.telephone}}
+                        {% endif %}
 
                         <br><strong>Horário de Atendimento:</strong>
                         {{universities.attendance }}
                     </p>
 
-                    <div class="mbr-section-btn mb-4">
+                    {% comment %} <div class="mbr-section-btn mb-4">
                         <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
                         <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
                         <a class="btn btn-primary display-4" href="https://mobiri.se">Exibir no Maps<br></a>
                         <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
-                    </div>
+                    </div> {% endcomment %}
 
                 </div>
             </div>
         </div>
         {% endif %}
-        </div>
+    </div>
     </div>
 </section>
 
 <section class="features3 cid-searchLists" id="features3-1f">
 
-
     <div class="container">
+
+       
         <div class="mbr-section-head">
 
             <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-5 mt-5 display-5">Cursos disponíveis nesta
@@ -79,13 +80,14 @@
         {% include 'partials/_searchCourse.html' %}
 
         <div class="row mt-4">
+
             {% if courses %}
             {% for courses in courses %}
             <div class="item features-image сol-12 col-md-6 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
                         {% if courses.course_image == null %}
-                        <img src="{% static '/images/graduacaoTemp2.jpg' %}" height="200px" width="200px" alt="">
+                        <img src="{% static '/images/graduacaoTemp2.jpg' %}" height="300px" width="300px" alt="">
                         {% else %}
                         <img src="{{ courses.course_image }}" width="300px" height="300px" alt="">
                         {% endif %}
@@ -95,11 +97,13 @@
 
 
                     </div>
-                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'courseInfo' courses.id %}" class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'courseInfo' courses.id %}"
+                            class="btn btn-outline-primary item-btn display-7">Saiba Mais</a></div>
                 </div>
             </div>
             {% endfor %}
             {% endif %}
+
         </div>
     </div>
 </section>
@@ -116,8 +120,9 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="{% url 'university' universities.id %}" method="POST" class="mbr-form form-with-styler">{% csrf_token %}
-                        
+                <form action="{% url 'university' universities.id %}" method="POST" class="mbr-form form-with-styler">
+                    {%csrf_token %}
+
                     <div class="row">
                         <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
                             out
@@ -156,6 +161,11 @@
         </div>
     </div>
 </section>
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.6279656193333!2d-48.6559256843954!3d-27.636036730415057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952735c5c649bbc3%3A0xd20538bd74f212d7!2sFaculdade%20Senac%20Palho%C3%A7a!5e0!3m2!1spt-BR!2sbr!4v1656902164255!5m2!1spt-BR!2sbr"
+width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 {% include 'partials/_social.html' %}
 {% include 'partials/_footer.html' %}
