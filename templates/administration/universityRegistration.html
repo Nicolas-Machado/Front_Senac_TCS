@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form method="POST" action="">
+                <form method="POST" action="{% url 'universityRegistration' %}">{%csrf_token %}
 
                     <h1>Nova Unidade de Ensino</h1>
                     <hr>
@@ -86,7 +86,7 @@
                             <label for="state" class="form-label">Estado</label>
                             <select id="state" class="form-select" name="state" required>
                                 <option selected disabled>Selecione</option>
-                                <option value="SC">Santa Catarina</option>
+                                <option value="Santa Catarina">Santa Catarina</option>
                             </select>
                         </div>
 
@@ -114,12 +114,12 @@
                             </div>
 
                             <div class="col-md-6 mb-3 mt-3">
-                                <label for="state" class="form-label">Cursos Disponíveis</label>
-                                <select id="state" class="form-select" name="state" multiple>
+                                <label for="courses" class="form-label">Cursos Disponíveis</label>
+                                <select id="courses" class="form-select" name="courses" multiple>
                                     <option selected disabled>Selecione</option>
                                     {% if courses %}
                                     {% for courses in courses %}
-                                    <option value="{{courses.name}}">{{courses.name}}</option>
+                                    <option value="{{courses.id}}">{{courses.name}}</option>
                                     {% endfor %}
                                     {% endif %}
                                 </select>

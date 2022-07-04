@@ -1,22 +1,37 @@
-from lib2to3.pgen2 import token
-from typing import Dict
-from urllib import request
-import requests
 import json
+from typing import Dict
+from datetime import datetime
+import requests
 
-URL_SITE = 'http://127.0.0.1:7000'
+URL_SITE = 'http://127.0.0.1:8000'
 
 def authenticate() -> Dict:
-        login = {'username': 'nicolas', 'password': 'Nic1234@'}
-        response = requests.post(f"{URL_SITE}/rest-auth-token/", data=login)
+    login = {'username': 'admin', 'password': 'admin'}
+    response = requests.post(f"{URL_SITE}/rest-auth-token/", data=login)
+    token = response.json()['token']
+    return token
+
+def adm_authenticate(username, password) -> Dict:
+    login = {'username': username, 'password': password}
+    response = requests.post(f"{URL_SITE}/rest-auth-token/", data=login)
+    if response.status_code != 400:
         token = response.json()['token']
         return token
+    return None
+
 
 class UniversityService():
 
     def get_universities() -> Dict:
         token = authenticate()
         response = requests.get(f"{URL_SITE}/university/?is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
+
+    def get_all_universities() -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/university/", headers={'Authorization': 'Token ' + token})  
         if not response.ok:
             return None
         return response.json()
@@ -35,14 +50,74 @@ class UniversityService():
             return None
         return response.json()
     
+    def post_university(request):
+        token = authenticate()
+        print(request)
+        for courses in request['courses']:
+            print(courses)
+
+            data = {
+                    "name" : request['name'],
+                    "telephone" : request['phone'],
+                    "phone_number": request['optionalPhone'],
+                    "attendance" : request['attendance'],
+                    "email": request['emailUniversity'],
+                    "street": request['street'],
+                    "neighborhood" : request['neighborhood'],
+                    "city" : request['city'],
+                    "state" : request['state'],
+                    "zip_code" : request['zipCode'],
+                    "house_number" : request['houseNumber'],
+                    "university_image_local" : request['universityImage'],
+                    "is_activate" : True,
+                    "courses" : courses['id'],
+                }
+        return requests.post(f"{URL_SITE}/university/", data=data, headers={'Authorization': 'Token ' + token})
+
+    def put_active_universities(request, token):
+        token = authenticate()
+        university = requests.get(f"{URL_SITE}/university/{request}/", headers={'Authorization': 'Token ' + token})
+        university = university.json()
+        
+        for courses in university['courses']:
+            if(university['is_activate'] == False):
+                university['is_activate'] = True
+            else:
+                university['is_activate'] = False
+            data = {
+                "name" : university['name'],
+                "telephone" : university['telephone'],
+                "phone_number": university['phone_number'],
+                "city" : university['city'],
+                "zip_code" : university['zip_code'],
+                "house_number" : university['house_number'],
+                "is_activate" : university['is_activate'],
+            }
+        return requests.patch(f"{URL_SITE}/university/{request}/", data=data, headers={'Authorization': 'Token ' + token})
+    
+
+class CourseService():
+
     def get_courses_in_university(university_id) -> Dict:
         token = authenticate()
         response = requests.get(f"{URL_SITE}/university/{university_id}/courses/?is_activate=true", headers={'Authorization': 'Token ' + token})
         if not response.ok:
             return None
         return response.json()   
+    
+    def get_courses_in_university_by_name(university_id, name) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/university/{university_id}/courses/?search={name}&is_activate=true", headers={'Authorization': 'Token ' + token})
+        if not response.ok:
+            return None
+        return response.json()  
 
-class CourseService():
+    def get_all_courses() -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
 
     def get_courses() -> Dict:
         token = authenticate()
@@ -70,6 +145,23 @@ class CourseService():
         }
         return requests.post(f"{URL_SITE}/course/", data=data, headers={'Authorization': 'Token ' + token})
 
+    def put_active_courses(request, token):
+        token = authenticate()
+        course = requests.get(f"{URL_SITE}/course/{request}/", headers={'Authorization': 'Token ' + token})
+        course = course.json()
+        if(course['is_activate'] == False):
+            course['is_activate'] = True
+        else:
+            course['is_activate'] = False
+        data = {
+            "name" : course['name'],
+            "duration_time": course['duration_time'],
+            "occupation_area" : course['occupation_area'],
+            "is_activate" : course['is_activate']
+        }
+       
+        return requests.patch(f"{URL_SITE}/course/{request}/", data=data, headers={'Authorization': 'Token ' + token})
+
     def get_courses_by_name(name) -> Dict:
         token = authenticate()
         response = requests.get(f"{URL_SITE}/course/?search={name}&is_activate=true", headers={'Authorization': 'Token ' + token})
@@ -82,7 +174,35 @@ class CourseService():
         response = requests.get(f"{URL_SITE}/course/{course_id}/?is_activate=true", headers={'Authorization': 'Token ' + token})
         if not response.ok:
             return None
-        return response.json()   
+        return response.json()
+
+    def get_courses_graduation() -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?course_type=GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json() 
+
+    def get_courses_graduation_by_name(name) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?search={name}&course_type=GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()  
+
+    def get_courses_postgraduation() -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?course_type=POS_GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json() 
+
+    def get_courses_postgraduation_by_name(name) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?search={name}&course_type=POS_GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()     
 
     def get_universities_in_course(course_id) -> Dict:
         token = authenticate()
@@ -120,6 +240,15 @@ class EnrollmentService():
         if not response.ok:
             return None
         return response.json()
+    
+    def search_date_enrollment_activate(courses) -> Dict:
+        _lista = []
+        for course in courses:
+            for enrollment in course['enrollments']:
+                if enrollment['date_final'] >= datetime.today().strftime('%Y-%m-%d'):
+                    _lista.append(course)
+        
+        return _lista
 
 class Send_EmailService():
 

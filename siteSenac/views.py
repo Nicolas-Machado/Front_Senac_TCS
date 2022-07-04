@@ -1,31 +1,41 @@
-from cgi import test
-from urllib import request
-from urllib.request import Request
+import json
 from django.shortcuts import render
-from datetime import date
 from .service import *
+
+_RESPONSE = ''
+_NAME = ''
+_TYPE_COURSE = ''
+_UNIVERSITY = ''
+_USERNAME = '' 
+_PASSWORD= ''
 
 def index(request):
     return render(request, 'userPages/homeSenac.html')
 
 def universities(request):
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
+    template = ''
+    if 'search' in request.GET:
+        name = request.GET['search']
         response = UniversityService.get_universities_by_name(name)
+        template = 'partials/_universities_results.html'
     else:
         response = UniversityService.get_universities()
+        template = 'userPages/universities.html'
     data = {
         'universities': response
     }
-    return render(request, 'userPages/universities.html', data)
+    return render(request, template, data)
 
 def university(request, university_id):
-
+    global _RESPONSE, _TYPE_COURSE, _UNIVERSITY
     if request.method == 'POST':
         Send_EmailService.post_send_email(request.POST)
 
     university = UniversityService.get_universities_by_id(university_id)
-    course = UniversityService.get_courses_in_university(university_id)
+    course = CourseService.get_courses_in_university(university_id)
+    _RESPONSE = course
+    _UNIVERSITY = university
+    _TYPE_COURSE = 'university_course'
     data = {
         'universities': university,
         'courses': course
@@ -33,24 +43,64 @@ def university(request, university_id):
     return render(request, 'userPages/university.html', data)
 
 def graduationCourses(request):
-
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
-        response = CourseService.get_courses_by_name(name)
-    else:
-        response = CourseService.get_courses()
+    global _RESPONSE, _TYPE_COURSE
+    response = CourseService.get_courses_graduation()
+    _RESPONSE = response
+    _TYPE_COURSE = 'graduation'
     data = {
         'courses': response
     }
+
     return render(request, 'userPages/graduationCourses.html', data)
 
-def postGraduateCourses(request):
+def courses_results(request):
+    global _RESPONSE, _NAME
+    template = ''
 
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
-        response = CourseService.get_courses_by_name(name)
+    if 'search' in request.POST:
+        _NAME = request.POST['search']
+        if _TYPE_COURSE == 'graduation':
+            response = CourseService.get_courses_graduation_by_name(_NAME)
+        elif _TYPE_COURSE == 'university_course':
+            response = CourseService.get_courses_in_university_by_name(_UNIVERSITY['id'], _NAME)
+        elif _TYPE_COURSE == 'post_graduation':
+                response = CourseService.get_courses_postgraduation_by_name(_NAME)
+        _RESPONSE = response
+        template = 'partials/_courses_results.html'
+    
+    if 'switchSubscription' in request.POST:
+        if _NAME == '':
+            response = EnrollmentService.search_date_enrollment_activate(_RESPONSE)
+        else:
+            if _TYPE_COURSE == 'graduation':
+                response = CourseService.get_courses_graduation_by_name(_NAME)
+            elif _TYPE_COURSE == 'university_course':
+                response = CourseService.get_courses_in_university_by_name(_UNIVERSITY['id'], _NAME)
+            elif _TYPE_COURSE == 'post_graduation':
+                response = CourseService.get_courses_postgraduation_by_name(_NAME)
+            response = EnrollmentService.search_date_enrollment_activate(response)
+        template = 'partials/_courses_results.html'
     else:
-        response = CourseService.get_courses()
+        if _NAME == "":
+            response = _RESPONSE
+        else:
+            if _TYPE_COURSE == 'graduation':
+                response = CourseService.get_courses_graduation_by_name(_NAME)
+            elif _TYPE_COURSE == 'university_course':
+                response = CourseService.get_courses_in_university_by_name(_UNIVERSITY['id'], _NAME)
+            elif _TYPE_COURSE == 'post_graduation':
+                response = CourseService.get_courses_postgraduation_by_name(_NAME)
+        template = 'partials/_courses_results.html'
+    data = {
+        'courses': response
+    }
+    return render(request, template, data)
+
+def postGraduateCourses(request):
+    global _RESPONSE, _TYPE_COURSE
+    response = CourseService.get_courses_postgraduation()
+    _RESPONSE = response
+    _TYPE_COURSE = 'post_graduation'
     data = {
         'courses': response
     }
@@ -80,34 +130,47 @@ def services(request):
 def login(request):
     return render(request, 'userPages/login.html')
 
+def login_authentication(request):
+    global _USERNAME, _PASSWORD
+    _USERNAME = request.POST['username']
+    _PASSWORD = request.POST['password']
+    token = adm_authenticate(_USERNAME, _PASSWORD)
+    template = 'administration/homeAdministration.html'
+    if token == None:
+        template = 'userPages/login.html'
+    return render(request, template)
+
 def administration(request):
-    return render(request, 'administration/homeAdministration.html')
+
+   return render(request, 'administration/homeAdministration.html')
 
 def courseList(request):
+    template = 'administration/courseList.html'
+    if 'id' in request.POST:
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        CourseService.put_active_courses(request.POST['id'], token)
+        template = 'partials/_admCourse_check_results.html'
 
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
-        response = CourseService.get_courses_by_name(name)
-    else:
-        response = CourseService.get_courses()
+    response = CourseService.get_all_courses()
     data = {
         'courses': response
     }
-
-    return render(request, 'administration/courseList.html', data)
+    return render(request, template, data)
 
 def universityList(request):
+    template = 'administration/universityList.html'
+   
+    if 'id' in request.POST:
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        UniversityService.put_active_universities(request.POST['id'], token)
+        template = 'partials/_admUniversity_check_results.html'
 
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
-        response = UniversityService.get_universities_by_name(name)
-    else:
-        response = UniversityService.get_universities()
+    response = UniversityService.get_all_universities()
     data = {
         'universities': response
     }
     
-    return render(request, 'administration/universityList.html', data)
+    return render(request, template, data)
 
 def courseRegistration(request):
     return render(request, 'administration/courseRegistration.html')
@@ -127,12 +190,10 @@ def courseSave(request):
     return render(request, 'administration/courseList.html', data)
 
 def universityRegistration(request):
-
-    if 'buscar' in request.GET:
-        name = request.GET['buscar']
-        response = CourseService.get_courses_by_name(name)
-    else:
-        response = CourseService.get_courses()
+    if request.method == 'POST':
+        UniversityService.post_university(request.POST)
+        
+    response = CourseService.get_courses()
     data = {
         'courses': response
     }

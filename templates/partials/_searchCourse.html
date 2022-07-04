@@ -1,17 +1,33 @@
 {% load static %}
 
+
 <div class="container">
     <div class="row mt-4">
-        <form class="form-inline" action="{% url 'graduationCourses' %}">
-            <input class="form-control col-12 col-lg-3" id="searchCourse" type="search" name="buscar"
-                placeholder="Pesquisar Curso" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" id="searchCourseBtn"
-                type="submit"><span class="iconify" data-icon="ic:outline-search" style="color: primary" data-width="30" data-height="30"></span></button>
+            <input class="form-control col-12 col-lg-3" aria-label="Search" type="search" 
+         name="search" placeholder="Pesquisar curso" id="searchGraduationCourse"
+         hx-post="{% url 'courses_results' %}",
+         hx-trigger="keyup changed delay:500ms, search" 
+         hx-target="#courses_results">
             </div>
-        </form>
+
             <div class="form-check form-switch mt-2">
-                <input class="form-check-input" type="checkbox" id="switchSubscription" name="switchSubscription" value={% if CHECKED == true %} "True" {% else %} "False" {% endif%}>
+                <input class="form-check-input" 
+                type="checkbox" 
+                name="switchSubscription"
+                id = "switchSubscription"
+                hx-post="{% url 'courses_results' %}",
+                hx-target="#courses_results"> 
                 <label class="form-check-label" for="switchSubscription">Inscrições Abertas</label>
             </div>
 
 </div>
+
+<script>
+    const chk1 = document.getElementById("switchSubscription")
+    const sea = document.getElementById("searchGraduationCourse")
+    sea.addEventListener('keydown',(event) => {
+    if(chk1.checked){
+        chk1.checked = false
+    }
+    }); 
+</script>

@@ -19,7 +19,7 @@
                             <strong><br></strong><br><strong>Lista de Universidades</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Aqui está a lista de cursos disponíveis no nosso banco de dados</p>
+                            Aqui está a lista de cursos disponíveis!</p>
 
                     </div>
                 </div>
@@ -39,32 +39,15 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
                             <th scope="col">Cidade</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Gerenciamento</th>
                         </tr>
                     </thead>
-                    <tbody style="text-align: center;">
-
-                        {% for universities in universities %}
-                        <tr>
-
-                            <td scope="row">
-                                <a href="" style="color: blue; text-decoration:underline;">
-                                    {{universities.name}}
-                                </a>
-                            </td>
-                            <td scope="row">
-                                {{universities.email}}
-                            </td>
-                            <td scope="row">{{universities.city}}</td>
-                            <td scope="row">
-                                <a href="{% url 'universityMaintenance' universities.id %}" type="button" class="btn btn-danger-outline">Editar</a>
-                            </td>
-                                
-                        </tr>
-                        {% endfor %}
-
-                    </tbody>
+            
                 </table>
+                {% include 'partials/_admUniversity_check_results.html'%}
+
+
                 <div class="mbr-section-btn">
                     <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
                 </div>

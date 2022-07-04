@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Login{% endblock title %}
 {% block content %}
-<form action="" class="form-signin">
+<form action="{% url 'login_authentication' %}" method="POST" class="form-signin">{%csrf_token %}
 
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 10px;">
 
@@ -15,17 +15,18 @@
         <span class="iconify" data-icon="healthicons:ui-user-profile-negative"
         style="color: #1b539b; border-radius: 50%;" data-width="100" data-height="100"></span>
         <h5 class="mb-2 font-weight-normal">Administrador</h5>
+    
 
         <div class="col-lg-2">
-            <label for="inputEmail" class="sr-only">Endereço de E-mail</label>
-            <input type="email" id="inputEmail" class="form-control" required autofocus>
+            <label for="inputUser" class="sr-only">Usuário</label>
+            <input type="text" id="inputUser" name="username" class="form-control" required autofocus>
         </div>
 
         <div class="col-lg-2">
             <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" class="form-control" required autofocus>
+            <input type="password" id="inputPassword" name="password" class="form-control" required autofocus>
         </div>
-        <button class="btn btn-outline-primary" type="submit" href="{% static 'administration' %}">Login</button>
+        <button class="btn btn-outline-primary" type="submit">Login</button>
     </div>
-
+</form>
     {% endblock %}
