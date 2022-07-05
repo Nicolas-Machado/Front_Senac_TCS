@@ -3,10 +3,10 @@ from typing import Dict
 from datetime import datetime
 import requests
 
-URL_SITE = 'http://127.0.0.1:8000'
+URL_SITE = 'http://127.0.0.1:7000'
 
 def authenticate() -> Dict:
-    login = {'username': 'admin', 'password': 'admin'}
+    login = {'username': 'nicolas', 'password': 'Nic1234@'}
     response = requests.post(f"{URL_SITE}/rest-auth-token/", data=login)
     token = response.json()['token']
     return token
@@ -93,6 +93,7 @@ class UniversityService():
                 "house_number" : university['house_number'],
                 "is_activate" : university['is_activate'],
             }
+
         return requests.patch(f"{URL_SITE}/university/{request}/", data=data, headers={'Authorization': 'Token ' + token})
     
 

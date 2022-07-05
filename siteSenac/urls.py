@@ -21,5 +21,6 @@ urlpatterns = [
     path('universityRegistration/', universityRegistration, name = 'universityRegistration'),
     path('courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),
     path('universityMaintenance/<uuid:university_id>/', universityMaintenance, name = 'universityMaintenance'),
+    path('schoolProgramRegistration/', schoolProgramRegistration, name = 'schoolProgramRegistration'),
 ]
 

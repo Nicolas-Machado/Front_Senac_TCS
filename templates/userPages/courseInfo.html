@@ -4,7 +4,7 @@
 {% block content %}
 
 {% include 'partials/_menu.html' %}
-<section data-bs-version="5.0" class="info3 cid-headerPages" 
+<section data-bs-version="5.0" class="info3 cid-headerPages"
     style="background-image: url('{% static '/images/graduacaoTemp2.jpg' %}');" id="headerPage">
 
     <div class="mbr-overlay">
@@ -69,28 +69,40 @@
                         </div>
 
                         {% if courses.curriculum == null %}
-                        <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}" style=" height: 500px; width: 600px;">
+                        <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                            style=" height: 500px; width: 600px;">
                         {% else %}
-                        <img class="mb-4" src="{{courses.curriculum}}" >
+                        <img class="mb-4" src="{{courses.curriculum}}" style=" height: 800px; width: 900px;">
                         {% endif %}
 
-                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Perfil de
-                                Conclusão</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.completion_profile}}</p>
 
-                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Carga
-                                Horária</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.duration_time}} Horas</p>
-
-                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Área de
-                                Atuação</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.occupation_area}}</p>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<section data-bs-version="5.1" class="features11 cid-universitiesField" id="features12-6">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6 text-white">
+                    <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Perfil de
+                            Conclusão</strong></h4>
+                    <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.completion_profile}}</p>
+
+                    <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Carga
+                            Horária</strong></h4>
+                    <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.duration_time}} Horas</p>
+
+                    <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Área de
+                            Atuação</strong></h4>
+                    <p class="mbr-text mbr-fonts-style mb-4 display-7">{{courses.occupation_area}}</p>
+                </div>    
+            </div>    
+        </div>    
+
 </section>
 
 <section class="features3 cid-searchLists" id="bodyContent2">
@@ -129,7 +141,10 @@
                         </div>
 
                         <div class="modal-body">
-                            {% lorem 1 b random %}
+                            {% for phases in phases %}
+                            <p>{{phases.name}}</p>
+
+                            {% endfor %}
                         </div>
 
                         <div class="modal-footer">
@@ -150,7 +165,8 @@
         </div>
 
         {% include 'partials/_searchUniversity.html' %}
-        
+        {% include 'partials/_universities_results.html' %}
+
     </div>
 
 </section>

@@ -1,4 +1,4 @@
-/* Máscaras ER */
+/* Máscaras Telefone */
 function mascara(o, f) {
   v_obj = o
   v_fun = f
@@ -26,3 +26,4 @@ window.onload = function () {
   }
 
 }
+/*Fim da Máscara Telefone*/

@@ -106,7 +106,7 @@ def postGraduateCourses(request):
     }
     return render(request, 'userPages/postGraduateCourses.html', data)
 
-def courseInfo(request, course_id,):
+def courseInfo(request, course_id):
 
     course = CourseService.get_courses_by_id(course_id)
     university = CourseService.get_universities_in_course(course_id)
@@ -218,3 +218,13 @@ def universityMaintenance(request, university_id):
         'courses': course
     }
     return render(request, 'administration/universityMaintenance.html', data)
+
+def schoolProgramRegistration(request):
+
+    course = CourseService.get_courses()
+
+    data = {
+        'courses': course,
+    }
+
+    return render(request, 'administration/schoolProgramRegistration.html', data)

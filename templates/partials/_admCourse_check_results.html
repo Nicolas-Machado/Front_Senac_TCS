@@ -12,16 +12,19 @@
                     hx-post="{% url 'courseList' %}",
                     value = {{ courses.id }}
                     hx-target="#tbody"> </td>
+
+                <td scope="row">{% if courses.is_activate == True%} Ativo {% else %} Inativo {% endif %} </td>
+                
                 <td scope="row">
                     <a href="" style="color: blue; text-decoration:underline;">
                         {{courses.name}}
                     </a>
                 </td>
+                
                 <td scope="row">
                     {{courses.course_type}}
                 </td>
                 <td scope="row">{{courses.modality}}</td>
-                <td scope="row">{% if courses.is_activate == True%} Ativo {% else %} Inativo {% endif %} </td>
             
                 <td scope="row">
                     <a href="{% url 'courseMaintenance' courses.id %}" type="button" class="btn btn-danger-outline">Editar</a>
