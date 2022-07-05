@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contato{% endblock %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url('../../../static/images/contactTemp.jpg')" id="info3-m">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Contato</strong><strong><br></strong>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include 'partials/_social.html' %}
+{% include 'partials/_footer.html' %}
+{% endblock %}

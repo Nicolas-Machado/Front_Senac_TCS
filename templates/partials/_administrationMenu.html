@@ -22,16 +22,22 @@
             </button>
             <div class="navbar-collapse collapse" id="nav-target">
                 <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true" style="margin-right: 5px;">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link link text-white text-primary display-7"
+                            href="{% url 'universityList' %}">Lista de Unidades</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link link text-white text-primary display-7"
                             href="{% url 'courseList' %}">Lista de Cursos<br></a>
                     </li>
-
+                    
                     <li class="nav-item">
                         <a class="nav-link link text-white text-primary display-7"
-                            href="{% url 'universityList' %}">Lista de Unidades</a>
+                            href="{% url 'index' %}">Voltar para o Senac<br></a>
                     </li>
+
                 </ul>
             </div>
     </nav>

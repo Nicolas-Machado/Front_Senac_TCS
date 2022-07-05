@@ -69,10 +69,18 @@
                         </div>
 
                         {% if courses.curriculum == null %}
-                        <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
-                            style=" height: 500px; width: 600px;">
+                        
+                        <div class="image-wrapper">
+                            <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                                style=" height: 500px; width: 600px;">
+                        </div>  
+
                         {% else %}
-                        <img class="mb-4" src="{{courses.curriculum}}" style=" height: 800px; width: 900px;">
+                        
+                            <div class="image-wrapper">
+                                <img class="mb-4" src="{{courses.curriculum}}" style=" height: 800px; width: 900px;">
+                            </div>
+                        
                         {% endif %}
 
 

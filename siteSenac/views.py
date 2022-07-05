@@ -12,35 +12,18 @@ _PASSWORD= ''
 def index(request):
     return render(request, 'userPages/homeSenac.html')
 
-def universities(request):
-    template = ''
-    if 'search' in request.GET:
-        name = request.GET['search']
-        response = UniversityService.get_universities_by_name(name)
-        template = 'partials/_universities_results.html'
-    else:
-        response = UniversityService.get_universities()
-        template = 'userPages/universities.html'
-    data = {
-        'universities': response
-    }
-    return render(request, template, data)
+def services(request):
+    return render(request, 'userPages/services.html')
 
-def university(request, university_id):
-    global _RESPONSE, _TYPE_COURSE, _UNIVERSITY
-    if request.method == 'POST':
-        Send_EmailService.post_send_email(request.POST)
+def modalities(request):
+    return render(request, 'userPages/modalities.html')
 
-    university = UniversityService.get_universities_by_id(university_id)
-    course = CourseService.get_courses_in_university(university_id)
-    _RESPONSE = course
-    _UNIVERSITY = university
-    _TYPE_COURSE = 'university_course'
-    data = {
-        'universities': university,
-        'courses': course
-    }
-    return render(request, 'userPages/university.html', data)
+def contact(request):
+    return render(request, 'userPages/contact.html')
+
+    
+#-------------------------------------------------------------------------------------------------------------START COURSE VIEWS--------------------------------------------------------------------------------------
+
 
 def graduationCourses(request):
     global _RESPONSE, _TYPE_COURSE
@@ -50,7 +33,6 @@ def graduationCourses(request):
     data = {
         'courses': response
     }
-
     return render(request, 'userPages/graduationCourses.html', data)
 
 def courses_results(request):
@@ -118,31 +100,7 @@ def courseInfo(request, course_id):
         'phases': phases,
         # 'subjects': subjects
     }
-
     return render(request, 'userPages/courseInfo.html', data)
-
-def modalities(request):
-    return render(request, 'userPages/modalities.html')
-
-def services(request):
-    return render(request, 'userPages/services.html')
-
-def login(request):
-    return render(request, 'userPages/login.html')
-
-def login_authentication(request):
-    global _USERNAME, _PASSWORD
-    _USERNAME = request.POST['username']
-    _PASSWORD = request.POST['password']
-    token = adm_authenticate(_USERNAME, _PASSWORD)
-    template = 'administration/homeAdministration.html'
-    if token == None:
-        template = 'userPages/login.html'
-    return render(request, template)
-
-def administration(request):
-
-   return render(request, 'administration/homeAdministration.html')
 
 def courseList(request):
     template = 'administration/courseList.html'
@@ -155,21 +113,6 @@ def courseList(request):
     data = {
         'courses': response
     }
-    return render(request, template, data)
-
-def universityList(request):
-    template = 'administration/universityList.html'
-   
-    if 'id' in request.POST:
-        token = adm_authenticate(_USERNAME, _PASSWORD)
-        UniversityService.put_active_universities(request.POST['id'], token)
-        template = 'partials/_admUniversity_check_results.html'
-
-    response = UniversityService.get_all_universities()
-    data = {
-        'universities': response
-    }
-    
     return render(request, template, data)
 
 def courseRegistration(request):
@@ -186,8 +129,69 @@ def courseSave(request):
     data = {
         'courses': course
     }
-    
     return render(request, 'administration/courseList.html', data)
+
+def courseMaintenance(request, course_id):
+
+    course = CourseService.get_courses_by_id(course_id)
+    data = {
+        'courses': course,
+    }
+    return render(request, 'administration/courseMaintenance.html', data)
+
+
+#-------------------------------------------------------------------------------------------------------------END COURSE VIEWS--------------------------------------------------------------------------------------
+
+
+
+
+#-------------------------------------------------------------------------------------------------------------START UNIVERSITY VIEWS--------------------------------------------------------------------------------------
+
+
+def universities(request):
+    template = ''
+    if 'search' in request.GET:
+        name = request.GET['search']
+        response = UniversityService.get_universities_by_name(name)
+        template = 'partials/_universities_results.html'
+    else:
+        response = UniversityService.get_universities()
+        template = 'userPages/universities.html'
+    data = {
+        'universities': response
+    }
+    return render(request, template, data)
+
+def university(request, university_id):
+    global _RESPONSE, _TYPE_COURSE, _UNIVERSITY
+    if request.method == 'POST':
+        Send_EmailService.post_send_email(request.POST)
+
+    university = UniversityService.get_universities_by_id(university_id)
+    course = CourseService.get_courses_in_university(university_id)
+    _RESPONSE = course
+    _UNIVERSITY = university
+    _TYPE_COURSE = 'university_course'
+    data = {
+        'universities': university,
+        'courses': course
+    }
+    return render(request, 'userPages/university.html', data)
+
+def universityList(request):
+    template = 'administration/universityList.html'
+   
+    if 'id' in request.POST:
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        UniversityService.put_active_universities(request.POST['id'], token)
+        template = 'partials/_admUniversity_check_results.html'
+
+    response = UniversityService.get_all_universities()
+    data = {
+        'universities': response
+    }
+    
+    return render(request, template, data)
 
 def universityRegistration(request):
     if request.method == 'POST':
@@ -197,17 +201,7 @@ def universityRegistration(request):
     data = {
         'courses': response
     }
-
     return render(request, 'administration/universityRegistration.html', data)
-
-def courseMaintenance(request, course_id):
-
-    course = CourseService.get_courses_by_id(course_id)
-    data = {
-        'courses': course,
-    }
-
-    return render(request, 'administration/courseMaintenance.html', data)
 
 def universityMaintenance(request, university_id):
 
@@ -219,6 +213,30 @@ def universityMaintenance(request, university_id):
     }
     return render(request, 'administration/universityMaintenance.html', data)
 
+
+#-------------------------------------------------------------------------------------------------------------END UNIVERSITY VIEWS--------------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------------------------------------SOME ADMINISTRATION VIEWS--------------------------------------------------------------------------------------
+
+
+def administration(request):
+   return render(request, 'administration/homeAdministration.html')
+
+def login(request):
+    return render(request, 'userPages/login.html')
+
+def login_authentication(request):
+    global _USERNAME, _PASSWORD
+    _USERNAME = request.POST['username']
+    _PASSWORD = request.POST['password']
+    token = adm_authenticate(_USERNAME, _PASSWORD)
+    template = 'administration/homeAdministration.html'
+    if token == None:
+        template = 'userPages/login.html'
+    return render(request, template)
+
 def schoolProgramRegistration(request):
 
     course = CourseService.get_courses()
@@ -226,5 +244,7 @@ def schoolProgramRegistration(request):
     data = {
         'courses': course,
     }
-
     return render(request, 'administration/schoolProgramRegistration.html', data)
+
+
+#-------------------------------------------------------------------------------------------------------------END ADMINISTRATION VIEWS--------------------------------------------------------------------------------------
