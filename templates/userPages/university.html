@@ -109,15 +109,15 @@
                     <div class="dragArea row">
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
-                                class="form-control" value="" id="name">
+                                class="form-control" value="" id="name" required>
                         </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="E-mail" data-form-field="email"
-                                class="form-control" value="" id="email">
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="url">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="phone_number">
                             <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
-                                class="form-control" value="" id="phone_number">
+                                class="form-control" value="" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" maxlength="15" required>
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="email">
+                            <input type="email" name="email" placeholder="E-mail" data-form-field="email"
+                                class="form-control" value="" id="email" required>
                         </div>
                         <div class="col-12 form-group mb-3" data-for="textarea">
                             <textarea name="message" placeholder="Mensagem" data-form-field="message"
@@ -125,7 +125,7 @@
                         </div>
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="hidden" name="universities" placeholder="" data-form-field="universities"
-                                class="form-control" value="{{ universities.id }}" id="universities">
+                                class="form-control" value="{{ universities.id }}" id="universities" required>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
                             <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
@@ -143,6 +143,7 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.6279656193333!2d
 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
 referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+<script src="{% static 'theme/js/aditionalScripts.js' %}"></script>
 {% include 'partials/_social.html' %}
 {% include 'partials/_footer.html' %}
 {% endblock %}

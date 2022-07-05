@@ -1,4 +1,5 @@
 import json
+from urllib import response
 from django.shortcuts import render
 from .service import *
 
@@ -19,7 +20,12 @@ def modalities(request):
     return render(request, 'userPages/modalities.html')
 
 def contact(request):
-    return render(request, 'userPages/contact.html')
+    response = UniversityService.get_all_universities()
+
+    data = {
+        'universities': response
+    }
+    return render(request, 'userPages/contact.html', data)
 
     
 #-------------------------------------------------------------------------------------------------------------START COURSE VIEWS--------------------------------------------------------------------------------------
