@@ -106,43 +106,46 @@
                                 pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}$" value="{{universities.phone_number}}">
                         </div>
 
+                    <div class="row">
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="courses" class="form-label">Cursos Cadastrados na Universidade</label>
+                            <select id="courses" class="form-select" name="courses" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if courses_uni %}
+                                {% for courses_uni in courses_uni %}
+                                <option selected value="{{courses_uni.id}}">{{courses_uni.name}}, 
+                                    {{ courses_uni.course_type }}, 
+                                    {{ courses_uni.modality }}, 
+                                    {{ courses_uni.occupation_area }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="courses_add" class="form-label">Cursos Disponiveis</label>
+                            <select id="courses_add" class="form-select" name="courses_add" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if courses %}
+                                {% for courses in courses %}
+                                    <option value="{{courses.id}}">{{courses.name}}, 
+                                        {{ courses.course_type }}, 
+                                        {{ courses.modality }}, 
+                                        {{ courses.occupation_area }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+
                         <div class="row">
 
                             <div class="col-md-6 mb-3 mt-3">
                                 <label for="attendance" class="form-label">Horário de Atendimento</label>
                                 <textarea type="text" name="attendance" class="form-control" id="attendance" rows="4" required>{{universities.attendance}}</textarea>
                             </div>
+                        </div>
 
-                            <div class="col-md-6 mb-3 mt-3">
-                                <label for="courses" class="form-label">Cursos Cadastrados na Universidade</label>
-                                <select id="courses" class="form-select" name="courses" multiple>
-                                    <option selected disabled>Selecione</option>
-                                    {% if courses_uni %}
-                                    {% for courses_uni in courses_uni %}
-                                    <option selected value="{{courses_uni.id}}">{{courses_uni.name}}, 
-                                        {{ courses_uni.course_type }}, 
-                                        {{ courses_uni.modality }}, 
-                                        {{ courses_uni.occupation_area }}</option>
-                                    {% endfor %}
-                                    {% endif %}
-                                </select>
-                            </div>
-
-                            <div class="col-md-6 mb-3 mt-3">
-                                <label for="courses_add" class="form-label">Cursos Disponiveis</label>
-                                <select id="courses_add" class="form-select" name="courses_add" multiple>
-                                    <option selected disabled>Selecione</option>
-                                    {% if courses %}
-                                    {% for courses in courses %}
-                                        <option value="{{courses.id}}">{{courses.name}}, 
-                                            {{ courses.course_type }}, 
-                                            {{ courses.modality }}, 
-                                            {{ courses.occupation_area }}</option>
-                                    {% endfor %}
-                                    {% endif %}
-                                </select>
-                            </div>
-                            
                         </div>
 
                         <div class="row">

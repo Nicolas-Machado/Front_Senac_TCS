@@ -104,8 +104,7 @@
             </h3>
 
             <p class="mbr-text text-white align-center mbr-fonts-style mt-3 display-7">Para saber mais sobre os cursos,
-                entre
-                em contato com uma unidade do Senac Santa Catarina
+                entre em contato com uma unidade do Senac Santa Catarina
             </p>
 
         </div>
@@ -121,25 +120,29 @@
                             problem!</div>
                     </div>
 
-                    <div class="dragArea row">
+                    <div class="row">
 
-                        <div class="col col-sm-6 form-group mb-3" data-for="name">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
                                 class="form-control" value="" id="name" required>
                         </div>
 
-                        <div class="col col-sm-6 form-group mb-3" data-for="phone_number">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="phone_number">
                             <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
                                 class="form-control" value="" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"
                                 maxlength="15" required>
                         </div>
 
-                        <div class="col col-sm-6 form-group mb-3" data-for="email">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
                             <input type="email" name="email" placeholder="E-mail" data-form-field="email"
                                 class="form-control" value="" id="email" required>
                         </div>
 
-                        <div class="col col-sm-6 form-group mb-3">
+                        <div class="col-md col-sm-12 form-group mb-3">
                             <select id="universities" class="form-select" name="universities">
                                 <option selected disabled>Selecione uma Unidade</option>
                                 {% if universities %}
@@ -149,13 +152,15 @@
                                 {% endif %}
                             </select>
                         </div>
+                        
+                    </div>
 
-                        <div class="col-12 form-group mb-3" data-for="textarea">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="textarea">
                             <textarea name="message" placeholder="Mensagem" data-form-field="message"
                                 class="form-control" id="message"></textarea>
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                        <div class="col-md col-sm-12 col-md-12 col-sm-12 align-center mbr-section-btn">
                             <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
                             <button type="submit" class="btn btn-danger display-4">Enviar E-mail</button>
                         </div>

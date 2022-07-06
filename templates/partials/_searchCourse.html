@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row mt-4">
     
-        <input class="form-control col-12 col-lg-3" aria-label="Search" type="search" name="search"
+        <input class="form-control col col-lg-3" aria-label="Search" type="search" name="search"
             placeholder="Pesquisar curso" id="searchGraduationCourse" hx-post="{% url 'courses_results' %}" ,
             hx-trigger="keyup changed delay:500ms, search" hx-target="#courses_results">
 
-        <select id="occupationArea" name="occupationArea" class="form-select ms-3 col-12 col-lg-2">
+        <select id="occupationArea" name="occupationArea" class="form-select ms-3 col col-lg-2">
             <option selected disabled>Area de atuação</option>
             <option value="PRESENCIAL">Presencial</option>
             <option value="EAD">Educação a Distância</option>

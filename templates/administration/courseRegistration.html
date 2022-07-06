@@ -19,7 +19,8 @@
                             <strong><br></strong><br><strong>Cadastro de Faculdade</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Use esta página para cadastrar uma nova opção de curso/faculdade diponível no site (Graduação/Pós-Graduação)</p>
+                            Use esta página para cadastrar uma nova opção de curso/faculdade diponível no site
+                            (Graduação/Pós-Graduação)</p>
 
                     </div>
                 </div>
@@ -37,7 +38,8 @@
                     {% csrf_token %}
 
                     <h1>Novo Curso/Faculdade</h1>
-                    <hr></hr>
+                    <hr>
+                    </hr>
 
                     <div class="row">
 
@@ -71,7 +73,7 @@
                                 <option value="PRESENCIAL">Educação Presencial</option>
                                 <option value="HIBRIDO">Educação Híbrida</option>
                                 <option value="EAD">Educação a Distância</option>
-                                
+
                             </select>
                         </div>
 
@@ -138,14 +140,16 @@
 
                     </div>
 
+                    <div class="container">
 
-                    <div class="row">
-                        <div class="col-sm-2 mb-3 mt-3">
-                            <button type="submit" class="btn btn-success-outline">Cadastrar</button>
-                        </div>
-                        
-                        <div class="col-sm-2 mb-3 mt-3">
-                            <a class="btn btn-outline-primary display-3" href="{% url 'courseList' %}">Voltar</a>
+                        <div class="row d-flex justify-content-start">
+                            <div class="col-sm-2 mb-3 mt-3">
+                                <button type="submit" class="btn btn-success-outline display-3">Cadastrar</button>
+                            </div>
+
+                            <div class="col-sm-2 mb-3 mt-3">
+                                <a class="btn btn-outline-primary" href="{% url 'courseList' %}">Voltar</a>
+                            </div>
                         </div>
                     </div>
 
