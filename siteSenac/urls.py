@@ -15,20 +15,22 @@ urlpatterns = [
     path('courseInfo/<uuid:course_id>/', courseInfo, name = 'courseInfo'),
 
     # Administration Paths
-    path('login/', login, name = 'login'),
+    path('logout/', logout, name = 'logout'),
     path('administration/', administration, name = 'administration'),
     
     #Course Pages (Administration)
     path('administration/courseList/', courseList, name = 'courseList'),
     path('administration/courseList/courseRegistration/', courseRegistration, name = 'courseRegistration'),
     path('administration/courseList/schoolProgramRegistration/', schoolProgramRegistration, name = 'schoolProgramRegistration'),
-    path('administration/courseList/subjectRegistration/', subjectRegistration, name = 'subjectRegistration'),
     path('administration/courseDetails/<uuid:course_id>/', courseDetails, name = 'courseDetails'),
+    path('administration/courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),
 
     #University Pages (Administration)
-    path('administration/courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),
     path('administration/universityList/', universityList, name = 'universityList'),
     path('administration/universityRegistration/', universityRegistration, name = 'universityRegistration'),
     path('administration/universityMaintenance/<uuid:university_id>/', universityMaintenance, name = 'universityMaintenance'),
+
+    #Subject Pages (Administration)
+    path('administration/courseList/subjectRegistration/', subjectRegistration, name = 'subjectRegistration'),
 ]
 

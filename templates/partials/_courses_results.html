@@ -9,7 +9,8 @@
             <div class="item-wrapper">
                 <div class="item-img">
                     {% if courses.course_image == null %}
-                    <img src="{% static '/images/graduacaoTemp2.jpg' %}" height="300px">
+                    <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                    style=" height: 300px; width: 300px;">
                     {% else %}
                     <img src="{{ courses.course_image }}" width="300px" height="300px">
                     {% endif %}

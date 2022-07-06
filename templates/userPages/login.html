@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Login{% endblock title %}
 {% block content %}
-<form action="{% url 'login' %}" method="POST" class="form-signin">{%csrf_token %}
+<form action="{% url 'administration' %}" method="POST" class="form-signin">{%csrf_token %}
 
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 10px;">
 

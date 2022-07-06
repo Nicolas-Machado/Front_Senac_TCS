@@ -106,20 +106,19 @@ class UniversityService():
         university = requests.get(f"{URL_SITE}/university/{request}/", headers={'Authorization': 'Token ' + token})
         university = university.json()
         
-        for courses in university['courses']:
-            if(university['is_activate'] == False):
-                university['is_activate'] = True
-            else:
-                university['is_activate'] = False
-            data = {
-                "name" : university['name'],
-                "telephone" : university['telephone'],
-                "phone_number": university['phone_number'],
-                "city" : university['city'],
-                "zip_code" : university['zip_code'],
-                "house_number" : university['house_number'],
-                "is_activate" : university['is_activate'],
-            }
+        if(university['is_activate'] == False):
+            university['is_activate'] = True
+        else:
+            university['is_activate'] = False
+        data = {
+            "name" : university['name'],
+            "telephone" : university['telephone'],
+            "phone_number": university['phone_number'],
+            "city" : university['city'],
+            "zip_code" : university['zip_code'],
+            "house_number" : university['house_number'],
+            "is_activate" : university['is_activate'],
+        }
 
         return requests.patch(f"{URL_SITE}/university/{request}/", data=data, headers={'Authorization': 'Token ' + token})
     

@@ -16,7 +16,8 @@
             <div class="col-12 col-lg-6 md-pb">
                 <div class="image-wrapper">
                     {% if universities.university_image_local == null %}
-                    <img src="{% static '/images/locationTemp.jpg' %}">
+                    <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                                style=" height: 400px; width: 400px;">
                     {% else %}
                     <img src="{{ universities.university_image_local }}" alt="Imagem da Faculdade">
                     {% endif %}

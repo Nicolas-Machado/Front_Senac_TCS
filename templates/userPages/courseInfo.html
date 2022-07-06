@@ -113,72 +113,81 @@
 
 </section>
 
-<section data-bs-version="5" class="form5 cid-emailField mt-5 mb-5" id="form5-d">
+    <section data-bs-version="5" class="form5 cid-emailField mt-5 mb-5" id="form5-d">
 
 
-    <div class="container">
-        <div class="mbr-section-head">
-            <h3 class="mbr-section-title text-white mbr-fonts-style align-center mb-0 display-5">
-                <strong>Para mais informações</strong>
-            </h3>
+        <div class="container">
+            <div class="mbr-section-head ">
+                <h3 class="mbr-section-title text-white mbr-fonts-style align-center mb-0 display-5">
+                    <strong>Contate uma Unidade Senac</strong>
+                </h3>
+    
+                    <p class="mbr-text text-white align-center mbr-fonts-style mt-3 display-7">Para saber mais sobre os cursos, entre
+                        em contato com uma unidade do Senac Santa Catarina
+                    </p>
+    
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <form action="{% url 'courseInfo' courses.id %}" method="POST" class="mbr-form form-with-styler">{%csrf_token %}
+    
+                        <div class="row">
+                            <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
+                                out
+                                the form!</div>
+                            <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
+                                problem!</div>
+                        </div>
+    
+                        <div class="dragArea row">
+    
+                            <div class="col col-sm-6 form-group mb-3" data-for="name">
+                                <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
+                                    class="form-control" value="" id="name" required>
+                            </div>
+    
+                            <div class="col col-sm-6 form-group mb-3" data-for="phone_number">
+                                <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
+                                    class="form-control" value="" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" maxlength="15" required>
+                            </div>
+    
+                            <div class="col col-sm-6 form-group mb-3" data-for="email">
+                                <input type="email" name="email" placeholder="E-mail" data-form-field="email"
+                                    class="form-control" value="" id="email" required>
+                            </div>
+    
+                            <div class="col col-sm-6 form-group mb-3">
+                                <select id="universities" class="form-select" name="universities">
+                                    <option selected disabled>Selecione uma Unidade</option>
+                                    {% if universities %}
+                                    {% for universities in universities %}
+                                    <option value="{{universities.id}}">{{universities.name}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+    
+                            <div class="col-12 form-group mb-3" data-for="textarea">
+                                <textarea name="message" placeholder="Mensagem" data-form-field="message"
+                                    class="form-control" id="message"></textarea>
+                            </div>
 
-        </div>
-
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="{% url 'courseInfo' courses.id %}" method="POST" class="mbr-form form-with-styler">
-                    {%csrf_token %}
-
-                    <div class="row">
-                        <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
-                            out
-                            the form!</div>
-                        <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
-                            problem!</div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                            <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
-                                class="form-control" value="" id="name">
+                            <div class="col col-sm-6 form-group mb-3" data-for="course">
+                                <input type="hidden" name="course" placeholder="course" data-form-field="course"
+                                    class="form-control" value="{{ courses.id }}" id="course" required>
+                            </div>
+    
+                            <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                                <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
+                                <button type="submit" class="btn btn-danger display-4">Enviar E-mail</button>
+                            </div>
+    
                         </div>
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                            <input type="email" name="email" placeholder="E-mail" data-form-field="email"
-                                class="form-control" value="" id="email">
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="url">
-                            <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
-                                class="form-control" value="" id="phone_number">
-                        </div>
-                        <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="message" placeholder="Mensagem" data-form-field="message"
-                                class="form-control" id="message"></textarea>
-                        </div>
-                        
-                        <div class="col-12 form-group mb-3" data-for="universities">
-                        <select id="universities" class="form-select" name="universities" required>
-                            <option selected value='0' >Selecione Uma Unidade</option>
-                            {% if universities %}
-                            {% for universities in universities %}
-                            <option value="{{universities.id}}">{{universities.name}}</option>
-                            {% endfor %}
-                            {% endif %}
-                        </select>
-                        </div>
-
-                        <div class="col-md col-sm-12 form-group mb-3" data-for="course">
-                            <input type="hidden" name="course" placeholder="" data-form-field="course"
-                                class="form-control" value="{{ courses.id }}" id="course">
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                            <div style="position: absolute; left: -100000px; opacity: 0;" contenteditable="true"></div>
-                            <button type="submit" class="btn btn-danger display-4">Enviar E-mail</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <section class="features3 cid-searchLists" id="bodyContent2">
 
@@ -245,7 +254,6 @@
     </div>
 
 </section>
-
 {% include 'partials/_social.html' %}
 {% include 'partials/_footer.html' %}
 {% endblock content %}

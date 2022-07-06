@@ -95,8 +95,14 @@
                             <label for="occupationArea" class="form-label">Area de atuação</label>
                             <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
-                                <option {% if courses.occupation_area == 'Tecnologia' %} selected {% endif %} value="Tecnologia">Tecnologia</option>
-                                <option {% if courses.occupation_area == 'Saude' %} selected {% endif %} value="Saude">Saúde</option>
+                                <option {% if courses.occupation_area == 'saude' %} selected {% endif %} value="saude">Ambiente e Saúde</option>
+                                <option {% if courses.occupation_area == 'educacional' %} selected {% endif %} value="educacional">Desenvolvimento Educacional e Social</option>
+                                <option {% if courses.occupation_area == 'gestao' %} selected {% endif %} value="gestao">Gestão e Negócios</option>
+                                <option {% if courses.occupation_area == 'informacao' %} selected {% endif %} value="informacao">Informação e Comunicação</option>
+                                <option {% if courses.occupation_area == 'alimenticia' %} selected {% endif %} value="alimenticia">Produção Alimentícia</option>
+                                <option {% if courses.occupation_area == 'design' %} selected {% endif %} value="design">Produção Cultural e Design</option>
+                                <option {% if courses.occupation_area == 'seguranca' %} selected {% endif %} value="seguranca">Segurança</option>
+                                <option {% if courses.occupation_area == 'turismo' %} selected {% endif %} value="turismo">Turismo, Hospitalidade e Lazer</option>
                             </select>
                         </div>
 
