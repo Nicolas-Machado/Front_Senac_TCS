@@ -33,12 +33,13 @@
     <div class="container mbr-fonts-style display-7">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 table-responsive">
-                <table class="table align-middle" >
+                <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
+                <table class="table align-center" >
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
+                            <th scope="col">Status</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cidade</th>
-                            <th scope="col">Status</th>
                             <th scope="col">Gerenciamento</th>
                         </tr>
                     </thead>
@@ -46,10 +47,6 @@
                 </table>
                 {% include 'partials/_admUniversity_check_results.html'%}
 
-
-                <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
-                </div>
             </div>
         </div>
     </div>

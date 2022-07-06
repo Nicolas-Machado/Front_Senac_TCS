@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form method="POST" action="">
+                <form method="POST" action="{% url 'universityMaintenance' universities.id %}"  enctype="multipart/form-data">{%csrf_token %}
 
                     <h1>Editar Unidade de Ensino</h1>
                     <hr>
@@ -66,7 +66,7 @@
 
                         <div class="col-md-2 mb-3 mt-3">
                             <label for="houseNumber" class="form-label">Número</label>
-                            <input type="number" name="houseNumber" class="form-control" id="houseNumber" value="{{universities.number}}" required>
+                            <input type="number" name="houseNumber" class="form-control" id="houseNumber" value="{{universities.house_number}}" required>
                         </div>
 
                     </div>
@@ -84,9 +84,9 @@
 
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="state" class="form-label">Estado</label>
-                            <select id="state" class="form-select" name="state" value="{{universities.state}}" required>
+                            <select id="state" class="form-select" name="state" required>
                                 <option selected disabled>Selecione</option>
-                                <option value="SC">Santa Catarina</option>
+                                <option {% if universities.state == 'SC' %} selected {% endif %} value="SC">Santa Catarina</option>
                             </select>
                         </div>
 
@@ -114,12 +114,30 @@
                             </div>
 
                             <div class="col-md-6 mb-3 mt-3">
-                                <label for="state" class="form-label">Cursos Disponíveis</label>
-                                <select id="state" class="form-select" name="state" multiple>
+                                <label for="courses" class="form-label">Cursos Cadastrados na Universidade</label>
+                                <select id="courses" class="form-select" name="courses" multiple>
+                                    <option selected disabled>Selecione</option>
+                                    {% if courses_uni %}
+                                    {% for courses_uni in courses_uni %}
+                                    <option selected value="{{courses_uni.id}}">{{courses_uni.name}}, 
+                                        {{ courses_uni.course_type }}, 
+                                        {{ courses_uni.modality }}, 
+                                        {{ courses_uni.occupation_area }}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3 mt-3">
+                                <label for="courses_add" class="form-label">Cursos Disponiveis</label>
+                                <select id="courses_add" class="form-select" name="courses_add" multiple>
                                     <option selected disabled>Selecione</option>
                                     {% if courses %}
                                     {% for courses in courses %}
-                                    <option value="{{courses.name}}">{{courses.name}}</option>
+                                        <option value="{{courses.id}}">{{courses.name}}, 
+                                            {{ courses.course_type }}, 
+                                            {{ courses.modality }}, 
+                                            {{ courses.occupation_area }}</option>
                                     {% endfor %}
                                     {% endif %}
                                 </select>
@@ -130,14 +148,20 @@
                         <div class="row">
 
                             <div class="col-md-4 mb-3 mt-3">
-                                <label for="universityImage" class="form-label">Imagem Card da Universidade</label>
-                                <input class="form-file" type="file" name="universityImage" id="universityImage">
+                                <label for="file" class="form-label">Imagem Card da Universidade</label>
+                                <input class="form-control" type="file" name="universityImage" id="universityImage">
                             </div>
+
+                            <div class="col-md-4 mb-3 mt-3">
+                                <label for="localization" class="form-label">Localização (Maps)</label>
+                                <input type="text" name="localization" class="form-control" id="localization" required value="{{universities.localization}}">
+                            </div>
+
 
                         </div>
 
                         <div class="col-12 mb-3 mt-3">
-                            <button type="submit" class="btn btn-success-outline">Salvar</button>
+                            <button type="submit" class="btn btn-success-outline">Cadastrar</button>
                         </div>
 
                 </form>

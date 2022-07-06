@@ -34,7 +34,23 @@
     <div class="container mbr-fonts-style display-7">
         <div class="row justify-content-center">
             <div class="col-12 col-lg table-responsive">
-                <table class="table align: center">
+                
+                <div class="mbr-section-btn">
+                    <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar
+                        Curso</a>
+                    </div>
+                
+                    <div class="mbr-section-btn">
+                        <a class="btn btn-outline-primary display-3" href="{% url 'schoolProgramRegistration' %}">Cadastrar
+                            Fases</a>
+                    </div>
+                
+                    <div class="mbr-section-btn">
+                        <a class="btn btn-outline-primary display-3" href="{% url 'subjectRegistration' %}">Cadastrar
+                            Matérias</a>
+                    </div>
+                
+                    <table class="table align: center">
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Status</th>
@@ -49,27 +65,12 @@
 
                 </table>
 
-
-
-                <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar
-                        Curso</a>
-                </div>
-                
-                <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'schoolProgramRegistration' %}">Cadastrar
-                        Fases</a>
-                </div>
-               
-                <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'subjectRegistration' %}">Cadastrar
-                        Matérias</a>
-                </div>
             
             </div>
         </div>
     </div>
 </section>
+
 
 
 {% endblock content %}

@@ -50,32 +50,59 @@ class UniversityService():
             return None
         return response.json()
     
-    def post_university(request):
-        token = authenticate()
-        print(request)
-        for courses in request['courses']:
-            print(courses)
+    def put_university(request, files, university_id, token):
+        courses = request.getlist('courses_add')
+        courses = courses + request.getlist('courses')
+        data = {
+                "name" : request['name'],
+                "telephone" : request['phone'],
+                "phone_number": request['optionalPhone'],
+                "attendance" : request['attendance'],
+                "email": request['emailUniversity'],
+                "street": request['street'],
+                "neighborhood" : request['neighborhood'],
+                "city" : request['city'],
+                "state" : request['state'],
+                "zip_code" : request['zipCode'],
+                "house_number" : request['houseNumber'],
+                "localization" : request['localization'],
+                "courses" : courses,
+            }
 
-            data = {
-                    "name" : request['name'],
-                    "telephone" : request['phone'],
-                    "phone_number": request['optionalPhone'],
-                    "attendance" : request['attendance'],
-                    "email": request['emailUniversity'],
-                    "street": request['street'],
-                    "neighborhood" : request['neighborhood'],
-                    "city" : request['city'],
-                    "state" : request['state'],
-                    "zip_code" : request['zipCode'],
-                    "house_number" : request['houseNumber'],
-                    "university_image_local" : request['universityImage'],
-                    "is_activate" : True,
-                    "courses" : courses['id'],
-                }
+        if 'universityImage' in files:
+            img = {
+                "university_image_local": files['universityImage']
+            }
+            return requests.put(f"{URL_SITE}/university/{university_id}/", data=data, files=img, headers={'Authorization': 'Token ' + token})
+        return requests.put(f"{URL_SITE}/university/{university_id}/", data=data, headers={'Authorization': 'Token ' + token})
+    
+    def post_university(request, files, token):
+
+        data = {
+                "name" : request['name'],
+                "telephone" : request['phone'],
+                "phone_number": request['optionalPhone'],
+                "attendance" : request['attendance'],
+                "email": request['emailUniversity'],
+                "street": request['street'],
+                "neighborhood" : request['neighborhood'],
+                "city" : request['city'],
+                "state" : request['state'],
+                "zip_code" : request['zipCode'],
+                "house_number" : request['houseNumber'],
+                "localization" : request['localization'],
+                "is_activate" : True,
+                "courses" : request.getlist('courses'),
+            }
+        if 'universityImage' in files:
+            img = {
+                    "university_image_local": files['universityImage']
+            }
+            return requests.post(f"{URL_SITE}/university/", data=data, files=img, headers={'Authorization': 'Token ' + token})
         return requests.post(f"{URL_SITE}/university/", data=data, headers={'Authorization': 'Token ' + token})
 
+
     def put_active_universities(request, token):
-        token = authenticate()
         university = requests.get(f"{URL_SITE}/university/{request}/", headers={'Authorization': 'Token ' + token})
         university = university.json()
         
@@ -127,27 +154,77 @@ class CourseService():
             return None
         return response.json()
 
-    def post_courses(request, files):
-        token = authenticate()
-
-        print(files['curriculum'])
+    def post_courses(request, files, token):
 
         data = {
                 "name" : request['name'],
                 "course_type" : request['courseType'],
                 "course_objective": request['courseObjective'],
-                "curriculum" : files['curriculum'],
                 "completion_profile": request['completionProfile'],
                 "duration_time": request['durationTime'],
                 "occupation_area" : request['occupationArea'],
                 "modality" : request['modalities'],
-                "course_image" : files['courseImage'],
                 "mec_score" : request['mecScore'],
+                "is_activate" : True
         }
+        
+        if "curriculum" in files or "courseImage" in files:
+            img = {}   
+            if "curriculum" in files:
+                img.update({"curriculum" : files['curriculum']})
+            if "courseImage" in files :
+                img.update({"course_image" : files['courseImage']})
+
+            return requests.post(f"{URL_SITE}/course/", data=data, files=img, headers={'Authorization': 'Token ' + token})
         return requests.post(f"{URL_SITE}/course/", data=data, headers={'Authorization': 'Token ' + token})
 
+    def post_courses(request, files, token):
+
+        data = {
+                "name" : request['name'],
+                "course_type" : request['courseType'],
+                "course_objective": request['courseObjective'],
+                "completion_profile": request['completionProfile'],
+                "duration_time": request['durationTime'],
+                "occupation_area" : request['occupationArea'],
+                "modality" : request['modalities'],
+                "mec_score" : request['mecScore'],
+                "is_activate" : True
+        }
+        
+        if "curriculum" in files or "courseImage" in files:
+            img = {}   
+            if "curriculum" in files:
+                img.update({"curriculum" : files['curriculum']})
+            if "courseImage" in files :
+                img.update({"course_image" : files['courseImage']})
+
+            return requests.post(f"{URL_SITE}/course/", data=data, files=img, headers={'Authorization': 'Token ' + token})
+        return requests.post(f"{URL_SITE}/course/", data=data, headers={'Authorization': 'Token ' + token})
+
+    def put_courses(request, files, course_id, token):
+
+        data = {
+                "name" : request['name'],
+                "course_type" : request['courseType'],
+                "course_objective": request['courseObjective'],
+                "completion_profile": request['completionProfile'],
+                "duration_time": request['durationTime'],
+                "occupation_area" : request['occupationArea'],
+                "modality" : request['modalities'],
+                "mec_score" : request['mecScore'],
+        }
+        if "curriculum" in files or "courseImage" in files:
+            img = {}   
+            if "curriculum" in files:
+                img.update({"curriculum" : files['curriculum']})
+            if "courseImage" in files :
+                img.update({"course_image" : files['courseImage']})
+
+            return requests.put(f"{URL_SITE}/course/{course_id}/", data=data, files=img, headers={'Authorization': 'Token ' + token})
+        return requests.put(f"{URL_SITE}/course/{course_id}/", data=data, headers={'Authorization': 'Token ' + token})
+
     def put_active_courses(request, token):
-        token = authenticate()
         course = requests.get(f"{URL_SITE}/course/{request}/", headers={'Authorization': 'Token ' + token})
         course = course.json()
         if(course['is_activate'] == False):
@@ -172,7 +249,7 @@ class CourseService():
 
     def get_courses_by_id(course_id) -> Dict:
         token = authenticate()
-        response = requests.get(f"{URL_SITE}/course/{course_id}/?is_activate=true", headers={'Authorization': 'Token ' + token})
+        response = requests.get(f"{URL_SITE}/course/{course_id}/", headers={'Authorization': 'Token ' + token})
         if not response.ok:
             return None
         return response.json()
@@ -263,7 +340,7 @@ class Send_EmailService():
                 "email_university": university['email'],
                 "phone_number" : request['phone_number'],
                 "message": request['message'],
-                "courses": request['courses'],
+                "courses": request['course'],
                 "universities" : request['universities']
             }
         else:

@@ -96,6 +96,10 @@ def postGraduateCourses(request):
 
 def courseInfo(request, course_id):
 
+    if request.method == 'POST':
+        if request.POST['universities'] != '0':
+            Send_EmailService.post_send_email(request.POST)
+
     course = CourseService.get_courses_by_id(course_id)
     university = CourseService.get_universities_in_course(course_id)
     phases = CourseService.get_phases_in_courses(course_id)
@@ -106,6 +110,7 @@ def courseInfo(request, course_id):
         'phases': phases,
         # 'subjects': subjects
     }
+
     return render(request, 'userPages/courseInfo.html', data)
 
 def courseList(request):
@@ -122,7 +127,18 @@ def courseList(request):
     return render(request, template, data)
 
 def courseRegistration(request):
-    return render(request, 'administration/courseRegistration.html')
+    template = 'administration/courseRegistration.html'
+
+    if request.method == 'POST':
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        CourseService.post_courses(request.POST, request.FILES, token)
+        template = 'administration/courseList.html'
+
+    course = CourseService.get_all_courses()
+    data = {
+        'courses': course
+    }
+    return render(request, template, data)
 
 def courseSave(request):
 
@@ -138,12 +154,32 @@ def courseSave(request):
     return render(request, 'administration/courseList.html', data)
 
 def courseMaintenance(request, course_id):
-
+    template = 'administration/courseMaintenance.html'
     course = CourseService.get_courses_by_id(course_id)
+    print(request.FILES)
+    if request.method == 'POST':
+        template = 'administration/courseList.html'
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        CourseService.put_courses(request.POST, request.FILES, course_id, token)
+        course = CourseService.get_all_courses()
+
     data = {
         'courses': course,
     }
-    return render(request, 'administration/courseMaintenance.html', data)
+    return render(request, template, data)
+
+def courseDetails(request, course_id):
+
+    course = CourseService.get_courses_by_id(course_id)
+    phases = CourseService.get_phases_in_courses(course_id)
+    # subjects = CourseService.get_subjects_in_phases()
+    data = {
+        'courses': course,
+        'phases': phases,
+        # 'subjects': subjects
+    }
+
+    return render(request, 'administration/courseDetails.html', data)
 
 
 #-------------------------------------------------------------------------------------------------------------END COURSE VIEWS--------------------------------------------------------------------------------------
@@ -200,25 +236,55 @@ def universityList(request):
     return render(request, template, data)
 
 def universityRegistration(request):
-    if request.method == 'POST':
-        UniversityService.post_university(request.POST)
-        
-    response = CourseService.get_courses()
+    template = 'administration/universityRegistration.html'
+    response = CourseService.get_all_courses()
     data = {
         'courses': response
     }
-    return render(request, 'administration/universityRegistration.html', data)
+
+    if request.method == 'POST':
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        UniversityService.post_university(request.POST, request.FILES, token)
+        template = 'administration/universityList.html'
+        response = UniversityService.get_all_universities()
+        data = {
+        'universities': response
+        }
+    
+    return render(request, template, data)
 
 def universityMaintenance(request, university_id):
+    template = 'administration/universityMaintenance.html'
+   
 
     university = UniversityService.get_universities_by_id(university_id)
     course = CourseService.get_courses()
+    courses_uni = CourseService.get_courses_in_university(university_id)
+    courses_reg = []
+
+    for courses in course:
+        courses_reg.append(courses)
+    
+    for courses_ in courses_uni:
+        for courses in course:
+            if courses_['id'] == courses['id']:
+                courses_reg.remove(courses_)
+    
     data = {
         'universities': university,
-        'courses': course
+        'courses': courses_reg,
+        'courses_uni': courses_uni
     }
-    return render(request, 'administration/universityMaintenance.html', data)
 
+    if request.method == 'POST':
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        UniversityService.put_university(request.POST, request.FILES, university_id, token)
+        template = 'administration/universityList.html'
+        response = UniversityService.get_all_universities()
+        data = {
+        'universities': response
+        }
+    return render(request, template, data)
 
 #-------------------------------------------------------------------------------------------------------------END UNIVERSITY VIEWS--------------------------------------------------------------------------------------
 
@@ -231,16 +297,16 @@ def administration(request):
    return render(request, 'administration/homeAdministration.html')
 
 def login(request):
-    return render(request, 'userPages/login.html')
-
-def login_authentication(request):
-    global _USERNAME, _PASSWORD
-    _USERNAME = request.POST['username']
-    _PASSWORD = request.POST['password']
-    token = adm_authenticate(_USERNAME, _PASSWORD)
-    template = 'administration/homeAdministration.html'
-    if token == None:
-        template = 'userPages/login.html'
+    template = 'userPages/login.html'
+    if request.method == 'POST':
+        global _USERNAME, _PASSWORD
+        _USERNAME = request.POST['username']
+        _PASSWORD = request.POST['password']
+        
+        token = adm_authenticate(_USERNAME, _PASSWORD)
+        template = 'administration/homeAdministration.html'
+        if token == None:
+            template = 'userPages/login.html'
     return render(request, template)
 
 def schoolProgramRegistration(request):

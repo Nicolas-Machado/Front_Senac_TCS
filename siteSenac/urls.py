@@ -17,14 +17,13 @@ urlpatterns = [
     # Administration Paths
     path('login/', login, name = 'login'),
     path('administration/', administration, name = 'administration'),
-    path('login_authentication/', login_authentication, name = 'login_authentication'),
     
     #Course Pages (Administration)
     path('administration/courseList/', courseList, name = 'courseList'),
     path('administration/courseList/courseRegistration/', courseRegistration, name = 'courseRegistration'),
-    path('courseSave/', courseSave, name = 'courseSave'),
     path('administration/courseList/schoolProgramRegistration/', schoolProgramRegistration, name = 'schoolProgramRegistration'),
     path('administration/courseList/subjectRegistration/', subjectRegistration, name = 'subjectRegistration'),
+    path('administration/courseDetails/<uuid:course_id>/', courseDetails, name = 'courseDetails'),
 
     #University Pages (Administration)
     path('administration/courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),

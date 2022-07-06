@@ -16,10 +16,10 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Edição de Faculdade</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Edição de Curso</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Use esta página para editar um curso/faculdade diponível no site (Graduação/Pós-Graduação)</p>
+                            Use esta página para editar um curso diponível no site</p>
 
                     </div>
                 </div>
@@ -33,10 +33,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
                     {% csrf_token %}
 
-                    <h1>Editar Curso/Faculdade</h1>
+                    <h1>Editar Curso</h1>
                     <hr></hr>
 
                     <div class="row">
@@ -59,8 +59,8 @@
                             <label for="courseType" class="form-label">Tipo de Curso</label>
                             <select id="courseType" class="form-select" name="courseType" required>
                                 <option selected disabled>Escolha uma opção</option>
-                                <option value="GRADUACAO">Graduação</option>
-                                <option value="POS_GRADUACAO">Pós-Graduação</option>
+                                <option  {% if courses.course_type == 'GRADUACAO' %} selected {% endif %} value="GRADUACAO">Graduação</option>
+                                <option  {% if courses.course_type == 'POS_GRADUACAO' %} selected {% endif %} value="POS_GRADUACAO">Pós-Graduação</option>
                             </select>
                         </div>
 
@@ -68,9 +68,9 @@
                             <label for="modalities" class="form-label">Modalidade</label>
                             <select id="modalities" class="form-select" name="modalities" required>
                                 <option selected disabled>Escolha uma opção</option>
-                                <option value="PRESENCIAL">Educação Presencial</option>
-                                <option value="HIBRIDO">Educação Híbrida</option>
-                                <option value="EAD">Educação a Distância</option>
+                                <option {% if courses.modality == 'PRESENCIAL' %} selected {% endif %} value="PRESENCIAL">Educação Presencial</option>
+                                <option {% if courses.modality == 'HIBRIDO' %} selected {% endif %} value="HIBRIDO">Educação Híbrida</option>
+                                <option {% if courses.modality == 'EAD' %} selected {% endif %} value="EAD">Educação a Distância</option>
                                 
                             </select>
                         </div>
@@ -83,11 +83,11 @@
                             <label for="mecScore" class="form-label">Nota do MEC</label>
                             <select id="mecScore" class="form-select" name="mecScore" required>
                                 <option selected disabled>Selecione</option>
-                                <option value="MEC1">NOTA 1 DO MEC</option>
-                                <option value="MEC2">NOTA 2 DO MEC</option>
-                                <option value="MEC3">NOTA 3 DO MEC</option>
-                                <option value="MEC4">NOTA 4 DO MEC</option>
-                                <option value="MEC5">NOTA 5 DO MEC</option>
+                                <option {% if courses.mec_score == 'MEC1' %} selected {% endif %} value="MEC1">NOTA 1</option>
+                                <option {% if courses.mec_score == 'MEC2' %} selected {% endif %} value="MEC2">NOTA 2</option>
+                                <option {% if courses.mec_score == 'MEC3' %} selected {% endif %} value="MEC3">NOTA 3</option>
+                                <option {% if courses.mec_score == 'MEC4' %} selected {% endif %} value="MEC4">NOTA 4</option>
+                                <option {% if courses.mec_score == 'MEC5' %} selected {% endif %} value="MEC5">NOTA 5</option>
                             </select>
                         </div>
 
@@ -95,8 +95,8 @@
                             <label for="occupationArea" class="form-label">Area de atuação</label>
                             <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
-                                <option>Tecnologia</option>
-                                <option>Saúde</option>
+                                <option {% if courses.occupation_area == 'Tecnologia' %} selected {% endif %} value="Tecnologia">Tecnologia</option>
+                                <option {% if courses.occupation_area == 'Saude' %} selected {% endif %} value="Saude">Saúde</option>
                             </select>
                         </div>
 
@@ -106,12 +106,12 @@
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="curriculum" class="form-label">Grade Curricular</label>
-                            <input type="file" name="curriculum" id="curriculum" value="{{courses.curriculum}}">
+                            <input type="file" name="curriculum" id="curriculum">
                         </div>
 
                         <div class="col-md-4 mb-3 mt-3">
                             <label for="courseImage" class="form-label">Imagem Card do Curso</label>
-                            <input type="file" name="courseImage" id="courseImage" value="{{courses.course_image}}">
+                            <input type="file" name="courseImage" id="courseImage">
                         </div>
 
                     </div>

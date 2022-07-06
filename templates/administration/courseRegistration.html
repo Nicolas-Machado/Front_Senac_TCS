@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form action="{% url 'courseSave' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'courseRegistration' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <h1>Novo Curso/Faculdade</h1>
@@ -83,11 +83,11 @@
                             <label for="mecScore" class="form-label">Nota do MEC</label>
                             <select id="mecScore" class="form-select" name="mecScore" required>
                                 <option selected disabled>Selecione</option>
-                                <option value="MEC1">NOTA 1 DO MEC</option>
-                                <option value="MEC2">NOTA 2 DO MEC</option>
-                                <option value="MEC3">NOTA 3 DO MEC</option>
-                                <option value="MEC4">NOTA 4 DO MEC</option>
-                                <option value="MEC5">NOTA 5 DO MEC</option>
+                                <option value="MEC1">NOTA 1</option>
+                                <option value="MEC2">NOTA 2</option>
+                                <option value="MEC3">NOTA 3</option>
+                                <option value="MEC4">NOTA 4</option>
+                                <option value="MEC5">NOTA 5</option>
                             </select>
                         </div>
 
@@ -95,8 +95,8 @@
                             <label for="occupationArea" class="form-label">Area de atuação</label>
                             <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
-                                <option>Tecnologia</option>
-                                <option>Saúde</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Saude">Saúde</option>
                             </select>
                         </div>
 
