@@ -31,26 +31,37 @@
 
 
 <section data-bs-version="5.1" class="features3 cid-modalities" id="courseListField">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-12">
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar
+                            Curso</a>
+                        </div>
+                    
+                        <div class="col-lg-4">
+                            <a class="btn btn-outline-primary display-3" href="{% url 'schoolProgramRegistration' %}">Cadastrar
+                                Fases</a>
+                        </div>
+                    
+                        <div class="col-lg-4">
+                            <a class="btn btn-outline-primary display-3" href="{% url 'subjectRegistration' %}">Cadastrar
+                                Matérias</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mbr-fonts-style display-7">
         <div class="row justify-content-center">
             <div class="col-12 col-lg table-responsive">
+
                 
-                <div class="mbr-section-btn">
-                    <a class="btn btn-outline-primary display-3" href="{% url 'courseRegistration' %}">Cadastrar
-                        Curso</a>
-                    </div>
-                
-                    <div class="mbr-section-btn">
-                        <a class="btn btn-outline-primary display-3" href="{% url 'schoolProgramRegistration' %}">Cadastrar
-                            Fases</a>
-                    </div>
-                
-                    <div class="mbr-section-btn">
-                        <a class="btn btn-outline-primary display-3" href="{% url 'subjectRegistration' %}">Cadastrar
-                            Matérias</a>
-                    </div>
-                
-                    <table class="table align: center">
+
+                <table class="table align: center">
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Status</th>
