@@ -252,5 +252,6 @@ def schoolProgramRegistration(request):
     }
     return render(request, 'administration/schoolProgramRegistration.html', data)
 
-
+def subjectRegistration(request):
+    return render(request, 'administration/subjectRegistration.html')
 #-------------------------------------------------------------------------------------------------------------END ADMINISTRATION VIEWS--------------------------------------------------------------------------------------

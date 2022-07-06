@@ -3,292 +3,302 @@
 {% block title %}Home Senac{% endblock %}
 {% block content %}
 
-    {% include 'partials/_menu.html' %}
-    <section data-bs-version="5.1" class="header1 cid-headerHome" id="header1-0">
+{% include 'partials/_menu.html' %}
+<section data-bs-version="5.1" class="header1 cid-headerHome" id="header1-0">
 
-        <div class="mbr-overlay">
+    <div class="mbr-overlay">
 
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source src="{% static 'videos/Library.mp4' %}" type="video/mp4">
-                
-            </video>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="{% static 'videos/Library.mp4' %}" type="video/mp4">
 
-        </div>
+        </video>
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-7">
-                    <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1 animate__animated animate__fadeIn ">
-                        <strong>Senac Santa Catarina</strong>
-                    </h1>
+    </div>
 
-                    <p class="mbr-text mbr-fonts-style text-black display-6 animate__animated animate__fadeInUp">Toda
-                        forma de aprender tem o seu valor. O Senac
-                        valoriza todas elas<br></p>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-7">
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1 animate__animated animate__fadeIn ">
+                    <strong>Senac Santa Catarina</strong>
+                </h1>
 
-                </div>
-            </div>
-        </div>
-        
-
-       
-    </section>
-
-    <section data-bs-version="5.1" class="features14 cid-homeInfo" id="features15-5">
-
-        
-
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="card col-12 col-md-6 col-lg-6">
-                    <div class="card-wrapper">
-                        <span class="mbr-iconfont mb-5 mobi-mbri-contact-form mobi-mbri"
-                            style="color: rgb(101, 146, 230); fill: rgb(101, 146, 230);"></span>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style mb-2 display-5"><strong>Mais de 150 mil
-                                    matrículas</strong></h4>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-12 col-md-6 col-lg-6">
-                    <div class="card-wrapper">
-                        <span class="mbr-iconfont mb-3 mobi-mbri-cash mobi-mbri"
-                            style="color: rgb(255, 153, 102); fill: rgb(255, 153, 102);"></span>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style mb-2 display-5"><strong>Mais de 40 mil bolsas de
-                                    estudo</strong></h4>
-
-                        </div>
-                    </div>
-                </div>
-
+                <p class="mbr-text mbr-fonts-style text-black display-6 animate__animated animate__fadeInUp">Toda
+                    forma de aprender tem o seu valor. O Senac
+                    valoriza todas elas<br></p>
 
             </div>
         </div>
-    </section>
+    </div>
 
-    <section data-bs-version="5.1" class="features11 cid-universitiesField" id="features12-6">
 
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg">
-                    <div class="card-wrapper">
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style mb-4 display-2">
-                                <strong>Unidades de Ensino</strong>
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                                No território de Santa Catarina, temos diversas unidades de ensino, levando
-                                todo o conhecimento para pertinho de você
-                                <br>
-                            </p>
 
-                            <div class="mbr-section-btn mb-4"><a class="btn btn-danger display-4"
-                                    href="{% url 'universities' %}">Leia Mais</a></div>
-                        </div>
+</section>
+
+<section data-bs-version="5.1" class="features14 cid-homeInfo" id="features15-5">
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card col-12 col-md-6 col-lg-6">
+                <div class="card-wrapper">
+                    <span class="mbr-iconfont mb-5 mobi-mbri-contact-form mobi-mbri"
+                        style="color: rgb(101, 146, 230); fill: rgb(101, 146, 230);"></span>
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style mb-2 display-5"><strong>Mais de 150 mil
+                                matrículas</strong></h4>
+
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 md-pb">
-                    <div class="image-wrapper">
-                        <img src="{% static 'images/senac-joinville.jpg' %}">
+            </div>
+            <div class="card col-12 col-md-6 col-lg-6">
+                <div class="card-wrapper">
+                    <span class="mbr-iconfont mb-3 mobi-mbri-cash mobi-mbri"
+                        style="color: rgb(255, 153, 102); fill: rgb(255, 153, 102);"></span>
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style mb-2 display-5"><strong>Mais de 40 mil bolsas de
+                                estudo</strong></h4>
+
                     </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features11 cid-universitiesField" id="features12-6">
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg">
+                <div class="card-wrapper">
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style mb-4 display-2">
+                            <strong>Unidades de Ensino</strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            No território de Santa Catarina, temos diversas unidades de ensino, levando
+                            todo o conhecimento para pertinho de você
+                            <br>
+                        </p>
+
+                        <div class="mbr-section-btn mb-4"><a class="btn btn-danger display-4"
+                                href="{% url 'universities' %}">Leia Mais</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 md-pb">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/senac-joinville.jpg' %}">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
-    <section data-bs-version="5.1" class="features3 cid-modalities" id="modalitiesField">
+<section data-bs-version="5.1" class="features3 cid-modalities" id="modalitiesField">
 
 
-        <div class="container">
-            <div class="mbr-section-head">
-                <h4 class="mbr-section-title mbr-fonts-style align-center mb-5 display-2"><strong>Modalidades
-                        Disponíveis</strong></h4>
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-5 display-2"><strong>Modalidades
+                    Disponíveis</strong></h4>
 
+        </div>
+        <div class="row mt-4">
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/clasroomTemp.jpg' %}" alt="" width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5"><strong>Graduação</strong></h5>
+
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Aprenda uma profissão com cursos que
+                            preparam você para os desafios do mercado.</p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'graduationCourses' %}"
+                            class="btn item-btn btn-outline-primary display-7">Leia
+                            Mais</a></div>
+                </div>
             </div>
-            <div class="row mt-4">
-                <div class="item features-image сol-12 col-md-6 col-lg-4">
-                    <div class="item-wrapper">
-                        <div class="item-img">
-                            <img src="{% static 'images/clasroomTemp.jpg' %}"
-                                alt="" width="300px" height="300px">
-                        </div>
-                        <div class="item-content">
-                            <h5 class="item-title mbr-fonts-style display-5"><strong>Graduação</strong></h5>
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/mbr-4.jpg' %}" alt="" width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <div><strong>Pós-Graduação</strong></div>
+                        </h5>
 
-                            <p class="mbr-text mbr-fonts-style mt-3 display-7">Aprenda uma profissão com cursos que
-                                preparam você para os desafios do mercado.</p>
-                        </div>
-                        <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'graduationCourses' %}"
-                                class="btn item-btn btn-outline-primary display-7">Leia
-                                Mais</a></div>
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Por aqui, você tem espaço para
+                            experimentar os inúmeros caminhos profissionais que um mesmo curso pode oferecer,
+                            conhecendo na prática as atividades que mais combinam com você.</p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'postGraduateCourses' %}"
+                            class="btn item-btn btn-outline-primary display-7">Leia Mais</a>
                     </div>
                 </div>
-                <div class="item features-image сol-12 col-md-6 col-lg-4">
-                    <div class="item-wrapper">
-                        <div class="item-img">
-                            <img src="{% static 'images/mbr-4.jpg' %}" alt="" width="300px" height="300px">
-                        </div>
-                        <div class="item-content">
-                            <h5 class="item-title mbr-fonts-style display-5">
-                                <div><strong>Pós-Graduação</strong></div>
-                            </h5>
-
-                            <p class="mbr-text mbr-fonts-style mt-3 display-7">Por aqui, você tem espaço para
-                                experimentar os inúmeros caminhos profissionais que um mesmo curso pode oferecer,
-                                conhecendo na prática as atividades que mais combinam com você.</p>
-                        </div>
-                        <div class="mbr-section-btn item-footer mt-2"><a href="{% url 'postGraduateCourses' %}"
-                                class="btn item-btn btn-outline-primary display-7">Leia Mais</a>
-                        </div>
+            </div>
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/pessoa-mexendo-no-computador-fonte-sindcont-816x459.jpg' %}" alt=""
+                            width="300px" height="300px">
                     </div>
-                </div>
-                <div class="item features-image сol-12 col-md-6 col-lg-4">
-                    <div class="item-wrapper">
-                        <div class="item-img">
-                            <img src="{% static 'images/pessoa-mexendo-no-computador-fonte-sindcont-816x459.jpg' %}" alt=""
-                                width="300px" height="300px">
-                        </div>
-                        <div class="item-content">
-                            <h5 class="item-title mbr-fonts-style display-5">
-                                <strong>Educação a Distância</strong>
-                            </h5>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <strong>Educação a Distância</strong>
+                        </h5>
 
-                            <p class="mbr-text mbr-fonts-style mt-3 display-7">Com uso de recursos tecnológicos,
-                                interface moderna e conteúdo constantemente atualizado, o Senac oferece um variado
-                                portfólio de cursos a distância para quem não tem disponibilidade de frequentar aulas
-                                presenciais. As opções variam de cursos de qualificação até pós-graduação<br></p>
-                        </div>
-                        <div class="mbr-section-btn item-footer mt-2"><a href="https://www.ead.senac.br/"
-                                class="btn item-btn btn-outline-primary display-7" target="_blank">Leia Mais</a>
-                        </div>
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Com uso de recursos tecnológicos,
+                            interface moderna e conteúdo constantemente atualizado, o Senac oferece um variado
+                            portfólio de cursos a distância para quem não tem disponibilidade de frequentar aulas
+                            presenciais. As opções variam de cursos de qualificação até pós-graduação<br></p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href="https://www.ead.senac.br/"
+                            class="btn item-btn btn-outline-primary display-7" target="_blank">Leia Mais</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section data-bs-version="5.1" class="gallery4 mbr-gallery cid-aboutUs" id="gallery4-b">
+<section data-bs-version="5.1" class="gallery4 mbr-gallery cid-aboutUs" id="gallery4-b">
 
-        <div class="container-fluid">
-            <div class="mbr-section-head">
-                <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-2"><strong>Sobre Nós</strong></h3>
-            </div>
-            <div class="row mbr-gallery mt-4">
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-6.jpeg' %}" alt="" data-slide-to="0" data-bs-slide-to="0"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-5.jpg' %}" alt="" data-slide-to="1" data-bs-slide-to="1"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-7.jpg' %}" alt="" data-slide-to="2" data-bs-slide-to="2"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-8.jpg' %}" alt="" data-slide-to="3" data-bs-slide-to="3"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-4.jpg' %}" alt="" data-slide-to="4" data-bs-slide-to="4"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 item gallery-image">
-                    <div class="item-wrapper" data-toggle="modal" data-bs-toggle="modal" data-target="#t4CuExDyEa-modal"
-                        data-bs-target="#t4CuExDyEa-modal">
-                        <img class="w-100" src="{% static 'images/mbr-11.jpeg' %}" alt="" data-slide-to="5" data-bs-slide-to="5"
-                            data-target="#lb-t4CuExDyEa" data-bs-target="#lb-t4CuExDyEa">
-                        <div class="icon-wrapper">
-                            <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    <div class="container-fluid">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-2"><strong>Sobre Nós</strong></h3>
         </div>
-    </section>
-
-    <section data-bs-version="5.1" class="video1 cid-modalEvents" id="video1-e">
-
-
-        <div class="align-center container">
-            <div class="mbr-section-head">
-                <h4 class="mbr-section-title mbr-fonts-style mb-0 display-2">
-                    <strong>Eventos</strong><strong><br></strong>
-                </h4>
-
-            </div>
-            <div class="row justify-content-center mt-4">
-                <div class="col-12 col-lg-12">
-                    <div class="box">
-                        <div class="mbr-media show-modal align-center" data-modal=".modalWindow">
-                            <img src="{% static 'images/lucas-colombo-faculdade-senac-cricima-16-2576x1717.jpg' %}" alt="">
-                            <div class="icon-wrap">
-                                <a class="text-primary"><span class="mbr-iconfont socicon-youtube socicon"
-                                        style="color: rgb(228, 63, 63); fill: rgb(228, 63, 63);"></span></a>
-                            </div>
-                        </div>
+        <div class="row mbr-gallery mt-4">
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/CePJu6tBjM6/" target="_blank">
+                    <img class="w-100" src="{% static 'images/carreira.jpg' %}" alt="" data-slide-to="0"
+                        data-bs-slide-to="0"></a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                            
+                        </span>
                     </div>
                 </div>
+
             </div>
-        </div>
-        <div>
-            <div class="modalWindow" style="display: none;">
-                <div class="modalWindow-container">
-                    <div class="modalWindow-video-container">
-                        <div class="modalWindow-video">
-                            <iframe width="100%" height="100%" frameborder="0" allowfullscreen="1"
-                                data-src="https://www.youtube.com/watch?v=YSLh3ZBJJa8"></iframe>
-                        </div>
-                        <a class="close" role="button" data-dismiss="modal" data-bs-dismiss="modal">
-                            <span aria-hidden="true" class="mbr-iconfont mobi-mbri-close mobi-mbri closeModal"></span>
-                            <span class="sr-only visually-hidden">Close</span>
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/CelsvVfLrAD/" target="_blank">
+                    <img class="w-100" src="{% static 'images/culinaria.jpg' %}" alt="" data-slide-to="1"
+                        data-bs-slide-to="1">
                         </a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/Cfbd-UuDj84/" target="_blank">
+                    <img class="w-100" src="{% static 'images/estilo.jpg' %}" alt="" data-slide-to="2"
+                        data-bs-slide-to="2"></a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                            
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/Cfo83VjrczV/" target="_blank">
+                    <img class="w-100" src="{% static 'images/vestibular.jpg' %}" alt="" data-slide-to="3"
+                        data-bs-slide-to="3"></a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                           
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/CfZLflZLA_G/" target="_blank">
+                    <img class="w-100" src="{% static 'images/100anos.jpg' %}" alt="" data-slide-to="4"
+                        data-bs-slide-to="4"></a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 item gallery-image">
+                <div class="item-wrapper">
+                    <a href="https://www.instagram.com/p/CfUq4CJrC8_/" target="_blank">
+                    <img class="w-100" src="{% static 'images/criatividade.jpg' %}" alt="" data-slide-to="5"
+                        data-bs-slide-to="5"></a>
+                    <div class="icon-wrapper">
+                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn">
+                            
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="video1 cid-modalEvents" id="video1-e">
+
+
+    <div class="align-center container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style mb-0 display-2">
+                <strong>Eventos</strong><strong><br></strong>
+            </h4>
+
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-lg-12">
+                <div class="box">
+                    <div class="mbr-media show-modal align-center" data-modal=".modalWindow">
+                        <img src="{% static 'images/lucas-colombo-faculdade-senac-cricima-16-2576x1717.jpg' %}" alt="">
+                        <div class="icon-wrap">
+                            <a class="text-primary"><span class="mbr-iconfont socicon-youtube socicon"
+                                    style="color: rgb(228, 63, 63); fill: rgb(228, 63, 63);"></span></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-    {% include 'partials/_social.html' %}
-    {% include 'partials/_footer.html' %}
-    {% endblock %}
+    </div>
+    <div>
+        <div class="modalWindow" style="display: none;">
+            <div class="modalWindow-container">
+                <div class="modalWindow-video-container">
+                    <div class="modalWindow-video">
+                        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="1"
+                            data-src="https://www.youtube.com/watch?v=YSLh3ZBJJa8"></iframe>
+                    </div>
+                    <a class="close" role="button" data-dismiss="modal" data-bs-dismiss="modal">
+                        <span aria-hidden="true" class="mbr-iconfont mobi-mbri-close mobi-mbri closeModal"></span>
+                        <span class="sr-only visually-hidden">Close</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'partials/_social.html' %}
+{% include 'partials/_footer.html' %}
+{% endblock %}

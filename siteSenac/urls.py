@@ -24,6 +24,7 @@ urlpatterns = [
     path('administration/courseList/courseRegistration/', courseRegistration, name = 'courseRegistration'),
     path('courseSave/', courseSave, name = 'courseSave'),
     path('administration/courseList/schoolProgramRegistration/', schoolProgramRegistration, name = 'schoolProgramRegistration'),
+    path('administration/courseList/subjectRegistration/', subjectRegistration, name = 'subjectRegistration'),
 
     #University Pages (Administration)
     path('administration/courseMaintenance/<uuid:course_id>/', courseMaintenance, name = 'courseMaintenance'),
