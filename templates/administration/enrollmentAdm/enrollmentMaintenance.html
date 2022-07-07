@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edição de Inscrição{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url({% static '/images/administrationTemp2.jpg' %})" id="courseRegistrationHeader">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Edição de Inscrição</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Edite aqui uma inscrição</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseRegisterField">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <form method="POST" action="">{%csrf_token %}
+
+                    <h1>Editar Inscrição</h1>
+                    <hr>
+                    </hr>
+
+                    <div class="row">
+
+                        <div class="col-md-5 mb-3 mt-3">
+                            <label for="initialDate" class="form-label">Data inicial</label>
+                            <input type="date" name="initialDate" class="form-control" id="initialDate" required>
+                        </div>
+                      
+                        <div class="col-md-5 mb-3 mt-3">
+                            <label for="finalDate" class="form-label">Data final</label>
+                            <input type="date" name="finalDate" class="form-control" id="finalDate" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                            <div class="col-md-6 mb-3 mt-3">
+                                <label for="courses" class="form-label">Cursos Cadastrados com a Inscrição</label>
+                                <select id="courses" class="form-select" name="courses" multiple>
+                                    <option selected disabled>Selecione</option>
+                                    {% if courses_enroll %}
+                                    {% for courses_enroll in courses_enroll %}
+                                    <option selected value="{{courses_enroll.id}}">{{courses_enroll.name}}, 
+                                        {{ courses_enroll.course_type }}, 
+                                        {{ courses_enroll.modality }}, 
+                                        {{ courses_enroll.occupation_area }}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="courses" class="form-label">Cursos Disponíveis</label>
+                            <select id="courses" class="form-select" name="courses" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if courses %}
+                                {% for courses in courses %}
+                                <option value="{{courses.id}}">{{courses.name}}, {{ courses.course_type }}, {{ courses.modality }}, {{ courses.occupation_area }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        
+                    </div>
+                    
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="universities" class="form-label">Unidades Cadastradas com a Inscrição</label>
+                            <select id="universities" class="form-select" name="universities" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if universities_enroll %}
+                                {% for universities_enroll in universities_enroll %}
+                                <option value="{{universities_enroll.id}}">{{universities_enroll.name}}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="universities" class="form-label">Unidades Disponíveis</label>
+                            <select id="universities" class="form-select" name="universities" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if universities %}
+                                {% for universities in universities %}
+                                <option value="{{universities.id}}">{{universities.name}}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-12 mb-3 mt-3">
+                        <button type="submit" class="btn btn-success-outline">Editar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
