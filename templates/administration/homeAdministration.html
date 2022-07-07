@@ -3,7 +3,7 @@
 {% block title %}Administração{% endblock title %}
 {% block content %}
 {% include 'partials/_administrationMenu.html' %}
-<section data-bs-version="5.1" class="info3 cid-headerPages" style= "background-image: url('../../../static/images/administrationTemp2.jpg')" id="info3-m">
+<section data-bs-version="5.1" class="info3 cid-headerPages" style= "background-image: url({% static '/images/administrationTemp2.jpg' %})" id="info3-m">
 
     <div class="mbr-overlay">
     </div>
@@ -35,8 +35,9 @@
             <h4 class="mbr-section-title mbr-fonts-style align-center mb-5 display-2"><strong>Cadastro de Itens</strong></h4>
 
         </div>
+
         <div class="row mt-4">
-            <div class="item features-image сol-12 col-md-6 col-lg-6">
+            <div class="item features-image сol-12 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
                         <img src="{% static 'images/map-register.png' %}"
@@ -51,7 +52,8 @@
                             class="btn item-btn btn-outline-primary display-7">Entrar</a></div>
                 </div>
             </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-6">
+           
+            <div class="item features-image сol-12 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
                         <img src="{% static 'images/graduation-register.jpg' %}" alt="" width="300px" height="300px">
@@ -67,6 +69,24 @@
                     </div>
                 </div>
             </div>
+
+            <div class="item features-image сol-12 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{% static 'images/graduation-register.jpg' %}" alt="" width="300px" height="300px">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <div><strong>Inscrições</strong></div>
+                        </h5>
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">Cadastre por aqui todos as inscrições disponíveis</p>
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2"><a href=""
+                            class="btn item-btn btn-outline-primary display-7">Entrar</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

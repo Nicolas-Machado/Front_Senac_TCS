@@ -8,8 +8,8 @@
             <div class="item-wrapper">
                 <div class="item-img">
                     {% if universities.university_image_local == null %}
-                    <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
-                    style=" height: 300px; width: 300px;">
+                    <img class="mb-4" src="{% static '/images/locationTemp.jpg' %}"
+                    style=" height: 100%; width: 100%;">
                     {% else %}
                         <img src="{{ universities.university_image_local }}" width="300px" height="300px">
                     {% endif %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Lista de Universidades{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url({% static '/images/administrationTemp2.jpg' %})" id="info3-m">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Lista de Universidades</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Aqui está a lista de cursos disponíveis!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseListField">
+    <div class="container mbr-fonts-style display-7">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 table-responsive">
+                <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
+                <table class="table align-center" >
+                    <thead class="table-primary text-white" style="text-align: center;">
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Gerenciamento</th>
+                        </tr>
+                    </thead>
+            
+                </table>
+                {% include 'partials/_admUniversity_check_results.html'%}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

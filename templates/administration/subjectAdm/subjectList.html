@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Lista de Cursos{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url({% static '/images/administrationTemp2.jpg' %})" id="info3-m">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Lista de Cursos</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Aqui está a lista de cursos disponíveis!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseListField">
+
+    <div class="container d-flex justify-content-start">
+
+
+            <div class="col-lg-5">
+                <a class="btn btn-outline-primary display-3" href="{% url 'subjectRegistration' %}">Cadastrar
+                    Matérias</a>
+            </div>
+    </div>
+
+    <div class="container mbr-fonts-style display-7">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-12 table-responsive">
+
+                <table class="table align-middle">
+                    <thead class="table-primary text-white align-text-middle" style="text-align: center;">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Gerenciamento</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        {% for subjects in subjects %}
+                        <tr>
+                            <td scope="row">
+                                {{subjects.name}}
+                            </td>
+                            
+                            <td scope="row">
+                                {{subjects.description}}
+                            </td>
+                        
+                            <td scope="row">
+                                <a href="{% url 'subjectMaintenance' subjects.id %}" type="button" class="btn btn-danger-outline">Editar</a>
+                                <a href="{% url 'subjectDelete' subjects.id %}" type="button" class="btn btn-danger">Deletar</a>
+                            </td>
+                                
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

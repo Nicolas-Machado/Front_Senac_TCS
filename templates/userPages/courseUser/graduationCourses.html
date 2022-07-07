@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Graduação{% endblock %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url('../../../static/images/graduationTemp8.jpg')" id="info3-m">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Graduação</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">Aprenda uma profissão com cursos que preparam
+                            você para os desafios do mercado.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-searchLists" id="features3-n">
+
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Cursos
+                    Disponíveis</strong></h4>
+        </div>
+
+        {% include 'partials/_searchCourse.html' %}
+        {% include 'partials/_courses_results.html' %}
+       
+    </div>
+
+
+</section>
+
+
+
+<section class="features15 cid-blueContainer" id="features16-18">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg">
+                    <div class="text-wrapper">
+                        <h6 class="card-title text-white mbr-fonts-style display-2">
+                            <strong>Sem disponibilidade para presencial?</strong>
+                        </h6>
+                        <p class="mbr-text text-white mbr-fonts-style mt-5 mb-4 display-4">
+                            Sem problemas, a faculdade Senac também disponibiliza uma grande variedade de cursos EAD em
+                            sua plataforma</p>
+                        <div class="mbr-section-btn mt-3"><a class="btn btn-danger display-4" href="https://www.ead.senac.br/" target="_blank">Visite Senac
+                                EAD</a></div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="image-wrapper">
+                        <img src="{% static '/images/graduacaoTemp1.jpg' %} " alt="Mobirise">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'partials/_social.html' %}
+{% include 'partials/_footer.html' %}
+{% endblock %}

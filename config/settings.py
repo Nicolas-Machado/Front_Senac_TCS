@@ -41,6 +41,11 @@ INSTALLED_APPS = [
 
     #APPS
     'siteSenac',
+    'university',
+    'course',
+    'enrollment',
+    'school_program',
+    'subject',
 ]
 
 MIDDLEWARE = [

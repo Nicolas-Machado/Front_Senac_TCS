@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edição de Curso{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url({% static '/images/administrationTemp2.jpg' %})" id="courseRegistrationHeader">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Edição de Curso</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Use esta página para editar um curso diponível no site</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseRegisterField">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+                    <h1>Editar Curso</h1>
+                    <hr></hr>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3 mt-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{courses.name}}" required>
+                        </div>
+
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="durationTime" class="form-label">Tempo de Duração (Total Horas)</label>
+                            <input type="number" name="durationTime" class="form-control" id="durationTime" value="{{courses.duration_time}}" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="courseType" class="form-label">Tipo de Curso</label>
+                            <select id="courseType" class="form-select" name="courseType" required>
+                                <option selected disabled>Escolha uma opção</option>
+                                <option  {% if courses.course_type == 'GRADUACAO' %} selected {% endif %} value="GRADUACAO">Graduação</option>
+                                <option  {% if courses.course_type == 'POS_GRADUACAO' %} selected {% endif %} value="POS_GRADUACAO">Pós-Graduação</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="modalities" class="form-label">Modalidade</label>
+                            <select id="modalities" class="form-select" name="modalities" required>
+                                <option selected disabled>Escolha uma opção</option>
+                                <option {% if courses.modality == 'PRESENCIAL' %} selected {% endif %} value="PRESENCIAL">Educação Presencial</option>
+                                <option {% if courses.modality == 'HIBRIDO' %} selected {% endif %} value="HIBRIDO">Educação Híbrida</option>
+                                <option {% if courses.modality == 'EAD' %} selected {% endif %} value="EAD">Educação a Distância</option>
+                                
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-2 mb-3 mt-3">
+                            <label for="mecScore" class="form-label">Nota do MEC</label>
+                            <select id="mecScore" class="form-select" name="mecScore" required>
+                                <option selected disabled>Selecione</option>
+                                <option {% if courses.mec_score == 'MEC1' %} selected {% endif %} value="MEC1">NOTA 1</option>
+                                <option {% if courses.mec_score == 'MEC2' %} selected {% endif %} value="MEC2">NOTA 2</option>
+                                <option {% if courses.mec_score == 'MEC3' %} selected {% endif %} value="MEC3">NOTA 3</option>
+                                <option {% if courses.mec_score == 'MEC4' %} selected {% endif %} value="MEC4">NOTA 4</option>
+                                <option {% if courses.mec_score == 'MEC5' %} selected {% endif %} value="MEC5">NOTA 5</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="occupationArea" class="form-label">Area de atuação</label>
+                            <select id="occupationArea" name="occupationArea" class="form-select" required>
+                                <option selected disabled>Selecione</option>
+                                <option {% if courses.occupation_area == 'saude' %} selected {% endif %} value="saude">Ambiente e Saúde</option>
+                                <option {% if courses.occupation_area == 'educacional' %} selected {% endif %} value="educacional">Desenvolvimento Educacional e Social</option>
+                                <option {% if courses.occupation_area == 'gestao' %} selected {% endif %} value="gestao">Gestão e Negócios</option>
+                                <option {% if courses.occupation_area == 'informacao' %} selected {% endif %} value="informacao">Informação e Comunicação</option>
+                                <option {% if courses.occupation_area == 'alimenticia' %} selected {% endif %} value="alimenticia">Produção Alimentícia</option>
+                                <option {% if courses.occupation_area == 'design' %} selected {% endif %} value="design">Produção Cultural e Design</option>
+                                <option {% if courses.occupation_area == 'seguranca' %} selected {% endif %} value="seguranca">Segurança</option>
+                                <option {% if courses.occupation_area == 'turismo' %} selected {% endif %} value="turismo">Turismo, Hospitalidade e Lazer</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3 mt-3">
+                            <label for="curriculum" class="form-label">Grade Curricular</label>
+                            <input type="file" name="curriculum" id="curriculum">
+                        </div>
+
+                        <div class="col-md-4 mb-3 mt-3">
+                            <input type="hidden" name="is_activate" class="form-control" id="is_activate" value="{{courses.is_activate}}" required>
+                        </div>
+
+                        <div class="col-md-4 mb-3 mt-3">
+                            <label for="courseImage" class="form-label">Imagem Card do Curso</label>
+                            <input type="file" name="courseImage" id="courseImage">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="courseObjective" class="form-label">Objetivo do Curso</label>
+                            <textarea type="text" rows="4" name="courseObjective" class="form-control"
+                                id="courseObjective" required>{{courses.course_objective}}</textarea>
+                        </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="completionProfile" class="form-label">Perfil de Conclusão</label>
+                            <textarea type="text" rows="4" name="completionProfile" class="form-control"
+                                id="completionProfile" required>{{courses.completion_profile}}</textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 mb-3 mt-3">
+                        <button type="submit" class="btn btn-success-outline">Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

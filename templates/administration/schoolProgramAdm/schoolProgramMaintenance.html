@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cadastro de Fases{% endblock title %}
+{% block content %}
+{% include 'partials/_administrationMenu.html' %}
+<section data-bs-version="5.1" class="info3 cid-headerPages"
+    style="background-image: url({% static '/images/administrationTemp2.jpg' %})" id="courseRegistrationHeader">
+
+    <div class="mbr-overlay">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
+                            <strong><br></strong><br><strong>Cadastro de Fases</strong><strong><br></strong>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            Pagina dedicada ao cadastro de fases de um curso</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section data-bs-version="5.1" class="features3 cid-modalities" id="courseRegisterField">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <form method="POST" action="{% url 'schoolProgramMaintenance' phases.id %}">
+                    {%csrf_token %}
+
+                    <h1>Nova Fase</h1>
+                    <hr></hr>
+
+                    <div class="row">
+
+                        <div class="col-md-2 mb-3 mt-3">
+                            <label for="phase" class="form-label">Fase</label>
+                            <input type="number" name="phase" class="form-control" id="phase" value={{ phases.phase }} required>
+                        </div>
+
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="phase_time" class="form-label">Tempo da Fase</label>
+                            <input class="form-control" type="number" name="phase_time" id="phase_time"  value={{ phases.phase_time }} required>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="subjects_add" class="form-label">Matérias Disponíveis</label>
+                            <select id="subjects_add" class="form-select" name="subjects_add" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if phases_sub %}
+                                {% for phases_sub in phases_sub %}
+                                <option value="{{phases_sub.id}}">{{phases_sub.name}}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="subjects" class="form-label">Matérias Cadastradas na Fase</label>
+                            <select id="subjects" class="form-select" name="subjects" multiple>
+                                <option selected disabled>Selecione</option>
+                                {% if subjects %}
+                                {% for subjects in subjects %}
+                                <option selected value="{{subjects.id}}">{{subjects.name}}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                      
+                    </div>
+
+                        <div class="col-12 mb-3 mt-3">
+                            <button type="submit" class="btn btn-success-outline">Cadastrar</button>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
