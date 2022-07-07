@@ -39,23 +39,46 @@
     <div class="container">
         <div class="content-wrapper">
             <div class="row align-items-center">
-                <div class="col-12 col-lg-12">
+                <div class="col col-lg-12">
                     <div class="text-wrapper">
+
                         <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
                             <strong>{{courses.name}}</strong>
                         </h4>
 
-                        <hr class="mb-5">
+                        <hr class="mb-3">
                         </hr>
 
-                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5">
+                        <div class="row">
+
+                            <div class="col col-lg-2">
+                                <h3 class="mbr-section-title mbr-fonts-style align-left display-7">
+                                    <strong>Nota no MEC:</strong>
+                                </h3>
+                            </div>
+
+                        </div>
+                            <div class="col col-lg-3">
+                                {% if courses.mec_score == 'MEC5' %}
+                                <img src="{% static '/images/5stars.png' %}" style=" height: 30px; width: 150px;">
+                                {% elif courses.mec_score == 'MEC4' %}
+                                <img src="{% static '/images/4stars.png' %}" style=" height: 100px; width: 100px;">
+                                {% elif courses.mec_score == 'MEC3'%}
+                                <img src="{% static '/images/3stars.png' %}" style=" height: 100px; width: 100px;">
+                                {% elif courses.mec_score == 'MEC2'%}
+                                <img src="{% static '/images/2stars.png' %}" style=" height: 100px; width: 100px;">
+                                {% elif courses.mec_score == 'MEC1'%}
+                                <img src="{% static '/images/1star.png' %}" style=" height: 100px; width: 100px;">
+                                {% endif %}
+                            </div>
+
+                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 mt-5 display-5">
                             <strong>Objetivo do Curso</strong>
                         </h4>
 
                         <p class="mbr-text col-lg-6 mbr-fonts-style mb-4 display-7">
                             {{courses.course_objective}}
                         </p>
-
 
                         <div class="row">
 
@@ -89,22 +112,24 @@
 
                         </div>
 
-                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
+                        {% if courses.curriculum == null %}
 
-                            {% if courses.curriculum == null %}
-
-                            <div class=" image-wrapper col col-lg-6">
+                        <div class=" image-wrapper col col-lg-4">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
                                 <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
                                     style=" height: 400px; width: 500px;">
-                            </div>
+                            </a>
+                        </div>
 
-                            {% else %}
+                        {% else %}
 
-                            <div class="image-wrapper">
+                        <div class="image-wrapper col col-lg-4">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
                                 <img class="mb-4" src="{{courses.curriculum}}" style=" height: 400px; width: 500px;">
-                            </div>
+                            </a>
+                        </div>
 
-                            {% endif %}
+                        {% endif %}
 
                         </a>
 
@@ -160,6 +185,13 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
 
+            <div class="col col-lg-10">
+                <div class="row">
+                    <a class="btn btn-danger col-lg-2" href="{{courses.curriculum}}" download="Matriz_{{courses.name}}"
+                        target="_blank"><i class="fa fa-download"></i></a>
+                    <h5 class="col-lg-8 mt-3">Matriz (Download)</h5>
+                </div>
+            </div>
 
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -202,13 +234,7 @@
             </button>
             {% endfor %}
 
-            <div class="col col-lg-12">
-                <div class="row">
-                    <a class="btn btn-danger col-lg-2" href="{{courses.curriculum}}" download="Matriz_{{courses.name}}"
-                        target="_blank"><i class="fa fa-download"></i></a>
-                    <h5 class="col-lg-8 mt-3">Matriz (Download)</h5>
-                </div>
-            </div>
+
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -216,16 +242,17 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Matérias</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><strong>Matérias</strong></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
                         <div class="modal-body">
-                            {% for subjects in subjects %}
-                            <p>{{subjects.name}}</p>
-                            {% endfor %}
 
-                            >
+                            {% for subjects in subjects %}
+
+                            <p><strong>{{subjects.name}}</strong> - {{subjects.description}}</p>
+
+                            {% endfor %}
 
                         </div>
 

@@ -93,10 +93,12 @@ def courseInfo(request, course_id):
     course = CourseService.get_courses_by_id(course_id)
     university = CourseService.get_universities_in_course(course_id)
     phases = CourseService.get_phases_in_courses(course_id)
+    subjects = phases[1]['subjects']
     data = {
         'universities': university,
         'courses': course,
         'phases': phases,
+        'subjects': subjects
     }
 
     return render(request, 'userPages/courseUser/courseInfo.html', data)
