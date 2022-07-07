@@ -28,3 +28,13 @@ def enrollmentRegistration(request):
         'universities': university
     }
     return render(request, 'administration/enrollmentAdm/enrollmentRegistration.html', data)
+
+def enrollmentMaintenance(request):
+    course = CourseService.get_all_courses()
+    university = UniversityService.get_all_universities()
+
+    data = {
+        'courses': course,
+        'universities': university
+    }
+    return render(request, 'administration/enrollmentAdm/enrollmentMaintenance.html', data)

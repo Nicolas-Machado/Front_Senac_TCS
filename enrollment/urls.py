@@ -5,6 +5,7 @@ urlpatterns = [
 
     path('administration/enrollmentList/', enrollmentList, name = 'enrollmentList'),
     path('administration/enrollmentList/enrollmentRegistration', enrollmentRegistration, name = 'enrollmentRegistration'),
+    path('administration/enrollmentList/enrollmentMaintenance', enrollmentMaintenance, name = 'enrollmentMaintenance'),
 
 
 ]
