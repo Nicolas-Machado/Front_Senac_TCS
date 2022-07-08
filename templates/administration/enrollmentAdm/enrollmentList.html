@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 table-responsive">
                 <a class="btn btn-outline-primary display-3" href="{% url 'enrollmentRegistration' %}">Cadastrar Inscrição</a>
-                <table class="table align-center" >
+                <table class="table align-middle" >
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Status</th>
@@ -44,6 +44,33 @@
                             <th scope="col">Universidade</th>
                         </tr>
                     </thead>
+                    <tbody style="text-align: center;">
+                        {% for enrollments in enrollments %}
+                        <tr>
+                            <td scope="row">
+                                {% if enrollments.date_final >= date_now %} Ativo {% else %} Inativo {% endif %}
+                            </td>
+
+                            <td scope="row">
+                                {{enrollments.date_initial}}
+                            </td>
+                            
+                            <td scope="row">
+                                {{enrollments.date_final}}
+                            </td>
+
+                            <td scope="row">
+                                {{enrollments.courses}}
+                            </td>
+
+                            <td scope="row">
+                                {{enrollments.universities}}
+                            </td>
+                        
+                                
+                        </tr>
+                        {% endfor %}
+                        </tbody>
             
                 </table>
 

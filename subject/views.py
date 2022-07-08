@@ -1,3 +1,4 @@
+from ast import Sub
 from django.shortcuts import redirect, render
 from siteSenac.service import adm_authenticate
 
@@ -17,14 +18,15 @@ def post_subject(request):
                     "subjects" : subjects
                 }
                 return render(request, 'administration/subjectAdm/subjectList.html', data)
-        else:
-            return redirect('login')
+    else:
+        return redirect('login')
 
 def subjectRegistration(request):
     if request.user.is_authenticated:
         return render(request, 'administration/subjectAdm/subjectRegistration.html')
     else:
         return redirect('login')
+
 
 
 def subjectMaintenance(request, subject_id):

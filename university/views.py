@@ -12,7 +12,7 @@ def universities(request):
     if 'search' in request.GET:
         name = request.GET['search']
         response = UniversityService.get_universities_by_name(name)
-        template = 'partials/_universities_results.html'
+        template = 'partials/universityPartials/_universities_results.html'
     else:
         response = UniversityService.get_universities()
         template = 'userPages/universityUser/universities.html'
@@ -34,24 +34,18 @@ def university(request, university_id):
     }
     return render(request, 'userPages/universityUser/university.html', data)
 
+
 def universityList(request):
     if request.user.is_authenticated:
-        template = 'administration/universityAdm/universityList.html'
-    
-        if 'id' in request.POST:
-            list = get_user_pass()
-            token = adm_authenticate(list[0], list[1])
-            UniversityService.put_active_universities(request.POST['id'], token)
-            template = 'partials/_admUniversity_check_results.html'
 
         response = UniversityService.get_all_universities()
         data = {
             'universities': response
         }
+        return render(request, 'administration/universityAdm/universityList.html', data)
     else:
         return redirect('login')
     
-    return render(request, template, data)
 
 
 def post_university(request):

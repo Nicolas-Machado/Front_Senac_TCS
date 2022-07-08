@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 table-responsive">
                 <a class="btn btn-outline-primary display-3" href="{% url 'universityRegistration' %}">Cadastrar Unidade</a>
-                <table class="table align-center" >
+                <table class="table align-middle" >
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Status</th>
@@ -43,13 +43,38 @@
                             <th scope="col">Gerenciamento</th>
                         </tr>
                     </thead>
+
+                    <tbody style="text-align: center;" >
+
+                        {% for universities in universities %}
+                        <tr>
+                            
+                            <td scope="row">
+                                {% if universities.is_activate == True%} Ativo {% else %} Inativo {% endif %}
+                            </td>
+
+                            <td scope="row">
+                                    {{universities.name}}
+                            </td>
+
+                            <td scope="row">{{universities.city}}</td>
+                            
+                            <td scope="row">
+                                <a href="{% url 'universityMaintenance' universities.id %}" type="button" class="btn btn-danger-outline">Editar</a>
+                            </td>
+                                
+                        </tr>
+                        {% endfor %}
+                
+                    </tbody>
             
                 </table>
-                {% include 'partials/_admUniversity_check_results.html'%}
+                
 
             </div>
         </div>
     </div>
 </section>
+
 
 {% endblock content %}

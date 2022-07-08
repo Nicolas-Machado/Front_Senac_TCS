@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Cadastro de Matéria{% endblock title %}
+{% block title %}Edição de Matéria{% endblock title %}
 {% block content %}
 {% include 'partials/_administrationMenu.html' %}
 
@@ -16,10 +16,10 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <h4 class="card-title mbr-fonts-style align-center mb-4 display-2">
-                            <strong><br></strong><br><strong>Cadastro de Matéria</strong><strong><br></strong>
+                            <strong><br></strong><br><strong>Edição de Matéria</strong><strong><br></strong>
                         </h4>
                         <p class="mbr-text mbr-fonts-style mb-4 display-7">
-                            Cadastre aqui uma nova matéria</p>
+                            Edite aqui uma matéria criada anteriormente</p>
 
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                     <div class="row">
 
                         <div class="col-md-5 mb-3 mt-3">
-                            <label for="name" class="form-label">Nome</label>
-                            <input type="text" name="name" class="form-control" id="name" value={{ subjects.name }} required>
+                            <label for="name" class="form-label">Nome&#42 (Somente Letras)</label>
+                            <input type="text" name="name" class="form-control" id="name" value={{ subjects.name }} pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
                         </div>
 
                     </div>
@@ -52,9 +52,8 @@
                     <div class="row">
 
                         <div class="col-md-6 mb-3 mt-3">
-                            <label for="description" class="form-label">Descrição</label>
-                            <textarea class="form-control" row="5
-                            " type="text" name="description" id="description"  required>{{ subjects.description }}</textarea>
+                            <label for="description" class="form-label">Descrição&#42</label>
+                            <textarea class="form-control" rows="5" type="text" name="description" id="description" required>{{ subjects.description }}</textarea>
                         </div>
 
                     </div>
@@ -64,7 +63,7 @@
                     </div>
 
                     <div class="col-12 mb-3 mt-3">
-                        <button type="submit" class="btn btn-success-outline">Cadastrar</button>
+                        <button type="submit" class="btn btn-success-outline">Salvar</button>
                     </div>
 
                 </form>

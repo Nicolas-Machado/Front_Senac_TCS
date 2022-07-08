@@ -1,0 +1,53 @@
+{% load static %}
+
+
+<div class="container">
+    <div class="row mt-4">
+    
+        <input class="form-control col col-lg-3" aria-label="Search"  name="search"
+            placeholder="Pesquisar curso" id="searchGraduationCourse" hx-post="{% url 'courses_results' %}" ,
+            hx-trigger="keyup changed delay:500ms, search" hx-target="#courses_results">
+
+        <select id="occupationArea" name="occupationArea" hx-post="{% url 'courses_results' %}" hx-target="#courses_results" class="form-select ms-3 col col-lg-2">
+            <option selected>Area de atuação</option>
+            <option value="Ambiente e Saúde">Ambiente e Saúde</option>
+            <option value="Desenvolvimento Educacional e Social">Desenvolvimento Educacional e Social</option>
+            <option value="Gestão e Negócios">Gestão e Negócios</option>
+            <option value="Informação e Comunicação">Informação e Comunicação</option>
+            <option value="Produção Alimentícia">Produção Alimentícia</option>
+            <option value="Produção Cultural e Design">Produção Cultural e Design</option>
+            <option value="Segurança">Segurança</option>
+            <option value="Turismo, Hospitalidade e Lazer">Turismo, Hospitalidade e Lazer</option>
+        </select>
+    
+    </div>
+
+    <div class="form-check form-switch mt-2">
+        <input class="form-check-input" type="checkbox" name="switchSubscription" id="switchSubscription"
+            hx-post="{% url 'courses_results' %}" , hx-target="#courses_results">
+        <label class="form-check-label" for="switchSubscription">Inscrições Abertas</label>
+    </div>
+
+</div>
+
+<script>
+    const chk1 = document.getElementById("switchSubscription")
+    const sea = document.getElementById("searchGraduationCourse")
+    const occupationArea = document.getElementById("occupationArea");
+
+    occupationArea.addEventListener('change', (event) => {
+        if (chk1.checked) {
+            chk1.checked = false
+        }
+    });
+
+    sea.addEventListener('keydown', (event) => {
+        if (chk1.checked) {
+            chk1.checked = false
+        }
+        var text = 'Area de atuação';
+        $("#occupationArea").val(text);
+    }); 
+
+    
+</script>

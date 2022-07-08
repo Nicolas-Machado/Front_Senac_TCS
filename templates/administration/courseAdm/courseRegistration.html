@@ -44,12 +44,12 @@
                     <div class="row">
 
                         <div class="col-md-4 mb-3 mt-3">
-                            <label for="name" class="form-label">Nome</label>
+                            <label for="name" class="form-label">Nome&#42</label>
                             <input type="text" name="name" class="form-control" id="name" required>
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="durationTime" class="form-label">Tempo de Duração (Total Horas)</label>
+                            <label for="durationTime" class="form-label">Tempo de Duração (Total Horas)&#42</label>
                             <input type="number" name="durationTime" class="form-control" id="durationTime" required>
                         </div>
 
@@ -58,7 +58,7 @@
                     <div class="row">
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="courseType" class="form-label">Tipo de Curso</label>
+                            <label for="courseType" class="form-label">Tipo de Curso&#42</label>
                             <select id="courseType" class="form-select" name="courseType" required>
                                 <option selected disabled>Escolha uma opção</option>
                                 <option value="GRADUACAO">Graduação</option>
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="modalities" class="form-label">Modalidade</label>
+                            <label for="modalities" class="form-label">Modalidade&#42</label>
                             <select id="modalities" class="form-select" name="modalities" required>
                                 <option selected disabled>Escolha uma opção</option>
                                 <option value="PRESENCIAL">Educação Presencial</option>
@@ -82,7 +82,7 @@
                     <div class="row">
 
                         <div class="col-md-2 mb-3 mt-3">
-                            <label for="mecScore" class="form-label">Nota do MEC</label>
+                            <label for="mecScore" class="form-label">Nota do MEC&#42</label>
                             <select id="mecScore" class="form-select" name="mecScore" required>
                                 <option selected disabled>Selecione</option>
                                 <option value="MEC1">NOTA 1</option>
@@ -94,17 +94,17 @@
                         </div>
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="occupationArea" class="form-label">Area de atuação</label>
+                            <label for="occupationArea" class="form-label">Area de atuação&#42</label>
                             <select id="occupationArea" name="occupationArea" class="form-select" required>
                                 <option selected disabled>Selecione</option>
-                                <option value="saude">Ambiente e Saúde</option>
-                                <option value="educacional">Desenvolvimento Educacional e Social</option>
-                                <option value="gestao">Gestão e Negócios</option>
-                                <option value="informacao">Informação e Comunicação</option>
-                                <option value="alimenticia">Produção Alimentícia</option>
-                                <option value="design">Produção Cultural e Design</option>
-                                <option value="seguranca">Segurança</option>
-                                <option value="turismo">Turismo, Hospitalidade e Lazer</option>
+                                <option value="Ambiente e Saúde">Ambiente e Saúde</option>
+                                <option value="Desenvolvimento Educacional e Social">Desenvolvimento Educacional e Social</option>
+                                <option value="Gestão e Negócios">Gestão e Negócios</option>
+                                <option value="Informação e Comunicação">Informação e Comunicação</option>
+                                <option value="Produção Alimentícia">Produção Alimentícia</option>
+                                <option value="Produção Cultural e Design">Produção Cultural e Design</option>
+                                <option value="Segurança">Segurança</option>
+                                <option value="Turismo, Hospitalidade e Lazer">Turismo, Hospitalidade e Lazer</option>
                             </select>
                         </div>
 
@@ -127,13 +127,13 @@
                     <div class="row">
 
                         <div class="col-md-6 mb-3 mt-3">
-                            <label for="courseObjective" class="form-label">Objetivo do Curso</label>
+                            <label for="courseObjective" class="form-label">Objetivo do Curso&#42</label>
                             <textarea type="text" rows="4" name="courseObjective" class="form-control"
                                 id="courseObjective" required></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3 mt-3">
-                            <label for="completionProfile" class="form-label">Perfil de Conclusão</label>
+                            <label for="completionProfile" class="form-label">Perfil de Conclusão&#42</label>
                             <textarea type="text" rows="4" name="completionProfile" class="form-control"
                                 id="completionProfile" required></textarea>
                         </div>
@@ -147,9 +147,6 @@
                                 <button type="submit" class="btn btn-success-outline display-3">Cadastrar</button>
                             </div>
 
-                            <div class="col-sm-2 mb-3 mt-3">
-                                <a class="btn btn-outline-primary" href="{% url 'courseList' %}">Voltar</a>
-                            </div>
                         </div>
                     </div>
 

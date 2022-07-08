@@ -20,6 +20,13 @@ class UniversityService():
             return None
         return response.json()
 
+    def get_enrollments_university(university_id) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/university/{university_id}/enrollments", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
+
     def get_universities_by_id(university_id) -> Dict:
         token = authenticate()
         response = requests.get(f"{URL_SITE}/university/{university_id}", headers={'Authorization': 'Token ' + token})

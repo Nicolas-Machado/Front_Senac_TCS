@@ -45,7 +45,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg table-responsive">
 
-                <table class="table align: center">
+                <table class="table align-middle">
                     <thead class="table-primary text-white" style="text-align: center;">
                         <tr>
                             <th scope="col">Status</th>
@@ -55,8 +55,30 @@
                             <th scope="col">Gerenciamento</th>
                         </tr>
                     </thead>
+                    <tbody style="text-align: center;" id="tbody">
 
-                    {% include 'partials/_admCourse_check_results.html' %}
+                        {% for courses in courses %}
+            
+                            <td scope="row">{% if courses.is_activate == True%} Ativo {% else %} Inativo {% endif %} </td>
+                            
+                            <td scope="row">
+                                <a href="{% url 'courseDetails' courses.id %}" style="color: blue; text-decoration:underline;">
+                                    {{courses.name}}
+                                </a>
+                            </td>
+                            
+                            <td scope="row">
+                                {{courses.course_type}}
+                            </td>
+                            <td scope="row">{{courses.modality}}</td>
+                        
+                            <td scope="row">
+                                <a href="{% url 'courseMaintenance' courses.id %}" type="button" class="btn btn-danger-outline">Editar</a>
+                            </td>
+                                
+                        </tr>
+                        {% endfor %}
+                        </tbody>
 
                 </table>
             </div>

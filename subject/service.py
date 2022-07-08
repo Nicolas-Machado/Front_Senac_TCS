@@ -11,6 +11,13 @@ class SubjectService:
                 return None
             return response.json()
 
+    def get_subjects_in_school_program(school_program_id) -> Dict:
+            token = authenticate()
+            response = requests.get(f"{URL_SITE}/school_program/{school_program_id}/subjects/", headers={'Authorization': 'Token ' + token})  
+            if not response.ok:
+                return None
+            return response.json()
+
     def get_subject_by_id(subject_id) -> Dict:
             token = authenticate()
             response = requests.get(f"{URL_SITE}/subject/{subject_id}/", headers={'Authorization': 'Token ' + token})  

@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form method="POST" action="">{%csrf_token %}
+                <form method="POST" action="{% url 'post_enrollment' %}">{%csrf_token %}
 
                     <h1>Nova Inscrição</h1>
                     <hr>
@@ -41,14 +41,14 @@
 
                     <div class="row">
 
-                        <div class="col-md-5 mb-3 mt-3">
-                            <label for="initialDate" class="form-label">Data inicial</label>
-                            <input type="date" name="initialDate" class="form-control" id="initialDate" required>
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="initialDate" class="form-label">Data inicial&#42</label>
+                            <input type="date" name="date_initial" class="form-control" id="date_initial" required>
                         </div>
                       
-                        <div class="col-md-5 mb-3 mt-3">
-                            <label for="finalDate" class="form-label">Data final</label>
-                            <input type="date" name="finalDate" class="form-control" id="finalDate" required>
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="finalDate" class="form-label">Data final&#42</label>
+                            <input type="date" name="date_final" class="form-control" id="date_final" required>
                         </div>
 
                     </div>
@@ -56,26 +56,21 @@
                     <div class="row">
 
                         <div class="col-md-6 mb-3 mt-3">
-                            <label for="courses" class="form-label">Cursos Disponíveis</label>
-                            <select id="courses" class="form-select" name="courses" multiple>
-                                <option selected disabled>Selecione</option>
-                                {% if courses %}
-                                {% for courses in courses %}
-                                <option value="{{courses.id}}">{{courses.name}}, {{ courses.course_type }}, {{ courses.modality }}, {{ courses.occupation_area }}</option>
-                                {% endfor %}
-                                {% endif %}
-                            </select>
-                        </div>
-
-                        <div class="col-md-6 mb-3 mt-3">
-                            <label for="universities" class="form-label">Unidades Disponíveis</label>
-                            <select id="universities" class="form-select" name="universities" multiple>
+                            <label for="universities" class="form-label">Unidades Disponíveis&#42</label>
+                            <select id="university" class="form-select" name="university" hx-get="{% url 'enrollment_select' %}" hx-target="#course_enrollment">
                                 <option selected disabled>Selecione</option>
                                 {% if universities %}
                                 {% for universities in universities %}
                                 <option value="{{universities.id}}">{{universities.name}}</option>
                                 {% endfor %}
                                 {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3 mt-3">
+                            <label for="courses" class="form-label">Cursos Disponíveis&#42</label>
+                            <select id="course_enrollment" class="form-select" name="course_enrollment">
+                                {% include 'partials/enrollmentPartials/_enrollments_results.html' %}
                             </select>
                         </div>
 

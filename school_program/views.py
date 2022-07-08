@@ -30,6 +30,8 @@ def schoolProgramRegistration(request, course_id):
             }
             return render(request, 'administration/courseAdm/courseDetails.html', data)
         return render(request, 'administration/schoolProgramAdm/schoolProgramRegistration.html', data)
+    else:
+        return redirect('login')
 
 def schoolProgramMaintenance(request, phases_id):
     if request.user.is_authenticated:
@@ -75,18 +77,21 @@ def schoolProgramMaintenance(request, phases_id):
         return redirect('login')
 
 def school_ProgramDelete(request, school_program_id):
-    list = get_user_pass()
-    token = adm_authenticate(list[0], list[1])
-    phases = School_ProgramService.get_school_program_by_id(school_program_id)
-    course_id = phases['courses']
-    School_ProgramService.delete_school_program(school_program_id, token)
+    if request.user.is_authenticated:
+        list = get_user_pass()
+        token = adm_authenticate(list[0], list[1])
+        phases = School_ProgramService.get_school_program_by_id(school_program_id)
+        course_id = phases['courses']
+        School_ProgramService.delete_school_program(school_program_id, token)
 
-    course = CourseService.get_courses_by_id(course_id)
-    phases = CourseService.get_phases_in_courses(course_id)
-    # subjects = CourseService.get_subjects_in_phases()
-    data = {
-        'courses': course,
-        'phases': phases,
-        # 'subjects': subjects
-    }
-    return render(request, 'administration/courseAdm/courseDetails.html', data)
+        course = CourseService.get_courses_by_id(course_id)
+        phases = CourseService.get_phases_in_courses(course_id)
+        # subjects = CourseService.get_subjects_in_phases()
+        data = {
+            'courses': course,
+            'phases': phases,
+            # 'subjects': subjects
+        }
+        return render(request, 'administration/courseAdm/courseDetails.html', data)
+    else:
+        return redirect('login')

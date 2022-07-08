@@ -172,8 +172,43 @@ class CourseService():
 
     def get_phases_in_courses(course_id) -> Dict:
         token = authenticate()
-        response = requests.get(f"{URL_SITE}/course/{course_id}/school_programs", headers={'Authorization': 'Token ' + token})  
+        response = requests.get(f"{URL_SITE}/course/{course_id}/school_programs/", headers={'Authorization': 'Token ' + token})  
         if not response.ok:
             return None
         return response.json()
+    
+    def get_courses_occupation_area(occupation_area) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?occupation_area={occupation_area}&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json() 
+
+    def get_courses_occupation_area_by_name(name, occupation_area) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?search={name}&occupation_area={occupation_area}&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()  
+
+    def get_courses_graduation_occupation_area(occupation_area) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?occupation_area={occupation_area}&course_type=GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
+    
+    def get_courses_pos_graduation_occupation_area(occupation_area) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/course/?occupation_area={occupation_area}&course_type=POS_GRADUACAO&is_activate=true", headers={'Authorization': 'Token ' + token})  
+        if not response.ok:
+            return None
+        return response.json()
+    
+    def get_courses_in_university_occupation_area(university_id, occupation_area) -> Dict:
+        token = authenticate()
+        response = requests.get(f"{URL_SITE}/university/{university_id}/courses/?occupation_area={occupation_area}&is_activate=true", headers={'Authorization': 'Token ' + token})
+        if not response.ok:
+            return None
+        return response.json() 
     

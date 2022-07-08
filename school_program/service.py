@@ -35,10 +35,3 @@ class School_ProgramService:
 
     def delete_school_program(school_program_id, token):
         return requests.delete(f"{URL_SITE}/school_program/{school_program_id}/", headers={'Authorization': 'Token ' + token})
-
-    def get_subjects_in_school_program(school_program_id) -> Dict:
-            token = authenticate()
-            response = requests.get(f"{URL_SITE}/school_program/{school_program_id}/subjects/", headers={'Authorization': 'Token ' + token})  
-            if not response.ok:
-                return None
-            return response.json()
