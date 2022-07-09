@@ -33,7 +33,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <form method="POST" action="{% url 'post_enrollment' %}">{%csrf_token %}
+                {% include 'partials/_messages.html' %}
+                <form method="POST" action="{% url 'post_enrollment' %}" onSubmit="return compareDates();">
+                    {%csrf_token %}
 
                     <h1>Nova Inscrição</h1>
                     <hr>
@@ -42,12 +44,12 @@
                     <div class="row">
 
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="initialDate" class="form-label">Data inicial&#42</label>
+                            <label for="date_initial" class="form-label">Data inicial&#42</label>
                             <input type="date" name="date_initial" class="form-control" id="date_initial" required>
                         </div>
                       
                         <div class="col-md-3 mb-3 mt-3">
-                            <label for="finalDate" class="form-label">Data final&#42</label>
+                            <label for="date_final" class="form-label">Data final&#42</label>
                             <input type="date" name="date_final" class="form-control" id="date_final" required>
                         </div>
 
@@ -57,8 +59,8 @@
 
                         <div class="col-md-6 mb-3 mt-3">
                             <label for="universities" class="form-label">Unidades Disponíveis&#42</label>
-                            <select id="university" class="form-select" name="university" hx-get="{% url 'enrollment_select' %}" hx-target="#course_enrollment">
-                                <option selected disabled>Selecione</option>
+                            <select id="university" class="form-select" name="university" hx-get="{% url 'enrollment_select' %}" hx-target="#course_enrollment" required>
+                                <option selected disabled value="">Selecione</option>
                                 {% if universities %}
                                 {% for universities in universities %}
                                 <option value="{{universities.id}}">{{universities.name}}</option>
@@ -69,7 +71,7 @@
 
                         <div class="col-md-6 mb-3 mt-3">
                             <label for="courses" class="form-label">Cursos Disponíveis&#42</label>
-                            <select id="course_enrollment" class="form-select" name="course_enrollment">
+                            <select id="course_enrollment" class="form-select" name="course_enrollment" required>
                                 {% include 'partials/enrollmentPartials/_enrollments_results.html' %}
                             </select>
                         </div>
@@ -85,5 +87,20 @@
         </div>
     </div>
 </section>
+
+{% comment %} <script>
+    const date_initial = document.getElementById("date_initial");
+    const date_final = document.getElementById("date_final");
+
+    console.log(date_final);
+    date_final.addEventListener('change', compareDates());
+    
+        function compareDates(){
+        if (date_initial > date_final) {
+            alert('teste');
+        }
+    };
+
+</script> {% endcomment %}
 
 {% endblock content %}

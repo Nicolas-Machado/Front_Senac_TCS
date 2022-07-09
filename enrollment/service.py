@@ -1,9 +1,10 @@
+from urllib import response
+from django.shortcuts import redirect
 import requests
 from datetime import datetime
 from course.service import CourseService
 from siteSenac.service import *
 from university.service import UniversityService
-
 
 class EnrollmentService():
 
@@ -57,6 +58,7 @@ class EnrollmentService():
                 "courses" : request['course_enrollment'],
                 "universities" : request['university']
             }
+
         return requests.post(f"{URL_SITE}/enrollment/", data=data, headers={'Authorization': 'Token ' + token})
 
     

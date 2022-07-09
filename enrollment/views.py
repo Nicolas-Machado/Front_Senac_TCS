@@ -36,10 +36,8 @@ def post_enrollment(request):
             EnrollmentService.post_enrollment(request.POST, token)
             data = data_enrollment_list()            
             return render(request, 'administration/enrollmentAdm/enrollmentList.html', data)
-                
     else:
         return redirect('login')
-        
 
 def enrollmentRegistration(request):
     if request.user.is_authenticated:
@@ -74,7 +72,6 @@ def enrollment_select(request):
         data = {
             'courses_enrollment' : courses
         }
-    
 
         return render(request, 'partials/enrollmentPartials/_enrollments_results.html', data)
     else:

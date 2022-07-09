@@ -130,8 +130,8 @@
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="phone_number">
                             <input type="text" name="phone_number" placeholder="Telefone" data-form-field="phone_number"
-                                class="form-control" value="" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"
-                                maxlength="15" required>
+                                class="form-control" value="" id="phone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"
+                                maxlength="15" onkeypress="$('#phone').mask('(99) 99999-9999');" required>
                         </div>
 
                     </div>

@@ -1,7 +1,7 @@
 {% load static %}
 
 
-        <option selected disabled>Selecione</option>
+        <option selected disabled value="">Selecione</option>
         {% if courses_enrollment %}
         {% for courses in courses_enrollment %}
         <option value="{{courses.id}}">{{courses.name}}, {{ courses.course_type }}, {{ courses.modality }}, {{ courses.occupation_area }}</option>
