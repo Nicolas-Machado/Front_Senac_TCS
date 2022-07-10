@@ -9,7 +9,7 @@
             hx-trigger="keyup changed delay:500ms, search" hx-target="#courses_results">
 
         <select id="occupationArea" name="occupationArea" hx-post="{% url 'courses_results' %}" hx-target="#courses_results" class="form-select ms-3 col col-lg-2">
-            <option selected>Area de atuação</option>
+            <option selected>Área de atuação</option>
             <option value="Ambiente e Saúde">Ambiente e Saúde</option>
             <option value="Desenvolvimento Educacional e Social">Desenvolvimento Educacional e Social</option>
             <option value="Gestão e Negócios">Gestão e Negócios</option>
@@ -31,23 +31,5 @@
 </div>
 
 <script>
-    const chk1 = document.getElementById("switchSubscription")
-    const sea = document.getElementById("searchGraduationCourse")
-    const occupationArea = document.getElementById("occupationArea");
-
-    occupationArea.addEventListener('change', (event) => {
-        if (chk1.checked) {
-            chk1.checked = false
-        }
-    });
-
-    sea.addEventListener('keydown', (event) => {
-        if (chk1.checked) {
-            chk1.checked = false
-        }
-        var text = 'Area de atuação';
-        $("#occupationArea").val(text);
-    }); 
-
-    
+    clear_results();
 </script>

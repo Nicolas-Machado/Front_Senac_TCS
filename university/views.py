@@ -3,7 +3,7 @@ from course.service import CourseService
 from course.views import courses_results_request
 from siteSenac.send_email import Send_EmailService
 from siteSenac.service import *
-from siteSenac.views import get_user_pass
+from siteSenac.views import get_user_pass, token_login
 from university.service import UniversityService
 from django.contrib import messages
 
@@ -25,8 +25,11 @@ def universities(request):
 
 def university(request, university_id):
     if request.method == 'POST':
-        Send_EmailService.post_send_email(request.POST)
-        messages.success(request, 'E-mail enviado com sucesso')
+        status = Send_EmailService.post_send_email(request.POST)
+        if(status.status_code == 201):
+            messages.success(request, 'E-mail Enviado Com Sucesso')
+        else:
+            messages.error(request, 'Falha ao Enviar E-mail')
 
     university = UniversityService.get_universities_by_id(university_id)
     course = CourseService.get_courses_in_university(university_id)
@@ -56,21 +59,20 @@ def universityList(request):
 def post_university(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            list = get_user_pass()
-            token = adm_authenticate(list[0], list[1])
-            UniversityService.post_university(
-                request.POST, request.FILES, token)
-            if token == None:
-                messages.error(
-                    request, 'Sessão Finalizada, por favor efetue o login novamente')
-                return redirect('login')
+            token = token_login(request)
+            if(token == None):
+                 return redirect('login')
+            status = UniversityService.post_university(
+            request.POST, request.FILES, token)
+            if(status.status_code == 201):
+                messages.success(request, 'Unidade Cadastrada Com Sucesso')
             else:
-                messages.success(request, 'Salvo com sucesso')
-                response = UniversityService.get_all_universities()
-                data = {
-                    'universities': response
-                }
-                return render(request, 'administration/universityAdm/universityList.html', data)
+                messages.error(request, 'Falha ao Cadastrar Unidade')
+            response = UniversityService.get_all_universities()
+            data = {
+                'universities': response
+            }
+            return render(request, 'administration/universityAdm/universityList.html', data)
 
     elif not request.user.is_authenticated:
         messages.error(
@@ -96,18 +98,17 @@ def universityRegistration(request):
 def put_university(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            list = get_user_pass()
-            token = adm_authenticate(list[0], list[1])
-            if token == None:
-                messages.error(
-                    request, 'Sessão Finalizada, por favor efetue o login novamente')
+            token = token_login(request)
+            if(token == None):
                 return redirect('login')
-            else:
+            status = UniversityService.put_university(
+                request.POST, request.FILES, token)
+            if(status.status_code == 200):
                 messages.success(request, 'Salvo com sucesso')
-                UniversityService.put_university(
-                    request.POST, request.FILES, token)
-                response = UniversityService.get_all_universities()
-                
+            else:
+                messages.error(request, 'Falha ao Salvar')
+            response = UniversityService.get_all_universities()
+            
             data = {
                 'universities': response
             }

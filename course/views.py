@@ -2,10 +2,10 @@ from django.shortcuts import redirect, render
 from course.service import CourseService
 from enrollment.service import EnrollmentService
 from siteSenac.send_email import Send_EmailService
-from subject.service import SubjectService
 from siteSenac.service import *
-from siteSenac.views import get_user_pass
+from siteSenac.views import token_login
 from django.contrib import messages
+from datetime import datetime
 
 _NAME = ''
 _RESPONSE = ''
@@ -71,7 +71,7 @@ def switch_results():
 def occupation_area_results(occupation_area):
     response = []
     courses = []
-    if occupation_area != 'Area de atuação':
+    if occupation_area != 'Área de atuação':
         if _NAME != "":
             if _TYPE_COURSE == 'graduation':
                 courses = CourseService.get_courses_graduation_by_name(_NAME)
@@ -140,16 +140,31 @@ def courseInfo(request, course_id):
 
     if request.method == 'POST':
         if request.POST['universities'] != '0':
-            Send_EmailService.post_send_email(request.POST)
+            status = Send_EmailService.post_send_email(request.POST)
+            if(status.status_code == 201):
+                messages.success(request, 'E-mail Enviado Com Sucesso')
+            else:
+                messages.error(request, 'Falha ao Enviar E-mail')
 
     course = CourseService.get_courses_by_id(course_id)
     university = CourseService.get_universities_in_course(course_id)
     phases = CourseService.get_phases_in_courses(course_id)
+    enrollment = EnrollmentService.get_enrollments_in_course(course_id)
+    enrollments = []
+
+    for enrollment in enrollment:
+        for universities in university:
+            if enrollment['universities'] == universities['name']:
+                if enrollment['date_final'] > datetime.today().strftime('%Y-%m-%d'):
+                    enrollment['date_final'] = datetime.strptime(enrollment['date_final'], '%Y-%m-%d').strftime('%d/%m/%y')
+                    enrollments.append(enrollment)
+                    break
 
     data = {
         'universities': university,
         'courses': course,
         'phases': phases,
+        'enrollments' : enrollments
     }
 
     return render(request, 'userPages/courseUser/courseInfo.html', data)
@@ -174,38 +189,22 @@ def courseRegistration(request):
         template = 'administration/courseAdm/courseRegistration.html'
 
         if request.method == 'POST':
-            list = get_user_pass()
-            token = adm_authenticate(list[0], list[1])
-            if token == None:
-                messages.error(
-                    request, 'Sessão Finalizada, por favor efetue o login novamente')
-                return redirect('login')
+            token = token_login(request)
+            if(token == None):
+                 return redirect('login')
+            status = CourseService.post_courses(request.POST, request.FILES, token)
+            if(status.status_code == 201):
+                messages.success(request, 'Curso Cadastrado Com Sucesso')
             else:
-                messages.success(request, 'Cadastrado com sucesso')
-                CourseService.post_courses(request.POST, request.FILES, token)
-                template = 'administration/courseAdm/courseList.html'
+                messages.error(request, 'Falha ao Cadastrar Curso')
+            template = 'administration/courseAdm/courseList.html'
 
         course = CourseService.get_all_courses()
         data = {
             'courses': course
         }
         return render(request, template, data)
-    elif not request.user.is_authenticated:
-        messages.error(
-            request, 'Usuário ou Senha incorretos, efetue o login novamente')
-        return redirect('login')
 
-
-def courseSave(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            CourseService.post_courses(request.POST, request.FILES)
-            course = CourseService.get_courses()
-
-        data = {
-            'courses': course
-        }
-        return render(request, 'administration/courseAdm/courseList.html', data)
     elif not request.user.is_authenticated:
         messages.error(
             request, 'Usuário ou Senha incorretos, efetue o login novamente')
@@ -217,18 +216,28 @@ def courseMaintenance(request, course_id):
         template = 'administration/courseAdm/courseMaintenance.html'
         course = CourseService.get_courses_by_id(course_id)
         if request.method == 'POST':
-            template = 'administration/courseAdm/courseList.html'
-            list = get_user_pass()
-            token = adm_authenticate(list[0], list[1])
-            CourseService.put_courses(
+            token = token_login(request)
+            if(token == None):
+                 return redirect('login')
+
+            status = CourseService.put_courses(
                 request.POST, request.FILES, course_id, token)
+            if(status.status_code == 200):
+                messages.success(request, 'Salvo Com Sucesso')
+            else:
+                messages.error(request, 'Falha ao Salvar')
+
             course = CourseService.get_all_courses()
+            template = 'administration/courseAdm/courseList.html'
 
         data = {
             'courses': course,
         }
         return render(request, template, data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Usuário ou Senha incorretos, efetue o login novamente')
         return redirect('login')
 
 
@@ -236,12 +245,16 @@ def courseDetails(request, course_id):
     if request.user.is_authenticated:
         course = CourseService.get_courses_by_id(course_id)
         phases = CourseService.get_phases_in_courses(course_id)
-        # subjects = CourseService.get_subjects_in_phases()
+
+
         data = {
             'courses': course,
             'phases': phases,
-            # 'subjects': subjects
         }
+        
         return render(request, 'administration/courseAdm/courseDetails.html', data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Usuário ou Senha incorretos, efetue o login novamente')
         return redirect('login')

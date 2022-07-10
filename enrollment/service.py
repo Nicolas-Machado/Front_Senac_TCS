@@ -1,5 +1,4 @@
-from urllib import response
-from django.shortcuts import redirect
+
 import requests
 from datetime import datetime
 from course.service import CourseService
@@ -14,13 +13,13 @@ class EnrollmentService():
         if not response.ok:
             return None
         return response.json()
-    
-    def get_courses_enrollments(enrollment_id) -> Dict:
+
+    def get_enrollments_in_course(course_id) -> Dict:
         token = authenticate()
-        response = requests.get(f"{URL_SITE}/enrollment/{enrollment_id}/courses/", headers={'Authorization': 'Token ' + token})  
+        response = requests.get(f"{URL_SITE}/course/{course_id}/enrollments/", headers={'Authorization': 'Token ' + token})
         if not response.ok:
             return None
-        return response.json()
+        return response.json()  
     
     def search_date_enrollment_activate(courses, university_id) -> Dict:
         _list = []
@@ -60,5 +59,8 @@ class EnrollmentService():
             }
 
         return requests.post(f"{URL_SITE}/enrollment/", data=data, headers={'Authorization': 'Token ' + token})
+    
+    def delete_enrollment(enrollment_id, token):
+        return requests.delete(f"{URL_SITE}/enrollment/{enrollment_id}/", headers={'Authorization': 'Token ' + token})
 
     

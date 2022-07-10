@@ -41,7 +41,7 @@
                     <div class="col-md-4 mb-3 mt-3">
                         <label for="is_activate" class="form-label">Ativar/Inativar Curso</label>
                         <select id="is_activate" class="form-select" name="is_activate" required>
-                            <option selected disabled>Selecione</option>
+                            <option value = "" selected disabled>Selecione</option>
                             <option {% if courses.is_activate == True %} selected {% endif %} value=True>Ativo</option>
                             <option {% if courses.is_activate == False %} selected {% endif %} value=False>Inativo</option>
                         </select>
@@ -66,7 +66,7 @@
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="courseType" class="form-label">Tipo de Curso&#42</label>
                             <select id="courseType" class="form-select" name="courseType" required>
-                                <option selected disabled>Escolha uma opção</option>
+                                <option value = "" selected disabled>Escolha uma opção</option>
                                 <option  {% if courses.course_type == 'GRADUACAO' %} selected {% endif %} value="GRADUACAO">Graduação</option>
                                 <option  {% if courses.course_type == 'POS_GRADUACAO' %} selected {% endif %} value="POS_GRADUACAO">Pós-Graduação</option>
                             </select>
@@ -75,7 +75,7 @@
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="modalities" class="form-label">Modalidade&#42</label>
                             <select id="modalities" class="form-select" name="modalities" required>
-                                <option selected disabled>Escolha uma opção</option>
+                                <option value = "" selected disabled>Escolha uma opção</option>
                                 <option {% if courses.modality == 'PRESENCIAL' %} selected {% endif %} value="PRESENCIAL">Educação Presencial</option>
                                 <option {% if courses.modality == 'HIBRIDO' %} selected {% endif %} value="HIBRIDO">Educação Híbrida</option>
                                 <option {% if courses.modality == 'EAD' %} selected {% endif %} value="EAD">Educação a Distância</option>
@@ -90,7 +90,7 @@
                         <div class="col-md-2 mb-3 mt-3">
                             <label for="mecScore" class="form-label">Nota do MEC&#42</label>
                             <select id="mecScore" class="form-select" name="mecScore" required>
-                                <option selected disabled>Selecione</option>
+                                <option value = "" selected disabled>Selecione</option>
                                 <option {% if courses.mec_score == 'MEC1' %} selected {% endif %} value="MEC1">NOTA 1</option>
                                 <option {% if courses.mec_score == 'MEC2' %} selected {% endif %} value="MEC2">NOTA 2</option>
                                 <option {% if courses.mec_score == 'MEC3' %} selected {% endif %} value="MEC3">NOTA 3</option>
@@ -102,7 +102,7 @@
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="occupationArea" class="form-label">Area de atuação&#42</label>
                             <select id="occupationArea" name="occupationArea" class="form-select" required>
-                                <option selected disabled>Selecione</option>
+                                <option value = "" selected disabled>Selecione</option>
                                 <option {% if courses.occupation_area == 'Ambiente e Saúde' %} selected {% endif %} value="Ambiente e Saúde">Ambiente e Saúde</option>
                                 <option {% if courses.occupation_area == 'Desenvolvimento Educacional e Social' %} selected {% endif %} value="Desenvolvimento Educacional e Social">Desenvolvimento Educacional e Social</option>
                                 <option {% if courses.occupation_area == 'Gestão e Negócios' %} selected {% endif %} value="Gestão e Negócios">Gestão e Negócios</option>

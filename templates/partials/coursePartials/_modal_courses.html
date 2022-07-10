@@ -1,0 +1,64 @@
+{% load static %}
+
+<div class="modal fade" id="school_program" tabindex="-1" aria-labelledby="school_programLabel"
+                aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="school_programLabel"><strong>Fases</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                {% if phases %}
+                {% for phases in phases %}
+
+                <p><strong>{{phases.phase}}° Fase - {{ phases.phase_time }} Horas </strong></p>
+                {% for subjects in phases.subjects %}
+                <p><strong>{{subjects.name}}</strong> - {{subjects.description}}</p>
+                {% endfor %}
+                <hr class="mb-3">
+                </hr>
+                {% endfor %}
+                {% else %}
+                <p>Não há nenhuma fase disponivel neste curso</p>
+                {% endif %}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="enrollment" tabindex="-1" aria-labelledby="enrollmentLabel"
+                aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="enrollmentLabel"><strong>Inscrições</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                {% if enrollments %}
+                {% for enrollments in enrollments %}
+
+                <p><strong>{{enrollments.universities}} - Aberto até: {{enrollments.date_final}}</strong></p>
+                <hr class="mb-3">
+                </hr>
+                {% endfor %}
+                {% else %}
+                <p>Não há nenhuma inscrição disponivel neste curso</p>
+                {% endif %}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

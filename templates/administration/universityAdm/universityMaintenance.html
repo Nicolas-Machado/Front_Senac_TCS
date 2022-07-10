@@ -97,7 +97,7 @@
                         <div class="col-md-3 mb-3 mt-3">
                             <label for="state" class="form-label">Estado&#42</label>
                             <select id="state" class="form-select" name="state" required>
-                                <option selected disabled>Selecione</option>
+                                <option value = "" selected disabled>Selecione</option>
                                 <option {% if universities.state == 'SC' %} selected {% endif %} value="SC">Santa Catarina</option>
                             </select>
                         </div>
@@ -192,5 +192,9 @@
         </div>
     </div>
 </section>
+
+<script>
+    check_zip_code();
+</script>
 
 {% endblock content %}

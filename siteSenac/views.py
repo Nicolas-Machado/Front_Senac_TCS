@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
@@ -21,8 +20,11 @@ def modalities(request):
 def contact(request):
     if request.method == 'POST':
         if request.POST['universities'] != '0':
-            Send_EmailService.post_send_email(request.POST)
-            messages.success(request, 'E-mail enviado com sucesso')
+            status = Send_EmailService.post_send_email(request.POST)
+            if(status.status_code == 201):
+                messages.success(request, 'E-mail Enviado Com Sucesso')
+            else:
+                messages.error(request, 'Falha ao Enviar E-mail')
 
     response = UniversityService.get_universities()
 
@@ -51,11 +53,13 @@ def administration(request):
                 auth.login(request, user)
                 _USERNAME = request.POST['username']
                 _PASSWORD = request.POST['password']
-            if request.user.is_authenticated:
                 template = 'administration/homeAdministration.html'
-            elif not request.user.is_authenticated:
+            else:
                 messages.error(request, 'Usuário ou Senha incorretos, efetue o login novamente')
                 return redirect('login')
+        else:
+            messages.error(request, 'Usuário ou Senha incorretos, efetue o login novamente')
+            return redirect('login')
             
     return render(request, template)
 
@@ -67,6 +71,14 @@ def get_user_pass():
 def logout(request):
     auth.logout(request)
     return redirect('index')
+
+def token_login(request):
+    list = get_user_pass()
+    token = adm_authenticate(list[0], list[1])
+    if token == None:
+            messages.error(
+                request, 'Sessão Finalizada, por favor efetue o login novamente')
+    return token
 
 
 

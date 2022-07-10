@@ -233,44 +233,22 @@
 
             <div>
                 <h4 class="mbr-section-title mbr-fonts-style align-left mt-2 mb-2 display-7">
-                    <strong>Especificações das Matérias</strong>
+                    <strong>Especificações</strong>
                 </h4>
                 <hr>
             </div>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#school_program">
                 Fases
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enrollment">
+                Inscrições
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><strong>Matérias</strong></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            {% for phases in phases %}
-
-                            <p><strong>{{phases.phase}}° Fase - {{ phases.phase_time }} Horas</p>
-                            {% for subjects in phases.subjects %}
-                            <p><strong>{{subjects.name}}</strong> - {{subjects.description}}</p>
-                            {% endfor %}
-                            <hr class="mb-3">
-                            </hr>
-                            {% endfor %}
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+                {% include 'partials/coursePartials/_modal_courses.html' %}
+               
 
         </div>
     </div>
