@@ -30,13 +30,16 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </section>
 
-<section class="features3 cid-searchLists" id="topBody">
+<div class="animate__animated animate__fadeOut animate__delay-3s">
+    {% include 'partials/_messages.html' %}
+</div>
 
-    
+<section class="features3 cid-searchLists" id="topBody">
 
     <div class="container">
         <div class="content-wrapper">
@@ -44,26 +47,6 @@
                 <div class="col col-lg-12">
                     <div class="text-wrapper">
 
-                        <div class="col col-lg-2">
-                            <h3 class="mbr-section-title mbr-fonts-style align-left display-7">
-                                <strong>Nota no MEC:</strong>
-                            </h3>
-                        </div>
-
-                    </div>
-                        <div class="col col-lg-3">
-                            {% if courses.mec_score == 'MEC5' %}
-                            <img src="{% static '/images/5stars.png' %}" style=" height: 60px; width: 250px;">
-                            {% elif courses.mec_score == 'MEC4' %}
-                            <img src="{% static '/images/4stars.png' %}" style=" height: 60px; width: 250px;">
-                            {% elif courses.mec_score == 'MEC3'%}
-                            <img src="{% static '/images/3stars.png' %}" style=" height: 60px; width: 250px;">
-                            {% elif courses.mec_score == 'MEC2'%}
-                            <img src="{% static '/images/2stars.png' %}" style=" height: 60px; width: 250px;">
-                            {% elif courses.mec_score == 'MEC1'%}
-                            <img src="{% static '/images/1star.png' %}" style=" height: 60px; width: 250px;">
-                            {% endif %}
-                        </div>
                         <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
                             <strong>{{courses.name}}</strong>
                         </h4>
@@ -71,119 +54,140 @@
                         <hr class="mb-3">
                         </hr>
 
+                    </div>
+
+                </div>
+
+                    <div class="row">
+
+                        <div class="col col-lg-2">
+                            <h3 class="mbr-section-title mbr-fonts-style align-left display-7">
+                                <strong>Nota no MEC:</strong>
+                            </h3>
                         </div>
+                    </div>
 
-                        <div class="row">
+                <div class="col col-lg-3">
+                    {% if courses.mec_score == 'MEC5' %}
+                    <img src="{% static '/images/5stars.png' %}" style=" height: 60px; width: 250px;">
+                    {% elif courses.mec_score == 'MEC4' %}
+                    <img src="{% static '/images/4stars.png' %}" style=" height: 60px; width: 250px;">
+                    {% elif courses.mec_score == 'MEC3'%}
+                    <img src="{% static '/images/3stars.png' %}" style=" height: 60px; width: 250px;">
+                    {% elif courses.mec_score == 'MEC2'%}
+                    <img src="{% static '/images/2stars.png' %}" style=" height: 60px; width: 250px;">
+                    {% elif courses.mec_score == 'MEC1'%}
+                    <img src="{% static '/images/1star.png' %}" style=" height: 60px; width: 250px;">
+                    {% endif %}
+                </div>
 
-                        <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 mt-5 display-5">
-                            <strong>Objetivo do Curso</strong>
+                <div class="row">
+
+                    <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 mt-5 display-5">
+                        <strong>Objetivo do Curso</strong>
+                    </h4>
+
+                    <p class="mbr-text col-lg-6 mbr-fonts-style mb-4 display-7">
+                        {{courses.course_objective}}
+                    </p>
+
+
+                    <div class="row">
+
+                        <h4 class="mbr-section-title mbr-fonts-style col-lg-7 mb-2 display-5">
+                            <strong>Perfil de Conclusão</strong>
                         </h4>
 
-                        <p class="mbr-text col-lg-6 mbr-fonts-style mb-4 display-7">
-                            {{courses.course_objective}}
+
+                    </div>
+
+                    <div class="row">
+
+                        <p class="mbr-text mbr-fonts-style mb-4 col-lg-7 display-7">
+                            {{courses.completion_profile}}
                         </p>
 
+                    </div>
 
-                        <div class="row">
 
-                            <h4 class="mbr-section-title mbr-fonts-style col-lg-7 mb-2 display-5">
-                                <strong>Perfil de Conclusão</strong>
-                            </h4>
+                    <div class="row">
 
-                                
+                        <div class="col-6 col-sm-1">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                <i class="fa fa-bars"></i>
+                            </button>
                         </div>
 
-                        <div class="row">
-
-                            <p class="mbr-text mbr-fonts-style mb-4 col-lg-7 display-7">
-                                {{courses.completion_profile}}
-                            </p>
-
-                        </div>
-                        
-
-                        <div class="row">
-
-                            <div class="col-6 col-sm-1">
-                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                            </div>
-
-                            <div class="col-6 col-md-6">
-                                <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Matriz
-                                        Curricular</strong></h4>
-                            </div>
-
+                        <div class="col-6 col-md-6">
+                            <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-5"><strong>Matriz
+                                    Curricular</strong></h4>
                         </div>
 
-                        {% if courses.curriculum == null %}
+                    </div>
 
-                        <div class=" image-wrapper col col-lg-4">
-                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
-                                <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
-                                    style=" height: 400px; width: 500px;">
-                                </a>
-                            </div>
+                    {% if courses.curriculum == null %}
 
-                            {% else %}
-
-                            <div class="image-wrapper col col-lg-4">
-                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
-                                <img class="mb-4" src="{{courses.curriculum}}" style=" height: 400px; width: 500px;">
-                            </a>
-                        </div>
-                            {% endif %}
-
+                    <div class=" image-wrapper col col-lg-4">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
+                            <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                                style=" height: 400px; width: 500px;">
                         </a>
+                    </div>
 
-                        
+                    {% else %}
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalImage" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
+                    <div class="image-wrapper col col-lg-4">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalImage">
+                            <img class="mb-4" src="{{courses.curriculum}}" style=" height: 400px; width: 500px;">
+                        </a>
+                    </div>
+                    {% endif %}
 
-                                        {% if courses.curriculum == null %}
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalImage" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
 
-                                        <div class="image-wrapper">
-                                            <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
-                                                style=" height: 600px; width: 700px;">
-                                        </div>
+                                    {% if courses.curriculum == null %}
 
-                                        {% else %}
-
-                                        <div class="image-wrapper">
-                                            <img class="mb-4" src="{{courses.curriculum}}"
-                                                style=" height: 100%; width: 100%;">
-                                        </div>
-
-                                        {% endif %}
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Fechar</button>
+                                    <div class="image-wrapper">
+                                        <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
+                                            style=" height: 600px; width: 700px;">
                                     </div>
 
+                                    {% else %}
+
+                                    <div class="image-wrapper">
+                                        <img class="mb-4" src="{{courses.curriculum}}"
+                                            style=" height: 100%; width: 100%;">
+                                    </div>
+
+                                    {% endif %}
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fechar</button>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
-    
+
 
 
 </section>
@@ -195,14 +199,11 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
 
-            <div class="col col-lg-10">
-                <div class="row">
-                    <a class="btn btn-danger col-lg-2" href="{{courses.curriculum}}" download="Matriz_{{courses.name}}"
+                <div class="row col col-lg-12">
+                    <a class="btn btn-danger col col-lg-2" href="{{courses.curriculum}}" download="Matriz_{{courses.name}}"
                         target="_blank"><i class="fa fa-download"></i></a>
-                    <h5 class="col-lg-8 mt-3">Matriz (Download)</h5>
+                    <h5 class="col col-lg-6 mt-3">Matriz (Download)</h5>
                 </div>
-            </div>
-
 
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -231,48 +232,48 @@
             </div>
 
             <div>
-                <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-7">
-                    Especificações das Matérias
+                <h4 class="mbr-section-title mbr-fonts-style align-left mt-2 mb-2 display-7">
+                    <strong>Especificações das Matérias</strong>
                 </h4>
                 <hr>
             </div>
-            
+
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Fases
             </button>
-            
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><strong>Matérias</strong></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><strong>Matérias</strong></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% for phases in phases %}
+
+                            <p><strong>{{phases.phase}}° Fase - {{ phases.phase_time }} Horas</p>
+                            {% for subjects in phases.subjects %}
+                            <p><strong>{{subjects.name}}</strong> - {{subjects.description}}</p>
+                            {% endfor %}
+                            <hr class="mb-3">
+                            </hr>
+                            {% endfor %}
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+
                     </div>
-                    <div class="modal-body">
-                        {% for phases in phases %}
-                        
-                        <p><strong>{{phases.phase}}° Fase - {{ phases.phase_time }} Horas</p>
-                        {% for subjects in phases.subjects %}
-                        <p><strong>{{subjects.name}}</strong> - {{subjects.description}}</p>
-                        {% endfor %}
-                        <hr class="mb-3">
-                        </hr>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                    
                 </div>
             </div>
+
         </div>
-        
     </div>
-</div>
 
     <div class="container">
         <div class="mbr-section-head">
@@ -309,14 +310,6 @@
                     {%csrf_token %}
 
                     <div class="row">
-                        <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
-                            out
-                            the form!</div>
-                        <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
-                            problem!</div>
-                    </div>
-
-                    <div class="row">
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
@@ -339,8 +332,8 @@
                         </div>
 
                         <div class="col-md col-sm-12 form-group mb-3">
-                            <select id="universities" class="form-select" name="universities">
-                                <option selected disabled>Selecione uma Unidade</option>
+                            <select id="universities" class="form-select" name="universities" required>
+                                <option selected disabled value="">Selecione uma Unidade</option>
                                 {% if universities %}
                                 {% for universities in universities %}
                                 <option value="{{universities.id}}">{{universities.name}}</option>
@@ -353,7 +346,7 @@
 
                     <div class="col-12 form-group mb-3" data-for="textarea">
                         <textarea name="message" placeholder="Mensagem" data-form-field="message" class="form-control"
-                            id="message"></textarea>
+                            id="message" required></textarea>
                     </div>
 
             </div>

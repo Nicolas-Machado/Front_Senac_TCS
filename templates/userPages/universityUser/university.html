@@ -6,7 +6,6 @@
 {% include 'partials/_menu.html' %}
 <section data-bs-version="5" class="features11 cid-universityAddress mbr-parallax-background" id="features12-6">
 
-
     <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(255, 255, 255);">
     </div>
 
@@ -60,6 +59,10 @@
     </div>
 </section>
 
+<div class="animate__animated animate__fadeOut animate__delay-3s">
+    {% include 'partials/_messages.html' %}
+</div>
+
 <section class="features3 cid-searchLists" id="features3-1f">
 
     <div class="container">
@@ -93,13 +96,6 @@
                 <form action="{% url 'university' universities.id %}" method="POST" class="mbr-form form-with-styler">
                     {%csrf_token %}
 
-                    <div class="row">
-                        <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
-                            out
-                            the form!</div>
-                        <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
-                            problem!</div>
-                    </div>
                     <div class="dragArea row">
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
@@ -116,7 +112,7 @@
                         </div>
                         <div class="col-12 form-group mb-3" data-for="textarea">
                             <textarea name="message" placeholder="Mensagem" data-form-field="message"
-                                class="form-control" id="message"></textarea>
+                                class="form-control" id="message" required></textarea>
                         </div>
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="hidden" name="universities" placeholder="" data-form-field="universities"

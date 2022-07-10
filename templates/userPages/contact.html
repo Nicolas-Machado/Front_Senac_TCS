@@ -26,6 +26,10 @@
 
 </section>
 
+<div class="animate__animated animate__fadeOut animate__delay-3s">
+    {% include 'partials/_messages.html' %}
+</div>
+
 <section class="features3 cid-searchLists" id="topBody">
 
     <div class="container">
@@ -114,14 +118,6 @@
                 <form action="{% url 'contact' %}" method="POST" class="mbr-form form-with-styler">{%csrf_token %}
 
                     <div class="row">
-                        <div data-form-alert="" class="alert alert-success col-12" hidden="hidden">Thanks for filling
-                            out
-                            the form!</div>
-                        <div data-form-alert-danger="" class="alert alert-danger col-12" hidden="hidden">Oops...! some
-                            problem!</div>
-                    </div>
-
-                    <div class="row">
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                             <input type="text" name="name" placeholder="Nome Completo" data-form-field="name"
@@ -144,8 +140,8 @@
                         </div>
 
                         <div class="col-md col-sm-12 form-group mb-3">
-                            <select id="universities" class="form-select" name="universities">
-                                <option selected disabled>Selecione uma Unidade</option>
+                            <select id="universities" class="form-select" name="universities" required>
+                                <option selected disabled value="">Selecione uma Unidade</option>
                                 {% if universities %}
                                 {% for universities in universities %}
                                 <option value="{{universities.id}}">{{universities.name}}</option>
@@ -158,7 +154,7 @@
 
                     <div class="col-md col-sm-12 form-group mb-3" data-for="textarea">
                         <textarea name="message" placeholder="Mensagem" data-form-field="message" class="form-control"
-                            id="message"></textarea>
+                            id="message" required></textarea>
                     </div>
 
                     <div class="col-md col-sm-12 col-md-12 col-sm-12 align-center mbr-section-btn">

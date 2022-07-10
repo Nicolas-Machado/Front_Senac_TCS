@@ -1,5 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from siteSenac.send_email import Send_EmailService
 from university.service import UniversityService
@@ -21,6 +22,7 @@ def contact(request):
     if request.method == 'POST':
         if request.POST['universities'] != '0':
             Send_EmailService.post_send_email(request.POST)
+            messages.success(request, 'E-mail enviado com sucesso')
 
     response = UniversityService.get_universities()
 
@@ -51,6 +53,9 @@ def administration(request):
                 _PASSWORD = request.POST['password']
             if request.user.is_authenticated:
                 template = 'administration/homeAdministration.html'
+            elif not request.user.is_authenticated:
+                messages.error(request, 'Usuário ou Senha incorretos, efetue o login novamente')
+                return redirect('login')
             
     return render(request, template)
 

@@ -5,39 +5,53 @@ from siteSenac.service import adm_authenticate
 from siteSenac.views import get_user_pass
 from datetime import datetime
 from university.service import UniversityService
+from django.contrib import messages
 
 
 def data_enrollment_list():
     response = EnrollmentService.get_enrollments()
     date_now = datetime.today().strftime('%Y-%m-%d')
 
-
     data = {
         'enrollments': response,
-        'date_now' : date_now
+        'date_now': date_now
     }
     return data
+
 
 def enrollmentList(request):
 
     if request.user.is_authenticated:
         data = data_enrollment_list()
-        
+
         return render(request, 'administration/enrollmentAdm/enrollmentList.html', data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Sessão Finalizada, por favor efetue o login novamente')
         return redirect('login')
-    
+
 
 def post_enrollment(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             list = get_user_pass()
             token = adm_authenticate(list[0], list[1])
-            EnrollmentService.post_enrollment(request.POST, token)
-            data = data_enrollment_list()            
+            if token == None:
+                messages.error(
+                    request, 'Sessão Finalizada, por favor efetue o login novamente')
+                return redirect('login')
+            else:
+                messages.success(request, 'Salvo com sucesso')
+                EnrollmentService.post_enrollment(request.POST, token)
+            data = data_enrollment_list()
             return render(request, 'administration/enrollmentAdm/enrollmentList.html', data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Sessão Finalizada, por favor efetue o login novamente')
         return redirect('login')
+
 
 def enrollmentRegistration(request):
     if request.user.is_authenticated:
@@ -49,8 +63,12 @@ def enrollmentRegistration(request):
             'universities': university
         }
         return render(request, 'administration/enrollmentAdm/enrollmentRegistration.html', data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Sessão Finalizada, por favor efetue o login novamente')
         return redirect('login')
+
 
 def enrollmentMaintenance(request):
     if request.user.is_authenticated:
@@ -61,18 +79,26 @@ def enrollmentMaintenance(request):
             'courses': course,
             'universities': university
         }
-        return render(request, 'administration/enrollmentAdm/enrollmentMaintenance.html', data) 
-    else:
+        return render(request, 'administration/enrollmentAdm/enrollmentMaintenance.html', data)
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Sessão Finalizada, por favor efetue o login novamente')
         return redirect('login')
+
 
 def enrollment_select(request):
     if request.user.is_authenticated:
-        courses = CourseService.get_courses_in_university(request.GET['university'])
+        courses = CourseService.get_courses_in_university(
+            request.GET['university'])
 
         data = {
-            'courses_enrollment' : courses
+            'courses_enrollment': courses
         }
 
         return render(request, 'partials/enrollmentPartials/_enrollments_results.html', data)
-    else:
+
+    elif not request.user.is_authenticated:
+        messages.error(
+            request, 'Sessão Finalizada, por favor efetue o login novamente')
         return redirect('login')
