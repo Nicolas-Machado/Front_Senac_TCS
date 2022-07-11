@@ -10,7 +10,7 @@
                 <div class="item-img">
                     {% if courses.course_image == null %}
                     <img class="mb-4" src="{% static '/images/indisponivel.jpg' %}"
-                    style=" height: 300px; width: 300px;">
+                    width="300px" height="300px">
                     {% else %}
                     <img src="{{ courses.course_image }}" width="300px" height="300px">
                     {% endif %}

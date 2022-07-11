@@ -28,7 +28,7 @@ def schoolProgramRegistration(request, course_id):
     if request.user.is_authenticated:
         
         if request.method == 'POST':
-            post_school_program(request, course_id)
+            return post_school_program(request, course_id)
 
         course = CourseService.get_courses_by_id(course_id)
         subjects = SubjectService.get_subjects()
@@ -69,7 +69,7 @@ def schoolProgramMaintenance(request, phases_id):
         phases = School_ProgramService.get_school_program_by_id(phases_id)
 
         if request.method == 'POST':
-            put_school_program(request.POST, phases_id, phases)
+            return put_school_program(request.POST, phases_id, phases)
             
         school_program = School_ProgramService.get_subjects_in_school_program(phases_id)
         subjects = SubjectService.get_subjects()

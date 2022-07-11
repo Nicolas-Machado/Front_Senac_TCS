@@ -1,7 +1,7 @@
 from typing import Dict
 import requests
 
-URL_SITE = 'http://127.0.0.1:7000'
+URL_SITE = 'http://senac-site-api.herokuapp.com'
 
 
 def authenticate() -> Dict:
