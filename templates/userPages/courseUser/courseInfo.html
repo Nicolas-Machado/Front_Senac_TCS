@@ -227,6 +227,22 @@
                     <p class="mbr-text mbr-fonts-style mb-4 display-7">
                         {{courses.occupation_area}}
                     </p>
+                   
+                    <h4 class="mbr-section-title mbr-fonts-style align-left mb-2 display-7">
+                        <strong>Modalidade</strong>
+                    </h4>
+
+                    <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                        {% if courses.modality == "PRESENCIAL" %}
+                            Presencial
+                        {% endif %} 
+                        {% if courses.modality == "HIBRIDO" %}
+                            Educação Híbrida
+                        {% endif %} 
+                        {% if courses.modality == "EAD" %}
+                            Educação a Distância
+                        {% endif %} 
+                    </p>
 
                 </div>
             </div>
