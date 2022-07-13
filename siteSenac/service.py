@@ -5,7 +5,7 @@ URL_SITE = 'http://senac-site-api.herokuapp.com'
 
 
 def authenticate() -> Dict:
-    login = {'username': 'admin', 'password': 'admin'}
+    login = {'username': 'senac.usuario', 'password': 'S&nac@2022'}
     response = requests.post(f"{URL_SITE}/rest-auth-token/", data=login)
     token = response.json()['token']
     return token
