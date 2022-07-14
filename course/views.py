@@ -157,6 +157,7 @@ def courseInfo(request, course_id):
             if enrollment['universities'] == universities['name']:
                 if enrollment['date_final'] > datetime.today().strftime('%Y-%m-%d'):
                     enrollment['date_final'] = datetime.strptime(enrollment['date_final'], '%Y-%m-%d').strftime('%d/%m/%y')
+                    enrollment['date_initial'] = datetime.strptime(enrollment['date_initial'], '%Y-%m-%d').strftime('%d/%m/%y')
                     enrollments.append(enrollment)
                     break
 
