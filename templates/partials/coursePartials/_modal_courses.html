@@ -46,7 +46,7 @@
                 {% if enrollments %}
                 {% for enrollments in enrollments %}
 
-                <p><strong>{{enrollments.universities}} - Aberto até: {{enrollments.date_final}}</strong></p>
+                <p><strong>{{enrollments.universities}} - Aberto de {{enrollments.date_initial}} Até {{enrollments.date_final}}</strong></p>
                 <hr class="mb-3">
                 </hr>
                 {% endfor %}
