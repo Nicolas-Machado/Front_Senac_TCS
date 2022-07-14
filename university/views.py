@@ -133,7 +133,7 @@ def universityMaintenance(request, university_id):
         for courses_ in courses_uni:
             for courses in course:
                 if courses_['id'] == courses['id']:
-                    courses_reg.remove(courses_)
+                    courses_reg.remove(courses)
 
         data = {
             'universities': university,
