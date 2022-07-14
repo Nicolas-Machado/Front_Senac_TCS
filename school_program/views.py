@@ -51,7 +51,7 @@ def put_school_program(request, phases_id, phases):
         return redirect('login')
 
     course_id = phases['courses']    
-    status = School_ProgramService.put_School_Program(request, phases_id, course_id, token)
+    status = School_ProgramService.put_School_Program(request.POST, phases_id, course_id, token)
     if(status.status_code == 200):
         messages.success(request, 'Salvo Com Sucesso')
     else :
@@ -69,7 +69,7 @@ def schoolProgramMaintenance(request, phases_id):
         phases = School_ProgramService.get_school_program_by_id(phases_id)
 
         if request.method == 'POST':
-            return put_school_program(request.POST, phases_id, phases)
+            return put_school_program(request, phases_id, phases)
             
         school_program = School_ProgramService.get_subjects_in_school_program(phases_id)
         subjects = SubjectService.get_subjects()

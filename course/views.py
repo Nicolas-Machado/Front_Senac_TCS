@@ -127,7 +127,7 @@ def courses_results(request):
 
 def postGraduateCourses(request):
     global _RESPONSE, _TYPE_COURSE
-    response = CourseService.get_courses_postgraduation()
+    response = CourseService.get_courses_posgraduation()
     _RESPONSE = response
     _TYPE_COURSE = 'post_graduation'
     data = {
